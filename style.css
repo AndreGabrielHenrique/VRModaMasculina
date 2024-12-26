@@ -3,6 +3,7 @@
     padding: 0;
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
 }
 
 header
@@ -18,7 +19,7 @@ header
     justify-content: space-between;
 }
 
-header img
+.logo, .perfil img
 {
     width: 100px;
     height: 100%;
@@ -42,7 +43,7 @@ header form input
     font-size: medium;
 }
 
-header form button, .produto button
+header form button, .produto button, .scrollpagina
 {
     cursor: pointer;
     width: 40px;
@@ -53,11 +54,12 @@ header form button, .produto button
     border-color: white;
 }
 
-header form button:active, .produto button:active, .cadastro button:active, .verperfilcompleto:active
+header form button:active, .produto button:active, .produto button a:active, .cadastro button:active, .verperfilcompleto:active, .scrollpagina:hover
 {
     background-color: white;
     color: #202529;
     border-color: #202529;
+    text-decoration: none;
 }
 
 header form button svg
@@ -66,8 +68,8 @@ header form button svg
     width: 20px;
     height: 20px;
 }
-
-header form button svg:active
+  
+header form button:active svg
 {
     color: #202529;
 }
@@ -94,6 +96,7 @@ header ul li svg
 {
     width: 40px;
     height: 40px;
+    color: white;
 }
 
 header ul li svg:hover
@@ -128,6 +131,14 @@ header ul li svg:active
     right: 20%;
     font-size: 15px;
     line-height: 30px;
+    -webkit-animation: fadeIn 2s;
+    animation: fadeIn 1s;
+    cursor: default;
+}
+
+.menu p
+{
+    cursor: pointer;
 }
 
 .perfil
@@ -168,7 +179,7 @@ header ul li svg:active
     visibility: visible;
     opacity: 0.9;
     -webkit-animation: fadeIn 2s;
-    animation: fadeIn 1s
+    animation: fadeIn 1s;
 }
  
 @-webkit-keyframes fadeIn
@@ -183,11 +194,10 @@ header ul li svg:active
     to {opacity: 1;}
 }
 
-.verperfil:hover, .alterarsenha:hover, .logout:hover 
+.verperfil:hover, .alterarsenha:hover, .logout:hover
 {
     background-color: #202529;
     color: white;
-    cursor: pointer;
 }
 
 .verperfilcompleto
@@ -219,18 +229,18 @@ header ul li svg:active
     top: 52%;
     width: auto;
     margin-top: -69px;
-    padding-inline: 110px;
+    padding-inline: 10px;
     color: white;
     font-weight: bold;
     font-size: 48px;
     transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
+    border-radius: 3px 0 0 3px;
     user-select: none;
 }
 
-.anterior:hover, .proximo:hover
+.anterior:hover, .proximo:hover, .botaopreto:hover, .botaobranco:hover
 {
-    color: #202529;
+    color: #999;
 }
 
 .proximo
@@ -239,10 +249,20 @@ header ul li svg:active
     border-radius: 3px 0 0 3px;
 }
 
+.botaopreto
+{
+    color: #202529;
+}
+
+.botaobranco
+{
+    color: white;
+}
+
 .indicadores
 {
     position: relative;
-    bottom: 48px;
+    bottom: 35px;
     text-align: center;
 }
 
@@ -251,7 +271,7 @@ header ul li svg:active
     cursor: pointer;
     height: 4px;
     width: 40px;
-    margin: 0 2px;
+    margin: 0 4px;
     background-color: #dcdedd;
     display: inline-block;
     transition: background-color 0.6s ease;
@@ -280,14 +300,14 @@ header ul li svg:active
     position: relative;
 }
 
-.produtos h2, .carrinho h2
+.produtos h2, .carrinho h2, #enviado, .carrinhovazio
 {
     margin: 10px 0 10px 0;
     font-weight: 600;
     font-size: 50px;
 }
 
-.produtos h2, .carrinho h2, .produtos ul
+.produtos h2, .carrinho h2, .produtos ul, .carrinhovazio
 {
     padding-inline: 150px;
 }
@@ -336,6 +356,12 @@ header ul li svg:active
     font-size: x-large;
     color: white;
     margin-top: 10px;
+}
+
+.produto button a
+{
+    color: white;
+    text-decoration: none;
 }
 
 .produtos ul
@@ -387,6 +413,12 @@ header ul li svg:active
 .carrinho
 {
     display: none;
+}
+
+.carrinhovazio
+{
+    font-size: 30px !important;
+    margin-top: 30px !important;
 }
 
 .produtocarrinho
@@ -457,9 +489,16 @@ header ul li svg:active
     outline: none;
 }
 
+.erroquantidade
+{
+    color: #aa1e1e;
+    font-size: 13px;
+    line-height: 0;
+}
+
 .cadastro
 {
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     flex-direction: column;
     row-gap: 15px;
@@ -472,7 +511,7 @@ header ul li svg:active
     display: block;
 }
 
-.cadastro input, .cadastro select
+.cadastro input
 {
     padding: 9px;
     border: 1px solid #dcdedd;
@@ -537,7 +576,69 @@ header ul li svg:active
     float: left;
 }
 
-.termos
+#campoestado
+{
+    position: relative;
+    width: 420px;
+}
+
+#estado
+{
+    display: block;
+    padding: 9px 30px 9px 9px;
+    border: 1px solid #dcdedd;
+    outline: none;
+    border-radius: 7px;
+    font-size: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.seta
+{
+    position: absolute;
+    top: 70%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 18px;
+    color: #202529;
+}
+
+#listaestados
+{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #dcdedd;
+    border-radius: 7px;
+    max-height: 150px;
+    overflow-y: auto;
+    display: none;
+    z-index: 1000;
+}
+
+#listaestados div
+{
+    padding: 9px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#listaestados div:hover
+{
+    background-color: white;
+}
+
+#listaestados div.selecionado
+{
+    background-color: #202529;
+    color: white;
+}
+
+#checkboxtermos
 {
     display: flex;
     gap: 10px;
@@ -596,6 +697,80 @@ header ul li svg:active
     cursor: pointer;
 }
 
+#enviado
+{
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 35px;
+}
+
+.errocadastro
+{
+    visibility: hidden;
+    font-weight: 450;
+    background-color: #dcdedd;
+    color: #202529;
+    text-align: center;
+    max-width: fit-content;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    font-size: 15px;
+    animation: fadeIn 0.5s;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.32);
+}
+
+.errocadastro::after
+{
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #dcdedd transparent;
+    filter: drop-shadow(2px 0 rgba(0, 0, 0, 0.32));
+    border-radius: 3px;
+}
+
+.mostrarerrocadastro
+{
+    visibility: visible;
+    opacity: 0.9;
+    animation: fadeIn 0.5s;
+    margin-top: 6px;
+    margin-left: 10%;
+}
+
+@keyframes fadeIn
+{
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#erroestado
+{
+    margin-left: 6% !important;
+}
+
+#errocep
+{
+    margin-left: 7% !important;
+}
+
+#errotermos
+{
+    margin-top: 50px !important;
+    margin-left: 10px !important;
+}
+
 footer
 {
     background-color: #202529;
@@ -617,7 +792,7 @@ footer
     list-style-type: none;
 }
 
-.links li
+.link
 {
     cursor: pointer;
 }
@@ -632,7 +807,341 @@ footer
     text-decoration: none;
 }
 
-footer hr
+.separador
 {
     border: 1px solid #99999962;
+}
+
+.espacador
+{
+    background-color: white;
+}
+
+.scrollpagina
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 14px;
+    right: 14px;
+}
+
+.scrollpagina.inferior::after {
+    content: "↓";
+    font-size: 42px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: margin-top 350ms;
+}
+
+.scrollpagina.inferior:hover::after
+{
+    margin-top: 6px;
+    font-size: 42px;
+    font-weight: bold;
+    color: #202529;
+}
+
+.scrollpagina.topo::after {
+    content: "↑";
+    font-size: 42px;
+    font-weight: bold;
+    color: white;
+    transition: margin-top 350ms;
+}
+
+.scrollpagina.topo:hover::after
+{
+    margin-top: -12px;
+    font-size: 42px;
+    font-weight: bold;
+    color: #202529;
+}
+
+.fundoconstrucao
+{
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.construcao
+{
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+#construcao
+{
+    width: 100%;
+    max-width: 700px;
+}
+
+@media (min-width: 501px) and (max-width: 833px)
+{
+    header
+    {
+        height: 100%;
+        margin: 0;
+    }
+
+    .logo
+    {
+        bottom: 20px;
+    }
+
+    .anterior, .proximo
+    {
+        padding-inline: 7px;
+        font-size: 42px;
+        top: 60%;
+    }
+
+    .indicadores
+    {
+        bottom: 30px;
+    }
+
+    .indicador
+    {
+        height: 4px;
+        width: 35px;
+        margin: 0 4px;
+    }
+
+    .produtos h2, .carrinho h2, .carrinhovazio
+    {
+        text-align: center;
+        padding-inline: 0;
+    }
+
+    .produtos ul
+    {
+        justify-content: center;
+    }
+
+    .produtos ul li
+    {
+        font-size: 23px;
+        padding: 15px;
+    }
+
+    .listacarrinho, .cadastro
+    {
+        padding-inline: 35px;
+    }
+
+    .produtocarrinho
+    {
+        display: flex;
+        margin: 0;
+        row-gap: 0;
+    }
+
+    .produtocarrinho img
+    {
+        width: 52px;
+        height: 77px;
+    }
+
+    .produtocarrinho h3
+    {
+        font-size: 33px;
+    }
+
+    .remover
+    {
+        width: 27px;
+    }
+
+    .nomecarrinho
+    {
+        font-size: 20px;
+    }
+
+    .produtoquantidade, .tamanhoproduto, .precounidadecarrinho, .precototalcarrinho
+    {
+        font-size: 35px;
+    }
+
+    .quantidade, .tamanho, .precounidade, .produtoprecototal
+    {
+        font-size: 25px;
+    }
+
+    .produtoquantidade input
+    {
+        width: 42px;
+    }
+
+    .erroquantidade
+    {
+        font-size: 15px;
+        margin-top: 10px;
+    }
+
+    .cadastro input, #cidade, #primeironome, #segundonome
+    {
+        width: 400px;
+    }
+
+    #email
+    {
+        width: 387px;
+    }
+
+    .links, .contatos
+    {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .espacador
+    {
+        display: none;
+    }
+}
+
+@media (max-width: 500px)
+{
+    header
+    {
+        height: 100%;
+    }
+
+    .logo
+    {
+        top: 25px;
+        position: relative;
+    }
+
+    .anterior, .proximo
+    {
+        padding-inline: 10px;
+        font-size: 32px;
+        top: 64%;
+    }
+
+    .indicadores
+    {
+        bottom: 33px;
+    }
+
+    .indicador
+    {
+        height: 4px;
+        width: 30px;
+        margin: 0 4px;
+    }
+
+    .produtos h2, .carrinho h2, .carrinhovazio
+    {
+        text-align: center;
+        padding-inline: 0;
+    }
+
+    .produtos ul
+    {
+        justify-content: center;
+    }
+
+    .produtos ul li
+    {
+        font-size: 30px;
+        padding: 20px;
+    }
+
+    .listacarrinho, .cadastro
+    {
+        padding-inline: 10px;
+    }
+
+    .produtocarrinho
+    {
+        display: flex;
+        margin: 0;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        row-gap: 0;
+    }
+
+    .produtocarrinho img
+    {
+        width: 45px;
+        height: 70px;
+    }
+
+    .produtocarrinho h3
+    {
+        font-size: 37px;
+    }
+
+    .remover
+    {
+        width: 35px;
+    }
+
+    .nomecarrinho
+    {
+        font-size: 30px;
+    }
+
+    .produtoquantidade, .tamanhoproduto, .precounidadecarrinho, .precototalcarrinho
+    {
+        font-size: 44px;
+    }
+
+    .quantidade, .tamanho, .precounidade, .produtoprecototal
+    {
+        font-size: 28px;
+    }
+
+    .produtoquantidade input
+    {
+        width: 50px;
+    }
+
+    .erroquantidade
+    {
+        font-size: 22px;
+        margin-top: 10px;
+    }
+
+    .cadastro input, #cidade, #primeironome, #segundonome
+    {
+        width: 65vh;
+    }
+
+    #email
+    {
+        width: 387px;
+    }
+
+    .links, .contatos
+    {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .espacador
+    {
+        display: none;
+    }
 }
