@@ -1,9 +1,55 @@
 const fundoconstrucao = document.getElementById("fundoconstrucao")
 const busca = document.getElementById('busca')
-const carrinho = document.getElementById("carrinho")
-const carrinhovazio = document.querySelector(".carrinhovazio")
 const menu = document.getElementById("menu")
 const perfil = document.getElementById("perfil")
+const favoritar = document.getElementsByClassName("favoritar")
+const removerproduto = document.getElementsByClassName("removerproduto")
+const adicionaraocarrinho = document.getElementsByClassName("adicionaraocarrinho")
+const carrinho = document.getElementById("carrinho")
+const carrinhovazio = document.querySelector(".carrinhovazio")
+const quantidade = document.getElementsByClassName("quantidade")
+const listacarrinho = document.getElementById("listacarrinho")
+const cadastro = document.getElementById("cadastro")
+const primeironome = document.getElementById("primeironome")
+const segundonome = document.getElementById("segundonome")
+const email = document.getElementById("email")
+const cidade = document.getElementById("cidade")
+const estado = document.getElementById("estado")
+const cep = document.getElementById("cep")
+const termos = document.getElementById("termos")
+const enviado = document.getElementById("enviado")
+const listaestados = document.getElementById("listaestados")
+const estados =
+[
+    { value: 'AC', label: 'Acre' },
+    { value: 'AL', label: 'Alagoas' },
+    { value: 'AP', label: 'Amapá' },
+    { value: 'AM', label: 'Amazonas' },
+    { value: 'BA', label: 'Bahia' },
+    { value: 'CE', label: 'Ceará' },
+    { value: 'DF', label: 'Distrito Federal' },
+    { value: 'ES', label: 'Espírito Santo' },
+    { value: 'GO', label: 'Goiás' },
+    { value: 'MA', label: 'Maranhão' },
+    { value: 'MT', label: 'Mato Grosso' },
+    { value: 'MS', label: 'Mato Grosso do Sul' },
+    { value: 'MG', label: 'Minas Gerais' },
+    { value: 'PA', label: 'Pará' },
+    { value: 'PB', label: 'Paraíba' },
+    { value: 'PR', label: 'Paraná' },
+    { value: 'PE', label: 'Pernambuco' },
+    { value: 'PI', label: 'Piauí' },
+    { value: 'RJ', label: 'Rio de Janeiro' },
+    { value: 'RN', label: 'Rio Grande do Norte' },
+    { value: 'RS', label: 'Rio Grande do Sul' },
+    { value: 'RO', label: 'Rondônia' },
+    { value: 'RR', label: 'Roraima' },
+    { value: 'SC', label: 'Santa Catarina' },
+    { value: 'SP', label: 'São Paulo' },
+    { value: 'SE', label: 'Sergipe' },
+    { value: 'TO', label: 'Tocantins' },
+    { value: 'EX', label: 'Estrangeiro' }
+]
 const scrollpagina = document.querySelector('.scrollpagina')
 
 busca.addEventListener("click", (event) =>
@@ -51,6 +97,7 @@ document.addEventListener('click', function(event)
 })
 
 let imagematual = 1
+let transicao = 4000
 mostrarcarousel(imagematual)
 
 controles=(numero)=>
@@ -62,6 +109,22 @@ thumbnails=(numero)=>
 {
     mostrarcarousel(imagematual = numero)
 }
+
+function carouselautomatico()
+{
+    imagematual++
+    mostrarcarousel(imagematual)
+}
+
+let intervalocarousel = setInterval(carouselautomatico, transicao)
+document.querySelector(".carousel").addEventListener("mouseover", ()=>
+{
+    clearInterval(intervalocarousel)
+})
+document.querySelector(".carousel").addEventListener("mouseout", ()=>
+{
+    intervalocarousel = setInterval(carouselautomatico, transicao)
+})
 
 function mostrarcarousel(numero)
 {
@@ -107,7 +170,6 @@ function mostrarcarousel(numero)
     }  
 }
 
-const favoritar = document.getElementsByClassName("favoritar")
 for (var produto = 0; produto < favoritar.length; produto++)
 {
     favoritar[produto].addEventListener("click", favoritarproduto)
@@ -120,19 +182,16 @@ function favoritarproduto(event)
     favorito.setAttribute("fill", favorito.getAttribute("fill") === "none" ? "currentColor" : "none")
 }
 
-const removerproduto = document.getElementsByClassName("removerproduto")
 for (var produto = 0; produto < removerproduto.length; produto++)
 {
     removerproduto[produto].addEventListener("click", removeproduto)
 }
 
-const quantidade = document.getElementsByClassName("quantidade")
 for (var produto = 0; produto < quantidade.length; produto++)
 {
     quantidade[produto].addEventListener("change", sevazio)
 }
 
-const adicionaraocarrinho = document.getElementsByClassName("adicionaraocarrinho")
 for (var produto = 0; produto < adicionaraocarrinho.length; produto++)
 {
     adicionaraocarrinho[produto].addEventListener("click", carrinhodecompras)
@@ -212,7 +271,6 @@ atualizarprecototal=(produto)=>
     atualizar.innerText = `R$ ${precototal}`
 }
 
-const listacarrinho = document.getElementById("listacarrinho")
 removeproduto=(event)=>
 {
     event.target.closest("span").remove()
@@ -249,48 +307,6 @@ sevazio=(event)=>
     erroquantidade.innerHTML = ''
     atualizarprecototal(produto)
 }
-
-const cadastro = document.getElementById("cadastro")
-const primeironome = document.getElementById("primeironome")
-const segundonome = document.getElementById("segundonome")
-const email = document.getElementById("email")
-const cidade = document.getElementById("cidade")
-const estado = document.getElementById("estado")
-const cep = document.getElementById("cep")
-const termos = document.getElementById("termos")
-const enviado = document.getElementById("enviado")
-const listaestados = document.getElementById("listaestados")
-const estados =
-[
-    { value: 'AC', label: 'Acre' },
-    { value: 'AL', label: 'Alagoas' },
-    { value: 'AP', label: 'Amapá' },
-    { value: 'AM', label: 'Amazonas' },
-    { value: 'BA', label: 'Bahia' },
-    { value: 'CE', label: 'Ceará' },
-    { value: 'DF', label: 'Distrito Federal' },
-    { value: 'ES', label: 'Espírito Santo' },
-    { value: 'GO', label: 'Goiás' },
-    { value: 'MA', label: 'Maranhão' },
-    { value: 'MT', label: 'Mato Grosso' },
-    { value: 'MS', label: 'Mato Grosso do Sul' },
-    { value: 'MG', label: 'Minas Gerais' },
-    { value: 'PA', label: 'Pará' },
-    { value: 'PB', label: 'Paraíba' },
-    { value: 'PR', label: 'Paraná' },
-    { value: 'PE', label: 'Pernambuco' },
-    { value: 'PI', label: 'Piauí' },
-    { value: 'RJ', label: 'Rio de Janeiro' },
-    { value: 'RN', label: 'Rio Grande do Norte' },
-    { value: 'RS', label: 'Rio Grande do Sul' },
-    { value: 'RO', label: 'Rondônia' },
-    { value: 'RR', label: 'Roraima' },
-    { value: 'SC', label: 'Santa Catarina' },
-    { value: 'SP', label: 'São Paulo' },
-    { value: 'SE', label: 'Sergipe' },
-    { value: 'TO', label: 'Tocantins' },
-    { value: 'EX', label: 'Estrangeiro' }
-]
 
 let selecao = -1
 let filtrarestados = estados
@@ -591,7 +607,7 @@ resetarcadastro=()=>
     segundonome.value = ""
     email.value = ""
     cidade.value = ""
-    estado.value = "SEL"
+    estado.value = ""
     cep.value = ""
     termos.checked = false
 }

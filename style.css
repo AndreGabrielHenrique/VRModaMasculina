@@ -597,12 +597,13 @@ header ul li svg:active
 .seta
 {
     position: absolute;
-    top: 70%;
-    right: 10px;
-    transform: translateY(-50%);
+    top: 69%;
+    right: 5px;
+    transform: translateY(-50%) rotate(90deg);
     pointer-events: none;
-    font-size: 18px;
-    color: #202529;
+    font-size: 28px;
+    font-weight: bolder;
+    color: #999;
 }
 
 #listaestados
@@ -891,7 +892,7 @@ footer
     max-width: 700px;
 }
 
-@media (min-width: 501px) and (max-width: 833px)
+@media (min-width: 614px) and (max-width: 833px)
 {
     header
     {
@@ -942,7 +943,7 @@ footer
 
     .listacarrinho, .cadastro
     {
-        padding-inline: 35px;
+        padding-inline: 100px;
     }
 
     .produtocarrinho
@@ -1017,7 +1018,7 @@ footer
     }
 }
 
-@media (max-width: 500px)
+@media (max-width: 613px)
 {
     header
     {
@@ -1028,6 +1029,22 @@ footer
     {
         top: 25px;
         position: relative;
+    }
+
+    .perfil
+    {
+        left: 147%;
+        top: -40%;
+    }
+
+    .perfil::after
+    {
+        width: 0  !important;
+        height: 0  !important;
+        border-color: transparent white transparent transparent !important;
+        top: 21px !important;
+        left: -2% !important;
+        margin-left: -5px !important;
     }
 
     .anterior, .proximo
@@ -1068,7 +1085,7 @@ footer
 
     .listacarrinho, .cadastro
     {
-        padding-inline: 10px;
+        padding-inline: 50px;
     }
 
     .produtocarrinho
@@ -1076,7 +1093,7 @@ footer
         display: flex;
         margin: 0;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
         gap: 40px;
         row-gap: 0;
     }
