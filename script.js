@@ -110,7 +110,7 @@ thumbnails=(numero)=>
     mostrarcarousel(imagematual = numero)
 }
 
-function carouselautomatico()
+carouselautomatico=()=>
 {
     imagematual++
     mostrarcarousel(imagematual)

@@ -146,7 +146,7 @@ header ul li svg:active
     width: 225px;
     line-height: 20px;
     right: 147%;
-    top: 4%;
+    top: -40%;
 }
 
 .perfil img
@@ -170,7 +170,7 @@ header ul li svg:active
 .perfil::after
 {
     left: 100% !important;
-    top: 5% !important;    
+    top: 21px !important;    
     border-color: transparent transparent transparent white !important;
 }
   
@@ -566,7 +566,7 @@ header ul li svg:active
     background: #fcf9f9;
     border: 1px solid #dcdedd;
     display: table-cell;
-    padding: 12.82px;
+    padding: 12.81px;
     border-radius: 7px 0 0 7px;
     text-align: center;
     vertical-align: middle;
@@ -828,7 +828,8 @@ footer
     right: 14px;
 }
 
-.scrollpagina.inferior::after {
+.scrollpagina.inferior::after
+{
     content: "↓";
     font-size: 42px;
     font-weight: bold;
@@ -848,7 +849,8 @@ footer
     color: #202529;
 }
 
-.scrollpagina.topo::after {
+.scrollpagina.topo::after
+{
     content: "↑";
     font-size: 42px;
     font-weight: bold;
@@ -1040,9 +1042,7 @@ footer
     .perfil::after
     {
         width: 0  !important;
-        height: 0  !important;
         border-color: transparent white transparent transparent !important;
-        top: 21px !important;
         left: -2% !important;
         margin-left: -5px !important;
     }
@@ -1142,12 +1142,17 @@ footer
 
     .cadastro input, #cidade, #primeironome, #segundonome
     {
-        width: 65vh;
+        width: 55vh;
     }
 
     #email
     {
-        width: 387px;
+        width: 327px;
+    }
+
+    #cep
+    {
+        width: 358px;
     }
 
     .links, .contatos
