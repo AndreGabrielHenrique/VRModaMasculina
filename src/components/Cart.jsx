@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
+import CheckoutForm from './CheckoutForm'
 
 function formatBRL(value) {
   return `R$ ${value}`
@@ -34,6 +35,8 @@ export default function Cart({ items, onRemove, onUpdateQuantity }) {
           <h3>Total: {formatBRL(total)}</h3>
         </div>
       )}
+
+      <CheckoutForm onSubmit={() => { /* after submit send empty cart action can be added by parent */ }} />
     </section>
   )
 }

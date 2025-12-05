@@ -152,3 +152,8 @@ Tela home Vrmodas
         - `docs/documentation.html` — simple project documentation (HTML)
 
         If you want me to refactor styles into idiomatic SASS blocks per-component, I can run a follow-up pass.
+        The repository now contains a full SASS conversion for main layout areas (header, carousel, products, cart, forms) in `src/styles/` as indented `.sass` partials.
+        The interactive form logic (validation and states autocomplete), the cart behavior, carousel controls and the scroll button were ported into React components under `src/components/`.
+        The original `script.js` remains in the repository root for reference but is no longer required by the React app.
+
+        If you'd like, I can remove the legacy `script.js` after you validate the React app behavior.

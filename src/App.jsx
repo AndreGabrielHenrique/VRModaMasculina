@@ -4,6 +4,7 @@ import Carousel from './components/Carousel'
 import Products from './components/Products'
 import Cart from './components/Cart'
 import Footer from './components/Footer'
+import ScrollButton from './components/ScrollButton'
 
 const initialProducts = [
   { id: 1, title: 'Calça Social Clássica', price: 297, priceStr: 'R$ 297', image: '/Imagens/calca 1.jpg', size: 'M' },
@@ -44,6 +45,7 @@ export default function App() {
           <Products products={products} onAddToCart={addToCart} />
         </section>
         <Cart items={cartItems} onRemove={removeFromCart} onUpdateQuantity={updateQuantity} />
+        <ScrollButton />
       </main>
       <Footer />
     </div>

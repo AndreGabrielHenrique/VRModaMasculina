@@ -1,0 +1,37 @@
+.carousel
+  position: relative
+  margin: auto
+
+  .imagem
+    display: none
+
+  .imagem img
+    width: 100%
+
+  .anterior, .proximo
+    cursor: pointer
+    position: absolute
+    top: 52%
+    width: auto
+    margin-top: -69px
+    padding-inline: 10px
+    color: white
+    font-weight: bold
+    font-size: 48px
+    transition: 0.6s ease
+    border-radius: 3px 0 0 3px
+    user-select: none
+
+  .indicadores
+    position: relative
+    bottom: 35px
+    text-align: center
+
+  .indicador
+    cursor: pointer
+    height: 4px
+    width: 40px
+    margin: 0 4px
+    background-color: #dcdedd
+    display: inline-block
+    transition: background-color 0.6s ease
