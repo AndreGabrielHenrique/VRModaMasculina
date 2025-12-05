@@ -15,9 +15,9 @@
   .anterior, .proximo
     cursor: pointer
     position: absolute
-    top: 50%
-    transform: translateY(-50%)
+    top: 52%
     width: auto
+    margin-top: -69px
     padding-inline: 10px
     color: white
     font-weight: bold
@@ -26,16 +26,29 @@
     border-radius: 3px 0 0 3px
     user-select: none
     z-index: 10
-    background: rgba(0, 0, 0, 0.3)
+    background: transparent
     border: none
-    padding: 5px 10px
     pointer-events: auto
 
   .anterior
-    left: 10px
+    left: 0
+
+  .anterior:hover, .proximo:hover
+    color: #999
+    transition: color 0.3s ease
 
   .proximo
-    right: 10px
+    right: 0
+    border-radius: 3px 0 0 3px
+
+  .botaopreto
+    color: #202529
+
+  .botaobranco
+    color: white
+
+  .botaopreto:hover, .botaobranco:hover
+    color: #999
 
   .indicadores
     position: relative
@@ -50,3 +63,16 @@
     background-color: #dcdedd
     display: inline-block
     transition: background-color 0.6s ease
+
+  .indicador:hover, .ativo
+    background-color: #202529
+
+@keyframes fade
+  from
+    opacity: 0.4
+  to
+    opacity: 1
+
+.fade
+  animation-name: fade
+  animation-duration: 1.0s

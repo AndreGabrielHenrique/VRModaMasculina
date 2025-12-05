@@ -6,11 +6,11 @@ function formatBRL(value) {
   return `R$ ${value}`
 }
 
-export default function Cart({ items, onRemove, onUpdateQuantity }) {
-  const total = items.reduce((s, i) => s + i.price * i.quantity, 0)
+export default function Cart({ visible = false, items, onRemove, onUpdateQuantity, onCheckoutComplete }) {
+  if (!visible && items.length === 0) return null
 
   return (
-    <section className="carrinho" id="carrinho">
+    <section className="carrinho" id="carrinho" style={{ display: visible || items.length > 0 ? 'block' : 'none' }}>
       <h2>Carrinho</h2>
       {items.length === 0 && <h3 className="carrinhovazio">Seu carrinho está vazio</h3>}
 
@@ -31,13 +31,7 @@ export default function Cart({ items, onRemove, onUpdateQuantity }) {
         ))}
       </nav>
 
-      {items.length > 0 && (
-        <div className="carrinho-total">
-          <h3>Total: {formatBRL(total)}</h3>
-        </div>
-      )}
-
-      <CheckoutForm onSubmit={() => { /* after submit send empty cart action can be added by parent */ }} />
+      <CheckoutForm onSubmit={() => { if (onCheckoutComplete) onCheckoutComplete() }} />
     </section>
   )
 }

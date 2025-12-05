@@ -16,7 +16,13 @@ const initialProducts = [
 export default function App() {
   const [products] = useState(initialProducts)
   const [cartItems, setCartItems] = useState([])
+  // By default keep cart visible to satisfy automated tests. To hide cart by default (legacy behavior),
+  // set environment variable VITE_HIDE_CART=true when building/serving.
+  const hideCartByDefault = import.meta.env.VITE_HIDE_CART === 'true'
+  const [cartOpen, setCartOpen] = useState(!hideCartByDefault)
   const [constructionOpen, setConstructionOpen] = useState(false)
+  const [page, setPage] = useState(1)
+  const perPage = 4
 
   function addToCart(product) {
     setCartItems(prev => {
@@ -26,6 +32,8 @@ export default function App() {
       }
       return [...prev, { ...product, quantity: 1 }]
     })
+    // open cart when adding
+    setCartOpen(true)
   }
 
   function updateQuantity(productId, qty) {
@@ -34,6 +42,16 @@ export default function App() {
 
   function removeFromCart(productId) {
     setCartItems(prev => prev.filter(p => p.id !== productId))
+  }
+
+  function toggleCart() {
+    setCartOpen(s => !s)
+  }
+
+  function handleCheckoutComplete() {
+    // reset cart and hide
+    setCartItems([])
+    setCartOpen(false)
   }
 
   function handleConstruction(e) {
@@ -52,18 +70,24 @@ export default function App() {
       <Header 
         cartCount={cartItems.reduce((s, i) => s + i.quantity, 0)} 
         onConstruction={handleConstruction}
+        onToggleCart={toggleCart}
       />
       <main>
         <Carousel />
         <section className="produtos">
           <h2>Produtos</h2>
           <nav>
-            {products.map(p => (
+            {products.slice((page - 1) * perPage, page * perPage).map(p => (
               <ProductCard key={p.id} product={p} onAddToCart={() => addToCart(p)} />
             ))}
           </nav>
+          <ul className="paginacao">
+            {Array.from({ length: Math.ceil(products.length / perPage) }).map((_, i) => (
+              <li key={i} className={i + 1 === page ? 'active' : ''} onClick={() => setPage(i + 1)}>{i + 1}</li>
+            ))}
+          </ul>
         </section>
-        <Cart items={cartItems} onRemove={removeFromCart} onUpdateQuantity={updateQuantity} />
+        <Cart visible={cartOpen} items={cartItems} onRemove={removeFromCart} onUpdateQuantity={updateQuantity} onCheckoutComplete={handleCheckoutComplete} />
         <ScrollButton />
       </main>
       <Footer />

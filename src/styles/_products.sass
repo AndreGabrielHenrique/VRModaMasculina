@@ -6,12 +6,16 @@
     margin: 10px 0 10px 0
     font-weight: 600
     font-size: 50px
+    padding-inline: 150px
 
   nav
     display: flex
     flex-wrap: wrap
     justify-content: center
     gap: 60px
+
+  ul
+    padding-inline: 150px
 
 .produto
   background-color: #eeeeee
@@ -35,3 +39,42 @@
     font-size: x-large
     color: white
     margin-top: 10px
+
+.paginacao
+  list-style-type: none
+  display: flex
+  gap: 6px
+  position: absolute
+  bottom: -40px
+  left: 150px
+
+  li
+    padding: 8px
+    cursor: pointer
+    border: 1px solid
+    border-color: #eeeeee
+
+  li:active, li:first-child:active
+    color: white
+    background-color: #5085ca
+    border-color: #5085ca
+
+  li:first-child
+    border-radius: 5px 0 0 5px
+    color: white
+    background-color: #202529
+    border-color: #5085ca
+
+  li:last-child
+    border-radius: 0 5px 5px 0
+
+.favorito
+  width: 40px
+  color: #cf3535
+  float: right
+  position: relative
+  bottom: 5px
+  cursor: pointer
+
+.descricaotamanho
+  display: none

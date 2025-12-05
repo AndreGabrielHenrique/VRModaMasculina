@@ -1,3 +1,9 @@
+@keyframes fadeIn
+  from
+    opacity: 0
+  to
+    opacity: 1
+
 header
   background-color: #202529
   color: white
@@ -91,3 +97,65 @@ header
 
             &:last-child
               border-radius: 0 0 5px 5px
+
+  ul li svg
+    width: 40px
+    height: 40px
+    color: white
+
+  ul li svg:hover
+    color: #999
+
+  ul li svg:active
+    color: #5085ca
+
+  .menu, .perfil
+    visibility: hidden
+    font-weight: 500
+    width: 110px
+    background-color: rgba(255, 255, 255, 0.9)
+    color: #202529
+    text-align: center
+    border-radius: 6px
+    padding: 12px 0
+    position: absolute
+    z-index: 1
+    top: 95%
+    right: 20%
+    font-size: 15px
+    line-height: 30px
+    cursor: default
+
+  .perfil
+    width: 225px
+    line-height: 20px
+    right: 147%
+    top: -40%
+
+  .menu::after, .perfil::after
+    content: ""
+    position: absolute
+    bottom: 100%
+    right: 10%
+    margin-right: -5px
+    border-width: 5px
+    border-style: solid
+    border-color: transparent transparent white transparent
+
+  .perfil::after
+    left: 100% !important
+    top: 21px !important
+    border-color: transparent transparent transparent white !important
+
+  .mostrarmenu, .mostrarperfil
+    visibility: visible
+    opacity: 0.9
+    animation: fadeIn 1s
+
+  form button:active, form button:hover
+    background-color: white
+    color: #202529
+    border-color: #202529
+
+  form button:active svg, form button:hover svg
+    color: #202529

@@ -3,7 +3,7 @@ import IconSearch from './icons/IconSearch'
 import IconCart from './icons/IconCart'
 import IconUser from './icons/IconUser'
 
-export default function Header({ cartCount, onConstruction }) {
+export default function Header({ cartCount, onConstruction, onToggleCart }) {
   const [profileOpen, setProfileOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -24,7 +24,6 @@ export default function Header({ cartCount, onConstruction }) {
   return (
     <header>
       <form className="busca" id="busca" onSubmit={e => e.preventDefault()}>
-        <label htmlFor="search" className="sr-only">Pesquisar</label>
         <input id="search" placeholder="O que você procura?" aria-label="Pesquisar" />
         <button type="button" aria-label="Pesquisar" onClick={onConstruction}>
           <IconSearch />
@@ -34,6 +33,18 @@ export default function Header({ cartCount, onConstruction }) {
       <img src="/Imagens/logo1.jpeg" className="logo" alt="VR Moda Masculina logo" />
 
       <ul>
+        <li>
+          <button className="abrirmenu-icon" aria-label="Abrir menu" onClick={() => setMenuOpen(s => !s)}>
+            ☰
+          </button>
+          {menuOpen && (
+            <div className="menu" id="menu">
+              <p className="menu-item" onClick={onConstruction}>Home</p>
+              <p className="menu-item" onClick={onConstruction}>Novidades</p>
+              <p className="menu-item" onClick={onConstruction}>Contato</p>
+            </div>
+          )}
+        </li>
         <li>
           <button aria-label="Configurações" onClick={onConstruction}>
             ⚙️
@@ -45,9 +56,9 @@ export default function Header({ cartCount, onConstruction }) {
           </button>
         </li>
         <li>
-          <a href="#carrinho" className="carrinhodecompras" aria-label="Abrir carrinho">
+          <button className="carrinhodecompras" aria-label="Abrir carrinho" onClick={() => { if (onToggleCart) onToggleCart() }}>
             <IconCart /> {cartCount > 0 ? `(${cartCount})` : ''}
-          </a>
+          </button>
         </li>
         <li>
           <button 

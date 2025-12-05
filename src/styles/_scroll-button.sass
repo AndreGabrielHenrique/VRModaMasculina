@@ -3,30 +3,31 @@
   justify-content: center
   align-items: center
   position: fixed
-  bottom: 20px
-  right: 20px
-  cursor: pointer
-  min-width: 50px
-  min-height: 50px
-  width: 50px
-  height: 50px
-  padding: 0
-  border-radius: 50%
-  background-color: #202529
-  border: 2px solid white
-  color: white
-  font-size: 24px
-  font-weight: bold
-  z-index: 9999
-  pointer-events: auto
-  transition: all 0.3s ease
+  bottom: 14px
+  right: 14px
 
-  &:hover
-    background-color: white
+  &.inferior::after
+    content: "↓"
+    font-size: 42px
+    font-weight: bold
+    color: white
+    position: absolute
+    top: -15px
+    left: 50%
+    transform: translateX(-50%)
+    transition: margin-top 350ms
+
+  &.inferior:hover::after
+    margin-top: 6px
     color: #202529
 
-  &.inferior::before
-    content: "↓"
-
-  &.topo::before
+  &.topo::after
     content: "↑"
+    font-size: 42px
+    font-weight: bold
+    color: white
+    transition: margin-top 350ms
+
+  &.topo:hover::after
+    margin-top: -12px
+    color: #202529

@@ -39,16 +39,43 @@
         background-color: #fff5f5
 
   .errocadastro
-    display: none
-    color: #d9534f
-    font-size: 12px
-    margin-top: 4px
+    visibility: hidden
+    font-weight: 450
+    background-color: #dcdedd
+    color: #202529
+    text-align: center
+    max-width: fit-content
+    border-radius: 6px
+    padding: 8px 12px
+    position: absolute
+    z-index: 1000
+    font-size: 15px
+    animation: fadeIn 0.5s
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.32)
+    white-space: nowrap
+
+    &::after
+      content: ""
+      position: absolute
+      bottom: 100%
+      left: 50%
+      transform: translateX(-50%)
+      margin-left: -5px
+      border-width: 5px
+      border-style: solid
+      border-color: transparent transparent #dcdedd transparent
+      filter: drop-shadow(2px 0 rgba(0, 0, 0, 0.32))
+      border-radius: 3px
 
     &.mostrarerrocadastro
-      display: block
+      visibility: visible
+      opacity: 1
+      animation: fadeIn 0.5s
+      margin-top: 8px
+      margin-left: 0
 
       .errado
-        color: #d9534f
+        color: #202529
         margin: 0
         font-weight: 500
 
