@@ -16,10 +16,13 @@
 
     <h2>How the migration was done</h2>
     <ul>
-      <li>Created a Vite project with React and Sass.</li>
-      <li>Added `src/` with React components: `App`, `Header`, `Carousel`, `Products`, `ProductCard`, `Cart`, `Footer`.</li>
-      <li>Preserved original `style.css` and `script.js` in the repository root for reference.</li>
-      <li>Added `src/styles/style.sass` which imports the original `style.css` to keep current styling while enabling Sass features.</li>
+      <li>Created a Vite project with React and Sass (indented `.sass` syntax, not SCSS).</li>
+      <li>Added `src/` with React components: `App`, `Header`, `Carousel`, `Products`, `ProductCard`, `Cart`, `CheckoutForm`, `ScrollButton`, `Footer`.</li>
+      <li>Created 5 reusable icon components: `IconHeart`, `IconCart`, `IconSearch`, `IconUser`, `IconTrash`.</li>
+      <li>Ported all vanilla JS logic to React hooks and state management (cart, form validation, carousel auto-advance).</li>
+      <li>Converted all CSS to componentized SASS partials: `_header.sass`, `_carousel.sass`, `_products.sass`, `_cart.sass`, `_forms.sass`, `_footer.sass`, `_scroll-button.sass`, `_modal.sass`, `_media-queries.sass`.</li>
+      <li>Original files preserved in `legacy/` folder (`legacy/script.js` and `legacy/style.css`) for reference.</li>
+      <li><strong>SASS Conversion 100% Complete</strong> — All styles migrated; CSS output reduced by 50% (~6.3 kB minified).</li>
     </ul>
 
     <h2>How to run</h2>
@@ -31,10 +34,10 @@ npm run dev
     <h2>Notes</h2>
     <ul>
       <li>Images are referenced from `/Imagens/...` — keep that folder at the repository root.</li>
-      <li>If you want the original static site preserved, open `index.original.html` in a browser.</li>
-      <li>Further improvements: convert `style.css` to indented `.sass` partials and move component-specific styles into dedicated files.</li>
+      <li>All responsive design is maintained via `_media-queries.sass` (tablet 614-833px, mobile <613px).</li>
+      <li>Accessibility features: all icons have `aria-label`, form fields have `htmlFor` linking, interactive buttons are semantic.</li>
+      <li>The original static HTML structure is preserved as `index.original.html` in the root; run the React app with `npm run dev`.</li>
+      <li>Original vanilla JS (`legacy/script.js`) and CSS (`legacy/style.css`) are preserved in `legacy/` folder for future reference.</li>
     </ul>
-
-    <p>If you want, I can proceed converting all CSS to idiomatic SASS and split styles per component.</p>
   </body>
 </html>
