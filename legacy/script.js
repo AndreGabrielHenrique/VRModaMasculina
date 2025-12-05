@@ -653,7 +653,7 @@ fecharcarrinho=()=>
 alocarcarrinho=()=>
 {
     enviado.innerHTML = ''
-    carrinhovazio.style.display = "none"
+    carrinhovazio.style.display = 'none'
 }
 
 construcao=(event)=>
