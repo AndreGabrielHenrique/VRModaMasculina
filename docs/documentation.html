@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VR Moda Masculina - Documentation</title>
+    <style>
+      body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6 }
+      h1 { margin-top: 0 }
+      pre { background: #f5f5f5; padding: 10px }
+    </style>
+  </head>
+  <body>
+    <h1>Project Documentation — VR Moda Masculina (migrated)</h1>
+    <p>This HTML document contains a short overview of the migration to Vite + React and instructions you can keep locally.</p>
+
+    <h2>How the migration was done</h2>
+    <ul>
+      <li>Created a Vite project with React and Sass.</li>
+      <li>Added `src/` with React components: `App`, `Header`, `Carousel`, `Products`, `ProductCard`, `Cart`, `Footer`.</li>
+      <li>Preserved original `style.css` and `script.js` in the repository root for reference.</li>
+      <li>Added `src/styles/style.sass` which imports the original `style.css` to keep current styling while enabling Sass features.</li>
+    </ul>
+
+    <h2>How to run</h2>
+    <pre>
+npm install
+npm run dev
+    </pre>
+
+    <h2>Notes</h2>
+    <ul>
+      <li>Images are referenced from `/Imagens/...` — keep that folder at the repository root.</li>
+      <li>If you want the original static site preserved, open `index.original.html` in a browser.</li>
+      <li>Further improvements: convert `style.css` to indented `.sass` partials and move component-specific styles into dedicated files.</li>
+    </ul>
+
+    <p>If you want, I can proceed converting all CSS to idiomatic SASS and split styles per component.</p>
+  </body>
+</html>

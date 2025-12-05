@@ -215,7 +215,19 @@ function carrinhodecompras(event)
     {
         if (nomecarrinho[produto].innerText === nomedoproduto)
         {
-            nomecarrinho[produto].parentElement.getElementsByClassName("quantidade")[0].value++
+            const quantidade = nomecarrinho[produto].parentElement.getElementsByClassName("quantidade")[0]
+            const erroquantidade = nomecarrinho[produto].parentElement.getElementsByClassName("erroquantidade")[0]
+            const quantidadeatualizada = parseInt(quantidade.value) + 1
+            if (quantidadeatualizada > 99)
+            {
+                erroquantidade.innerHTML = 'Número máximo atingido'
+                quantidade.value = 99
+            }
+            else
+            {
+                quantidade.value = quantidadeatualizada
+                erroquantidade.innerHTML = ''
+            }
             atualizarprecototal(nomecarrinho[produto].parentElement)
             window.location.href = "#carrinho"
             return
@@ -226,33 +238,33 @@ function carrinhodecompras(event)
     novoproduto.classList.add("produtocarrinho")
     novoproduto.innerHTML =
         `
-        <nav class="removerproduto">
-            <svg xmlns="http://www.w3.org/2000/svg" class="remover" viewBox="0 0 512 512">
-                <path d="M296 64h-80a7.91 7.91 0 00-8 8v24h96V72a7.91 7.91 0 00-8-8z" fill="none"/>
-                <path d="M432 96h-96V72a40 40 0 00-40-40h-80a40 40 0 00-40 40v24H80a16 16 0 000 32h17l19 304.92c1.42 26.85 22 47.08 48 47.08h184c26.13 0 46.3-19.78 48-47l19-305h17a16 16 0 000-32zM192.57 416H192a16 16 0 01-16-15.43l-8-224a16 16 0 1132-1.14l8 224A16 16 0 01192.57 416zM272 400a16 16 0 01-32 0V176a16 16 0 0132 0zm32-304h-96V72a7.91 7.91 0 018-8h80a7.91 7.91 0 018 8zm32 304.57A16 16 0 01320 416h-.58A16 16 0 01304 399.43l8-224a16 16 0 1132 1.14z"/>
-            </svg>
-        </nav>
-        <nav class="imagemcarrinho">
-            <img src="${imagemdoproduto}">
-        </nav>
-        <nav class="nomecarrinho">${nomedoproduto}</nav>
-        <nav class="produtoquantidade">
-            <h3>Quantidade</h3>
-            <input type="number" value="1" minlength="0" maxlength="99" class="quantidade">
-            <div class="erroquantidade"></div>
-        </nav>
-        <nav class="tamanhoproduto">
-            <h3>Tamanho</h3>
-            <p class="tamanho">${tamanhodoproduto}</p>
-        </nav>
-        <nav class="precounidadecarrinho">
-            <h3>Preço Unid.</h3>
-            <p class="precounidade">R$ ${precodoproduto}</p>
-        </nav>
-        <nav class="precototalcarrinho">
-            <h3>Preço Total</h3>
-            <p class="produtoprecototal">R$ ${precodoproduto}</p>
-        </nav>
+            <nav class="removerproduto">
+                <svg xmlns="http://www.w3.org/2000/svg" class="remover" viewBox="0 0 512 512">
+                    <path d="M296 64h-80a7.91 7.91 0 00-8 8v24h96V72a7.91 7.91 0 00-8-8z" fill="none"/>
+                    <path d="M432 96h-96V72a40 40 0 00-40-40h-80a40 40 0 00-40 40v24H80a16 16 0 000 32h17l19 304.92c1.42 26.85 22 47.08 48 47.08h184c26.13 0 46.3-19.78 48-47l19-305h17a16 16 0 000-32zM192.57 416H192a16 16 0 01-16-15.43l-8-224a16 16 0 1132-1.14l8 224A16 16 0 01192.57 416zM272 400a16 16 0 01-32 0V176a16 16 0 0132 0zm32-304h-96V72a7.91 7.91 0 018-8h80a7.91 7.91 0 018 8zm32 304.57A16 16 0 01320 416h-.58A16 16 0 01304 399.43l8-224a16 16 0 1132 1.14z"/>
+                </svg>
+            </nav>
+            <nav class="imagemcarrinho">
+                <img src="${imagemdoproduto}">
+            </nav>
+            <nav class="nomecarrinho">${nomedoproduto}</nav>
+            <nav class="produtoquantidade">
+                <h3>Quantidade</h3>
+                <input type="number" value="1" minlength="0" maxlength="99" class="quantidade">
+                <div class="erroquantidade"></div>
+            </nav>
+            <nav class="tamanhoproduto">
+                <h3>Tamanho</h3>
+                <p class="tamanho">${tamanhodoproduto}</p>
+            </nav>
+            <nav class="precounidadecarrinho">
+                <h3>Preço Unid.</h3>
+                <p class="precounidade">R$ ${precodoproduto}</p>
+            </nav>
+            <nav class="precototalcarrinho">
+                <h3>Preço Total</h3>
+                <p class="produtoprecototal">R$ ${precodoproduto}</p>
+            </nav>
         `
     const adicionandoproduto = document.querySelector(".listacarrinho")
     adicionandoproduto.append(novoproduto)
