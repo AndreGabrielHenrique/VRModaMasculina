@@ -13,7 +13,9 @@ export default function CheckoutForm({ onSubmit }) {
   const [cep, setCep] = useState('')
   const [termos, setTermos] = useState(false)
   const [erros, setErros] = useState({})
-  const [filtrados, setFiltrados] = useState(estados)
+  const [filtrados, setFiltrados] = useState([])
+  const [submitted, setSubmitted] = useState('')
+  const [selecao, setSelecao] = useState(-1)
 
   function emailValido(e) {
     const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -37,72 +39,105 @@ export default function CheckoutForm({ onSubmit }) {
   function handleSubmit(e) {
     e.preventDefault()
     if (!validar()) return
-    setPrimeiro('')
-    setSegundo('')
-    setEmail('')
-    setCidade('')
-    setEstado('')
-    setCep('')
-    setTermos(false)
-    setErros({})
-    if (onSubmit) onSubmit()
+    setSubmitted('Muito obrigado, logo daremos retorno')
+    setTimeout(() => {
+      setPrimeiro('')
+      setSegundo('')
+      setEmail('')
+      setCidade('')
+      setEstado('')
+      setCep('')
+      setTermos(false)
+      setErros({})
+      setSubmitted('')
+      if (onSubmit) onSubmit()
+    }, 2000)
   }
 
   function filtrarEstado(q) {
-    setFiltrados(estados.filter(s => s.label.toLowerCase().includes(q.toLowerCase())))
+    const novo = estados.filter(s => s.label.toLowerCase().includes(q.toLowerCase()))
+    setFiltrados(novo)
+    setSelecao(-1)
+  }
+
+  function selecionarEstado(index) {
+    if (filtrados[index]) {
+      setEstado(filtrados[index].label)
+      setFiltrados([])
+      setSelecao(-1)
+    }
   }
 
   return (
     <form className="cadastro" id="cadastro" onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
       <nav className="camposcliente">
-        <span id="campoprimeironome" className="input">
-          <label>Primeiro nome</label>
+        <span id="campoprimeironome" className={`input ${erros.primeiro ? 'erro' : ''}`}>
+          <label htmlFor="primeironome">Primeiro nome</label>
           <input id="primeironome" value={primeiro} onChange={e => setPrimeiro(e.target.value)} />
-          <div id="erroprimeironome" className="errocadastro">{erros.primeiro}</div>
+          {erros.primeiro && <div className="errocadastro mostrarerrocadastro"><p className="errado">{erros.primeiro}</p></div>}
         </span>
-        <span id="camposegundonome" className="input">
-          <label>Segundo nome</label>
+        <span id="camposegundonome" className={`input ${erros.segundo ? 'erro' : ''}`}>
+          <label htmlFor="segundonome">Segundo nome</label>
           <input id="segundonome" value={segundo} onChange={e => setSegundo(e.target.value)} />
-          <div id="errosegundonome" className="errocadastro">{erros.segundo}</div>
+          {erros.segundo && <div className="errocadastro mostrarerrocadastro"><p className="errado">{erros.segundo}</p></div>}
         </span>
-        <span id="campoemail" className="input">
-          <label>E-mail</label>
+        <span id="campoemail" className={`input ${erros.email ? 'erro' : ''}`}>
+          <label htmlFor="email">E-mail</label>
           <div className="campoemail">
             <input type="email" id="email" value={email} onChange={e => setEmail(e.target.value)} />
-            <div id="erroemail" className="errocadastro">{erros.email}</div>
+            {erros.email && <div className="errocadastro mostrarerrocadastro"><p className="errado">{erros.email}</p></div>}
           </div>
         </span>
-        <span id="campocidade" className="input">
-          <label>Cidade</label>
+        <span id="campocidade" className={`input ${erros.cidade ? 'erro' : ''}`}>
+          <label htmlFor="cidade">Cidade</label>
           <input id="cidade" value={cidade} onChange={e => setCidade(e.target.value)} />
-          <div id="errocidade" className="errocadastro">{erros.cidade}</div>
+          {erros.cidade && <div className="errocadastro mostrarerrocadastro"><p className="errado">{erros.cidade}</p></div>}
         </span>
-        <span id="campoestado" className="input">
-          <label>Estado</label>
-          <input id="estado" value={estado} onChange={e => { setEstado(e.target.value); filtrarEstado(e.target.value) }} placeholder="Selecione o estado" />
-          <div id="listaestados" style={{ display: filtrados.length ? 'block' : 'none' }}>
+        <span id="campoestado" className={`input ${erros.estado ? 'erro' : ''}`}>
+          <label htmlFor="estado">Estado</label>
+          <input 
+            id="estado" 
+            value={estado} 
+            onChange={e => { 
+              setEstado(e.target.value)
+              filtrarEstado(e.target.value)
+            }}
+            onFocus={() => {
+              setFiltrados(estados)
+            }}
+            placeholder="Selecione o estado" 
+          />
+          <div id="listaestados" style={{ display: filtrados.length ? 'block' : 'none', position: 'absolute', top: '100%', left: 0, width: '100%', background: 'white', border: '1px solid #dcdedd', borderRadius: '7px', maxHeight: '150px', overflowY: 'auto', zIndex: 1000 }}>
             {filtrados.map((s, i) => (
-              <div key={s.value} onClick={() => { setEstado(s.label); setFiltrados([]) }}>{s.label}</div>
+              <div 
+                key={s.value} 
+                onClick={() => selecionarEstado(i)}
+                style={{ padding: '8px 12px', cursor: 'pointer', background: i === selecao ? '#f0f0f0' : 'white' }}
+                onMouseEnter={() => setSelecao(i)}
+              >
+                {s.label}
+              </div>
             ))}
           </div>
-          <div id="erroestado" className="errocadastro">{erros.estado}</div>
+          {erros.estado && <div className="errocadastro mostrarerrocadastro"><p className="errado">{erros.estado}</p></div>}
         </span>
-        <span id="campocep" className="input">
-          <label>CEP</label>
+        <span id="campocep" className={`input ${erros.cep ? 'erro' : ''}`}>
+          <label htmlFor="cep">CEP</label>
           <input id="cep" value={cep} onChange={e => setCep(e.target.value)} />
-          <div id="errocep" className="errocadastro">{erros.cep}</div>
+          {erros.cep && <div className="errocadastro mostrarerrocadastro"><p className="errado">{erros.cep}</p></div>}
         </span>
       </nav>
       <nav>
-        <span id="checkboxtermos" className="input">
+        <span id="checkboxtermos" className={`input ${erros.termos ? 'erro' : ''}`}>
           <input type="checkbox" id="termos" checked={termos} onChange={e => setTermos(e.target.checked)} />
           <p>Aceito os termos e condições</p>
-          <div id="errotermos" className="errocadastro">{erros.termos}</div>
+          {erros.termos && <div className="errocadastro mostrarerrocadastro"><p className="errado">{erros.termos}</p></div>}
         </span>
       </nav>
       <nav>
         <span className="enviar">
           <button id="enviar" type="submit">Enviar</button>
+          {submitted && <div id="enviado" style={{ color: 'green', marginTop: '10px' }}><p className="correto">{submitted}</p></div>}
         </span>
       </nav>
     </form>

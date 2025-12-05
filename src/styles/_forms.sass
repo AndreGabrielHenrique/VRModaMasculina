@@ -8,13 +8,73 @@
 
   label
     display: block
+    font-weight: 500
+    margin-bottom: 5px
 
-  input
+  input[type="text"],
+  input[type="email"]
     padding: 9px
     border: 1px solid #dcdedd
     outline: none
     border-radius: 7px
     font-size: 20px
+    width: 100%
+
+    &:focus
+      border-color: #202529
+      background-color: #f9f9f9
+
+  input[type="checkbox"]
+    margin-right: 10px
+    cursor: pointer
+
+  .input
+    position: relative
+    display: flex
+    flex-direction: column
+
+    &.erro
+      input
+        border-color: #d9534f
+        background-color: #fff5f5
+
+  .errocadastro
+    display: none
+    color: #d9534f
+    font-size: 12px
+    margin-top: 4px
+
+    &.mostrarerrocadastro
+      display: block
+
+      .errado
+        color: #d9534f
+        margin: 0
+        font-weight: 500
+
+  .correto
+    color: #5cb85c
+    margin: 0
+    font-weight: 500
+
+  .enviar
+    display: flex
+    justify-content: center
+    margin-top: 20px
+
+    button
+      padding: 12px 30px
+      background-color: #202529
+      color: white
+      border: none
+      border-radius: 5px
+      cursor: pointer
+      font-size: 16px
+      font-weight: 500
+      transition: background-color 0.3s
+
+      &:hover
+        background-color: #1a1d21
 
 #listaestados
   position: absolute
@@ -28,3 +88,12 @@
   overflow-y: auto
   display: none
   z-index: 1000
+  margin-top: 5px
+
+  div
+    padding: 8px 12px
+    cursor: pointer
+    transition: background-color 0.2s
+
+    &:hover
+      background-color: #f0f0f0

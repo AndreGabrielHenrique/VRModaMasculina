@@ -16,6 +16,7 @@ const initialProducts = [
 export default function App() {
   const [products] = useState(initialProducts)
   const [cartItems, setCartItems] = useState([])
+  const [constructionOpen, setConstructionOpen] = useState(false)
 
   function addToCart(product) {
     setCartItems(prev => {
@@ -35,9 +36,23 @@ export default function App() {
     setCartItems(prev => prev.filter(p => p.id !== productId))
   }
 
+  function handleConstruction(e) {
+    e?.preventDefault()
+    setConstructionOpen(true)
+  }
+
+  function closeConstruction(e) {
+    if (e.target.id === 'fundoconstrucao') {
+      setConstructionOpen(false)
+    }
+  }
+
   return (
     <div>
-      <Header cartCount={cartItems.reduce((s, i) => s + i.quantity, 0)} />
+      <Header 
+        cartCount={cartItems.reduce((s, i) => s + i.quantity, 0)} 
+        onConstruction={handleConstruction}
+      />
       <main>
         <Carousel />
         <section className="produtos">
@@ -52,6 +67,35 @@ export default function App() {
         <ScrollButton />
       </main>
       <Footer />
+      
+      {constructionOpen && (
+        <div 
+          className="fundoconstrucao" 
+          id="fundoconstrucao"
+          onClick={closeConstruction}
+          style={{ display: 'flex' }}
+        >
+          <div id="construcao" className="construcao" style={{ background: 'white' }}>
+            <h2>🚧 Em Construção</h2>
+            <p>Esta funcionalidade ainda está em desenvolvimento.</p>
+            <p>Breve teremos novidades!</p>
+            <button 
+              onClick={() => setConstructionOpen(false)}
+              style={{
+                marginTop: '20px',
+                padding: '10px 20px',
+                background: '#202529',
+                color: 'white',
+                border: 'none',
+                borderRadius: '5px',
+                cursor: 'pointer'
+              }}
+            >
+              Fechar
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
