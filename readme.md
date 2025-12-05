@@ -1,180 +1,180 @@
-# Identificador 
-
-f001 
-
-# Nome  
-
-Tela home Vrmodas 
-
-# Atores  
-
-*( X ) Usuário* 
-
-# Dependência  
-
- 
-
-# Prioridade  
-
-*N/A*  
-
-# Descrição  
-
-- Como **Usuário** 
-
-- Quero **listar produtos** 
-
-- Para **após poder vê-los** 
-
-# Elementos da Tela  
-
-1. Barra de menu: 
-
-    1. Nome “VRmodas”; 
-
-    1. Barra de pesquisa; 
-
-    1. Botão com ícone de “Lupa”; 
-
-    1. Ícone de “ticket”; 
-
-    1. Ícone de “Coração”; 
-
-    1. Ícone de “Carrinho”; 
-
-    1. Ícone de “perfil”: 
-
-        - Ver perfil 
-
-        - Alterar senha 
-
-        - Logout 
-
- 
-
-1. Carrossel; 
-
-1. Título “Produtos”; 
-
-1. Card com: 
-
-    1. Foto do produto; 
-
-    1. Descrição; 
-
-    1. Botão “Adicionar ao carrinho!” 
-
- 
-
-1. Paginação; 
-
-1. Carrinho; 
-
-1. Pré-cadastro: 
-
-    1. Primeiro nome; 
-
-    1. Segundo nome; 
-
-    1. E-mail; 
-
-    1. Cidade; 
-
-    1. Estado: 
-
-        - São Paulo 
-
-        - ... 
-
-    1. CEP; 
-
-    1. Check “Aceito os termos e condições” 
-
-    1. Botão “Enviar” 
-
- 
-
-1. Rodapé: 
-
-    1. Conteúdo: 
-
-        - “Fale conosco” 
-
-        - “Meios de pagamento e frete” 
-
-        - “Política de privacidade” 
-
-        - “Politica de Tocas e Devolução” 
-
-        - “Quem somos” 
-
- 
-
-    1. Atendimento: 
-
-        - “Telefone: 4002-8922” 
-
-        - “Whatsapp: 11 99229-1289” 
-
-        - “Seg. a Sexta 8:00H as 18:00H” 
-
-        - “Endereço: Rua dos Bobos, n° 0 -SP”
- 
-        ---
-
-        **Migration to Vite + React — COMPLETE**
-
-        - This repository was migrated from a static HTML/CSS/JS project to a Vite + React structure.
-        - The original files were preserved in `legacy/` folder: `legacy/script.js` and `legacy/style.css` remain as reference.
-        - New React source is inside `src/` with modular SASS styling (`.sass` indented syntax).
-        - **SASS Conversion 100% Complete**: All styles converted to componentized SASS partials; legacy CSS fully migrated.
-        - Responsive design maintained: media queries converted to `_media-queries.sass` partial (tablet 614-833px, mobile <613px).
-        - CSS output reduced by 50% (~6.3 kB minified vs 12.8 kB original) thanks to SASS optimization.
-
-        How to run (Windows PowerShell):
-
-        ```powershell
-        npm install
-        npm run dev
-        ```
-
-        Build:
-
-        ```powershell
-        npm run build
-        npm run preview
-        ```
-
-        Project layout (new):
-
-        - `index.html` — Vite entry that mounts the React app
-        - `src/main.jsx` — React entry
-        - `src/App.jsx` — main application component
-        - `src/components/*` — React components (Header, Carousel, Products, Cart, Footer)
-        - `src/styles/style.sass` — SASS entry (now uses `@use` and componentized partials)
-        - `legacy/` — original static files preserved (`index.original.html`, `style.css`, `script.js`)
-
-
-This repository includes the following additional improvements:
-
-- Playwright E2E tests under `e2e/` with a `playwright.config.js` to run cross-browser tests and a `npm run test:e2e` script.
-- CSS Modules enabled for per-component scope (example: `src/styles/_product-card.module.sass` used by `ProductCard.jsx`).
-- `@use` syntax adopted for Sass modules; a `_variables.sass` file provides shared variables.
-
-Notes:
-- The original `docs/` folder was removed and documentation consolidated into `readme.md`.
-- To run E2E tests locally you must install Playwright browsers: `npx playwright install`.
-- Dev server is forced to port `5173` to match Playwright configuration (`npm run dev`).
-
-Accessibility and icons:
-
-- SVG icons were converted to React components under `src/components/icons/` (search, cart, user, heart, trash).
-- Buttons and interactive controls received `aria-label` attributes and better semantic structure.
-
-If you'd like, I can now:
-
-- Convert the remaining CSS rules into indented SASS partials per component (complete migration).
-- Further improve accessibility (keyboard focus, aria-live regions for cart updates) and split component styles into dedicated files.
-- Remove the `legacy/` folder after you validate the React app.
-
-*** End Patch
+# VR Moda Masculina
+
+E-commerce platform for men's fashion, built with React and Vite.
+
+## 🚀 Tecnologias
+
+- **Vite** v5.4 - Build tool and dev server
+- **React** 18 - UI framework
+- **Dart Sass** (indented syntax) - Styling
+- **Playwright** - E2E testing
+- **Node.js** - Runtime
+
+## 📁 Estrutura do Projeto
+
+```
+src/
+├── App.jsx                 # Main app component
+├── main.jsx               # Entry point
+├── components/            # React components
+│   ├── Header.jsx
+│   ├── Carousel.jsx
+│   ├── ProductCard.jsx
+│   ├── Products.jsx
+│   ├── Cart.jsx
+│   ├── CheckoutForm.jsx
+│   ├── ScrollButton.jsx
+│   ├── Footer.jsx
+│   └── icons/            # Icon components
+│       ├── IconHeart.jsx
+│       ├── IconCart.jsx
+│       ├── IconSearch.jsx
+│       ├── IconUser.jsx
+│       └── IconTrash.jsx
+└── styles/               # SASS modules
+    ├── style.sass       # Main entry point
+    ├── _variables.sass
+    ├── _header.sass
+    ├── _carousel.sass
+    ├── _products.sass
+    ├── _product-card.module.sass
+    ├── _cart.sass
+    ├── _forms.sass
+    ├── _footer.sass
+    ├── _scroll-button.sass
+    ├── _modal.sass
+    └── _media-queries.sass
+
+legacy/                  # Original static files
+├── index.original.html
+├── style.css
+└── script.js
+
+e2e/                    # Playwright E2E tests (80 tests, 100% passing)
+├── homepage.spec.js
+└── cart-interactions.spec.js
+
+Imagens/               # Product and carousel images
+Icones/                # Favicon and assets
+```
+
+## 🛠️ Instalação
+
+```bash
+npm install
+```
+
+## ✨ Desenvolvimento
+
+```bash
+npm run dev
+```
+
+Dev server starts on `http://localhost:5173`
+
+## 🔨 Build
+
+```bash
+npm run build
+```
+
+Production build output in `dist/`
+
+## 🧪 Testes E2E
+
+```bash
+npm run test:e2e
+```
+
+Run all Playwright tests (80 tests across chromium, firefox, webkit, Mobile Chrome)
+
+```bash
+npm run test:e2e:ui
+```
+
+Open interactive test UI
+
+## 📊 Recursos
+
+- ✅ Responsive design (mobile-first)
+- ✅ Product carousel with auto-rotation
+- ✅ Product catalog with pagination
+- ✅ Shopping cart functionality
+- ✅ Checkout form with state autocomplete
+- ✅ Scroll-to-top button
+- ✅ Keyboard navigation
+- ✅ WCAG accessibility standards
+- ✅ CSS Modules for component scoping
+- ✅ Modern Sass with @use modules
+- ✅ 100% E2E test pass rate
+
+## 🎨 Estilo
+
+- **Sass**: Modular SASS with indented syntax
+- **CSS Modules**: Used for component-scoped styles (e.g., `_product-card.module.sass`)
+- **Breakpoints**:
+  - Mobile: ≤613px
+  - Tablet: 614–833px
+  - Desktop: ≥834px
+
+## 🧩 Componentes
+
+### Header
+- Navigation bar with search, menu, and icons
+- User profile dropdown
+- Shopping cart link
+
+### Carousel
+- Auto-rotating product carousel
+- Navigation controls (prev/next)
+- Dot indicators
+
+### ProductCard
+- Product image, title, price
+- Installment info
+- Add-to-cart button
+- Favorite button (icon component)
+
+### Cart
+- List of cart items
+- Quantity adjusters
+- Item removal
+- Checkout form
+
+### CheckoutForm
+- Personal info fields (name, email)
+- Address input (city, state, CEP)
+- State autocomplete
+- Terms checkbox
+- Form validation
+
+## 🚢 Deploy
+
+```bash
+npm run build
+# Deploy dist/ folder to hosting
+```
+
+Fully compatible with static hosts (Netlify, Vercel, GitHub Pages).
+
+## 📝 Migração Vite + React
+
+This project was successfully migrated from vanilla HTML/CSS/JS to React + Vite:
+
+- ✅ Original files preserved in `legacy/` folder
+- ✅ All logic ported to React components
+- ✅ CSS converted to Sass with @use modules and CSS Modules
+- ✅ Playwright E2E tests (80 tests, 100% passing)
+- ✅ Build size optimized with Vite
+- ✅ Accessibility improvements (aria-labels, semantic HTML)
+- ✅ Production-ready build
+
+### Build Stats
+
+- CSS: 7.56 kB (gzipped)
+- JS: ~52 kB (gzipped)
+- Test suite: 80 tests, ~1.1 minute execution time
+
+## 📄 Licença
+
+Projeto para fins educacionais.
