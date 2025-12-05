@@ -151,13 +151,20 @@ Tela home Vrmodas
         - `src/main.jsx` — React entry
         - `src/App.jsx` — main application component
         - `src/components/*` — React components (Header, Carousel, Products, Cart, Footer)
-        - `src/styles/style.sass` — SASS entry which imports the original `style.css`
-        - `docs/documentation.html` — simple project documentation (HTML)
+        - `src/styles/style.sass` — SASS entry (now uses `@use` and componentized partials)
+        - `legacy/` — original static files preserved (`index.original.html`, `style.css`, `script.js`)
 
-If you want me to refactor styles into idiomatic SASS blocks per-component, I can run a follow-up pass.
-The repository now contains a full SASS conversion for main layout areas (header, carousel, products, cart, forms) in `src/styles/` as indented `.sass` partials.
-The interactive form logic (validation and states autocomplete), the cart behavior, carousel controls and the scroll button were ported into React components under `src/components/`.
-The original `script.js` and `style.css` were moved to `legacy/` and are preserved for reference; the React app does not require them anymore. The entry `src/styles/style.sass` imports `legacy/style.css` so visual parity is preserved until a full SASS conversion is complete.
+
+This repository includes the following additional improvements:
+
+- Playwright E2E tests under `e2e/` with a `playwright.config.js` to run cross-browser tests and a `npm run test:e2e` script.
+- CSS Modules enabled for per-component scope (example: `src/styles/_product-card.module.sass` used by `ProductCard.jsx`).
+- `@use` syntax adopted for Sass modules; a `_variables.sass` file provides shared variables.
+
+Notes:
+- The original `docs/` folder was removed and documentation consolidated into `readme.md`.
+- To run E2E tests locally you must install Playwright browsers: `npx playwright install`.
+- Dev server is forced to port `5173` to match Playwright configuration (`npm run dev`).
 
 Accessibility and icons:
 
