@@ -80,6 +80,22 @@ npm run build
 
 Production build output in `dist/`
 
+### Legacy build (hide cart by default)
+
+To produce a production build that behaves like the original legacy site (the cart hidden by default), build with the `VITE_HIDE_CART=true` environment variable. A helper script is provided:
+
+```bash
+npm run build:legacy
+```
+
+This script uses `cross-env` so it works on Windows, macOS and Linux. If you don't have `cross-env` installed locally, run:
+
+```bash
+npm install --save-dev cross-env
+```
+
+Or run the command directly in your CI/CD provider setting the environment variable `VITE_HIDE_CART=true` for the build step.
+
 ## 🧪 Testes E2E
 
 ```bash
