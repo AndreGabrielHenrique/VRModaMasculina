@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VR Moda Masculina — Documentation</title>
+    <style>body{font-family:Arial,Helvetica,sans-serif;padding:20px;line-height:1.6}h1{margin-top:0}</style>
+  </head>
+  <body>
+    <h1>VR Moda Masculina — Migration Notes</h1>
+    <p>This document summarizes the migration to Vite + React and the current project layout.</p>
+    <h2>What changed</h2>
+    <ul>
+      <li>Project migrated to Vite + React with componentized source under <code>src/</code>.</li>
+      <li>Styles converted to indented Sass (<code>.sass</code>) and organized in <code>src/styles/</code>.</li>
+      <li>Sass now uses <code>@use</code> with a shared <code>_variables.sass</code> file.</li>
+      <li>CSS Modules are used for per-component scoping (example: <code>_product-card.module.sass</code>).</li>
+      <li>Playwright E2E tests included under <code>e2e/</code>. Run with <code>npm run test:e2e</code> after installing browsers (<code>npx playwright install</code>).</li>
+      <li>Original static site files moved to <code>legacy/</code> for reference (including <code>legacy/index.original.html</code>).</li>
+    </ul>
+    <h2>How to run</h2>
+    <pre><code>npm install
+npm run dev  # dev server on port 5173
+npm run build
+npm run preview
+
+# E2E tests:
+npx playwright install
+npm run test:e2e
+    </code></pre>
+    <h2>Notes</h2>
+    <ul>
+      <li>The <code>legacy/</code> folder contains the original static HTML/CSS/JS preserved for reference.</li>
+      <li>The visual layout should now be driven by React components and Sass partials; if you still see legacy markup, ensure the root <code>index.html</code> contains only the React mountpoint.</li>
+    </ul>
+  </body>
+</html>

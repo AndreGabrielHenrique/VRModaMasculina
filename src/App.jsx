@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Header from './components/Header'
 import Carousel from './components/Carousel'
-import Products from './components/Products'
+import ProductCard from './components/ProductCard'
 import Cart from './components/Cart'
 import Footer from './components/Footer'
 import ScrollButton from './components/ScrollButton'
@@ -42,7 +42,11 @@ export default function App() {
         <Carousel />
         <section className="produtos">
           <h2>Produtos</h2>
-          <Products products={products} onAddToCart={addToCart} />
+          <nav>
+            {products.map(p => (
+              <ProductCard key={p.id} product={p} onAddToCart={() => addToCart(p)} />
+            ))}
+          </nav>
         </section>
         <Cart items={cartItems} onRemove={removeFromCart} onUpdateQuantity={updateQuantity} />
         <ScrollButton />

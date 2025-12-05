@@ -10,7 +10,7 @@ export default function Cart({ items, onRemove, onUpdateQuantity }) {
   const total = items.reduce((s, i) => s + i.price * i.quantity, 0)
 
   return (
-    <section className="carrinho" id="carrinho" style={{ display: items.length ? 'block' : 'none' }}>
+    <section className="carrinho" id="carrinho">
       <h2>Carrinho</h2>
       {items.length === 0 && <h3 className="carrinhovazio">Seu carrinho está vazio</h3>}
 

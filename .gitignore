@@ -2,5 +2,14 @@ node_modules/
 dist/
 .env
 /.idea
-/*.log
+/.vscode
+*.log
 *.docx
+.DS_Store
+Thumbs.db
+test-results/
+playwright-report/
+.playwright/
+coverage/
+npm-debug.log*
+*.tmp

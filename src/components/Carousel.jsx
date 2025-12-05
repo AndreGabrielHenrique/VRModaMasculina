@@ -16,16 +16,18 @@ export default function Carousel() {
 
   return (
     <section className="carousel">
-      {images.map((src, i) => (
-        <div className={`imagem ${i === index ? 'fade' : ''}`} key={i} style={{ display: i === index ? 'block' : 'none' }}>
-          <img src={src} alt={`carousel-${i}`} />
-        </div>
-      ))}
-      <a className="anterior" onClick={() => setIndex(i => (i - 1 + images.length) % images.length)}>&#10094;</a>
-      <a className="proximo" onClick={() => setIndex(i => (i + 1) % images.length)}>&#10095;</a>
+      <div className="carousel-items">
+        {images.map((src, i) => (
+          <div className={`imagem fade`} key={i} style={{ display: i === index ? 'block' : 'none' }}>
+            <img src={src} alt={`carousel-${i}`} />
+          </div>
+        ))}
+      </div>
+      <a className="anterior" onClick={() => setIndex(i => (i - 1 + images.length) % images.length)} role="button" tabIndex="0">&#10094;</a>
+      <a className="proximo" onClick={() => setIndex(i => (i + 1) % images.length)} role="button" tabIndex="0">&#10095;</a>
       <div className="indicadores">
         {images.map((_, i) => (
-          <span key={i} className={`indicador ${i === index ? 'ativo' : ''}`} onClick={() => setIndex(i)}></span>
+          <span key={i} className={`indicador ${i === index ? 'ativo' : ''}`} onClick={() => setIndex(i)} role="button" tabIndex="0"></span>
         ))}
       </div>
     </section>

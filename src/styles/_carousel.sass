@@ -2,6 +2,10 @@
   position: relative
   margin: auto
 
+  .carousel-items
+    position: relative
+    pointer-events: none
+
   .imagem
     display: none
 
@@ -11,9 +15,9 @@
   .anterior, .proximo
     cursor: pointer
     position: absolute
-    top: 52%
+    top: 50%
+    transform: translateY(-50%)
     width: auto
-    margin-top: -69px
     padding-inline: 10px
     color: white
     font-weight: bold
@@ -21,6 +25,17 @@
     transition: 0.6s ease
     border-radius: 3px 0 0 3px
     user-select: none
+    z-index: 10
+    background: rgba(0, 0, 0, 0.3)
+    border: none
+    padding: 5px 10px
+    pointer-events: auto
+
+  .anterior
+    left: 10px
+
+  .proximo
+    right: 10px
 
   .indicadores
     position: relative

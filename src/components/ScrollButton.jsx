@@ -12,9 +12,14 @@ export default function ScrollButton() {
   }, [])
 
   return (
-    <button type="button" className={`scrollpagina ${top ? 'topo' : 'inferior'}`} onClick={() => {
-      if (window.scrollY >= 100) window.scrollTo({ top: 0 })
-      else window.scrollTo({ top: document.body.scrollHeight })
-    }} />
+    <button 
+      type="button" 
+      className={`scrollpagina ${top ? 'topo' : 'inferior'}`} 
+      onClick={() => {
+        if (window.scrollY >= 100) window.scrollTo({ top: 0 })
+        else window.scrollTo({ top: document.body.scrollHeight })
+      }} 
+      aria-label={top ? 'Voltar ao topo' : 'Ir para o final da página'}
+    />
   )
 }
