@@ -3,87 +3,66 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>VR Moda Masculina — Documentation</title>
-    <style>body{font-family:Arial,Helvetica,sans-serif;padding:20px;line-height:1.6}h1{margin-top:0}</style>
+    <title>VR Moda Masculina — Documentação</title>
+    <style>body{font-family:Arial,Helvetica,sans-serif;padding:20px;line-height:1.6}h1{margin-top:0}code{background:#f4f4f4;padding:2px 6px;border-radius:4px}</style>
   </head>
   <body>
-    <h1>VR Moda Masculina — Migration Notes</h1>
-    <p>This document summarizes the migration to Vite + React and the current project layout.</p>
-    <h2>What changed</h2>
+    <h1>VR Moda Masculina — Notas de Migração e Guia Rápido</h1>
+    <p>Este documento resume o estado atual do repositório, alterações recentes e comandos úteis para executar o projeto localmente.</p>
+
+    <h2>Resumo</h2>
     <ul>
-      <li>Project migrated to Vite + React with componentized source under <code>src/</code>.</li>
-      <li>Styles converted to indented Sass (<code>.sass</code>) and organized in <code>src/styles/</code>.</li>
-      <li>Sass now uses <code>@use</code> with a shared <code>_variables.sass</code> file.</li>
-      <li>CSS Modules are used for per-component scoping (example: <code>_product-card.module.sass</code>).</li>
-      <li>Playwright E2E tests included under <code>e2e/</code>. Run with <code>npm run test:e2e</code> after installing browsers (<code>npx playwright install</code>).</li>
-      <li>Original static site files moved to <code>legacy/</code> for reference (including <code>legacy/index.original.html</code>).</li>
+      <li>Aplicação portada para <strong>React + Vite</strong>, com componentes em <code>src/</code>.</li>
+      <li>Estilos migrados para SASS (sintaxe indented) em <code>src/styles/</code>.</li>
+      <li>Imagens agora são importadas como módulos para otimização pelo Vite.</li>
+      <li>Testes E2E configurados com Playwright em <code>e2e/</code>.</li>
+      <li>Comentários explicativos em português foram adicionados a vários arquivos fonte (revise antes do commit final).</li>
     </ul>
-    <h2>How to run</h2>
-    <pre><code>npm install
-npm run dev  # dev server on port 5173
-npm run build
-npm run preview
 
-# E2E tests:
+    <h2>Executando localmente</h2>
+    <pre><code>powershell
+npm install
+# se for executar os testes E2E:
 npx playwright install
+npm run dev
+
+# Em outro terminal, rode os testes E2E:
 npm run test:e2e
-    <!doctype html>
-    <html lang="pt-br">
-      <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>VR Moda Masculina — Documentação</title>
-        <style>body{font-family:Arial,Helvetica,sans-serif;padding:20px;line-height:1.6}h1{margin-top:0}code{background:#f4f4f4;padding:2px 6px;border-radius:4px}</style>
-      </head>
-      <body>
-        <h1>VR Moda Masculina — Notas de Migração e Uso</h1>
-        <p>Resumo do estado atual do repositório, instruções de desenvolvimento, build e execução dos testes.</p>
+    </code></pre>
 
-        <h2>Resumo</h2>
-        <ul>
-          <li>Aplicação portada para <strong>React + Vite</strong>, com código organizado em componentes dentro de <code>src/</code>.</li>
-          <li>Estilos migrados para <strong>SASS (sintaxe indented)</strong> e divididos em partials em <code>src/styles/</code>.</li>
-          <li>Testes E2E com <strong>Playwright</strong> em <code>e2e/</code> — instale navegadores com <code>npx playwright install</code>.</li>
-      <li>Todos os arquivos fonte (JSX e SASS) incluem <strong>comentários explicativos em português</strong> descrevendo funcionalidades, imports, estado e lógica.</li>
-      <li>Imagens agora importadas como módulos Vite (otimizadas), em vez de referências de caminho estático.</li>
-    npm install
-    npx playwright install   # apenas se for rodar os testes E2E
-    npm run dev
+    <h2>Build de produção</h2>
+    <pre><code>powershell
+npm run build
 
-    # Em outra janela, para testes E2E:
-    npm run test:e2e
-      </code></pre>
+# Build compatível com comportamento "legacy" (carrinho oculto por padrão):
+npm run build:legacy
+    </code></pre>
 
-        <h2>Build de produção</h2>
-        <pre><code>powershell
-    npm run build
+    <h2>Notas</h2>
+    <ul>
+      <li>Se o dev server (esbuild) falhar, rode <code>npm install</code> e verifique a versão do Node.js.</li>
+      <li>As imagens em <code>src/components/Imagens/</code> são importadas como módulos nos componentes (Vite otimiza automaticamente).</li>
+      <li>Revise os comentários adicionados antes de commitar alterações finais.</li>
+    </ul>
 
-    # Build que reproduz comportamento 'legacy' (carrinho oculto por padrão):
-    npm run build:legacy
-      </code></pre>
+    <h2>Arquivos e pastas relevantes</h2>
+    <ul>
+      <li><code>src/</code> — código React, entrada em <code>src/main.jsx</code> e <code>src/App.jsx</code>.</li>
+      <li><code>src/components/</code> — Header, Carousel, Products, ProductCard, Cart, CheckoutForm, Footer, ScrollButton, icons.</li>
+      <li><code>src/styles/</code> — partials SASS e entry <code>style.sass</code>.</li>
+      <li><code>e2e/</code> — testes Playwright.</li>
+      <li><code>legacy/</code> — arquivos estáticos originais (referência).</li>
+    </ul>
 
-        <h2>Notas importantes</h2>
-        <ul>
-          <li>Se ocorrerem erros no dev server (esbuild), execute `npm install` e verifique a versão do Node. Mensagens de erro no terminal costumam indicar dependências faltantes.</li>
-      <li>Imagens (em <code>src/components/Imagens/</code> e <code>Imagens/</code>) agora são importadas como módulos nos componentes — isso garante otimização pelo Vite e suporte a tree-shaking.</li>
-      <li>Comentários explicativos em português foram adicionados a todos os arquivos fonte — descrevem imports, estado, hooks, funções e lógica principal. Revise e edite conforme sua preferência antes do commit final.</li>
-      <li>Arquivo <code>documentation.html</code> e <code>readme.md</code> foram atualizados com status atual. Verifique antes de commitar.</li>
-        <ul>
-          <li><code>src/</code> — código React, entry em <code>src/main.jsx</code> e <code>src/App.jsx</code>.</li>
-          <li><code>src/components/</code> — Header, Carousel, Products, ProductCard, Cart, CheckoutForm, Footer, ScrollButton, icons.</li>
-          <li><code>src/styles/</code> — partials SASS e entry <code>style.sass</code>.</li>
-          <li><code>e2e/</code> — testes Playwright (homepage, cart interactions, visual snapshots).</li>
-          <li><code>legacy/</code> — versão estática original (HTML/CSS/JS) preservada.</li>
-        </ul>
+    <h2>Próximos passos recomendados</h2>
+    <ol>
+      <li>Verifique alterações com <code>git status</code> e <code>git diff</code>.</li>
+      <li>Execute <code>npm run dev</code> e valide visualmente as páginas principais.</li>
+      <li>Opcional: execute os testes E2E com <code>npm run test:e2e</code>.</li>
+      <li>Faça o commit com mensagem clara quando estiver satisfeito.</li>
+    </ol>
 
-        <h2>Próximos passos recomendados</h2>
-        <ol>
-          <li>Revisar localmente com <code>git status</code> e <code>git diff</code>.</li>
-          <li>Rodar <code>npm run dev</code> e, se for o caso, <code>npm run test:e2e</code>.</li>
-          <li>Corrigir qualquer divergência visual/funcional e só então commitar em um único commit, se essa for a sua política.</li>
-        </ol>
-
-        <hr />
-        <p>Se quiser que eu reverta/recupere arquivos específicos para o estado do último commit ou que eu gere um diff detalhado dos arquivos modificados, diga quais arquivos prefere restaurar e eu executo.</p>
-      </body>
-    </html>
+    <hr />
+    <p>Se desejar que eu reverta arquivos específicos para o último commit ou gere um diff detalhado, informe a lista de arquivos e eu preparo o patch.</p>
+  </body>
+</html>

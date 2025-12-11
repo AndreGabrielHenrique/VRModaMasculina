@@ -87,25 +87,76 @@ Sobre alterações recentes
 - As imagens foram movidas para imports modulares (Vite) para melhor otimização.
 - Alguns arquivos foram editados múltiplas vezes durante a migração; revise `git diff` para ver as mudanças exatas.
 - Arquivos principais com alterações: `src/components/*` (Carousel, Header, Products, UnderConstructionModal), `src/styles/*`, `e2e/*`.
+# VR Moda Masculina
 
-Como proceder agora (recomendado)
---------------------------------
-1. Revise as mudanças locais com `git status` / `git diff` — todo arquivo JSX/SASS agora tem comentários em português.
-2. Rode `npm install` para garantir dependências (especialmente se não rodou recentemente).
-3. Rode `npm run dev` para verificar que a aplicação inicia sem erros (dev server em `http://localhost:5173`).
-4. Opcionalmente, rode `npm run test:e2e` para validar os testes E2E.
-5. Depois de revisar e aprovar, crie um commit único com uma mensagem descritiva como:
-   - `docs: adicionar comentários em português em componentes e SASS`
-   - ou `refactor: otimizar imports de imagens e adicionar documentação`
-6. Faça push quando estiver satisfeito com o estado.
+Resumo do repositório e instruções rápidas (em português).
 
-Contribuição e contato
-----------------------
-Se for necessário que eu (ou a ferramenta de automação) reverta alterações específicas, me diga quais arquivos quer restaurar e eu executo.
+Descrição
+---------
+Projeto de e‑commerce "VR Moda Masculina" portado para React + Vite. O código-fonte principal está em `src/` e a versão estática original foi preservada em `legacy/` para referência.
 
-Licença
--------
-Projeto para fins educacionais.
+Estado atual
+------------
+- Código organizado em componentes React (`src/components/`).
+- Estilos migrados para SASS (sintaxe indented) em `src/styles/`.
+- Imagens agora são importadas como módulos (`import img from './Imagens/...'`) para otimização pelo Vite.
+- Testes E2E com Playwright em `e2e/`.
 
-"""
+Instalação
+---------
+# VR Moda Masculina
+
+Projeto portado de um site estático para uma aplicação moderna com Vite e React.
+
+Principais pontos:
+
+- Código React organizado em `src/`.
+- Estilos em SASS (sintaxe indented) dentro de `src/styles/`.
+- Testes E2E com Playwright em `e2e/`.
+- Versão legacy preservada em `legacy/` para referência.
+
+Consulte `documentation.html` para instruções detalhadas de execução, build e testes.
+
+## Instalação
+
+```powershell
+npm install
+# se for executar os testes E2E:
+npx playwright install
 ```
+
+## Desenvolvimento
+
+```powershell
+npm run dev
+# abre o servidor de desenvolvimento (por padrão http://localhost:5173)
+```
+
+## Build de produção
+
+```powershell
+npm run build
+```
+
+## Build compatível com comportamento "legacy"
+
+```powershell
+npm run build:legacy
+```
+
+## Testes E2E (Playwright)
+
+```powershell
+npm run test:e2e
+```
+
+## Procedimentos antes de commitar
+
+1. Verifique alterações locais: `git status` e `git diff`.
+2. Rode `npm install` e `npm run dev` para validar localmente.
+3. Opcionalmente execute `npm run test:e2e`.
+4. Faça o commit com mensagem clara (em inglês) quando estiver satisfeito.
+
+---
+
+Projeto para fins educacionais.
