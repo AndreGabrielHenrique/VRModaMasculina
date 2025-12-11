@@ -15,19 +15,14 @@
       <li>Aplicação portada para <strong>React + Vite</strong>, com componentes em <code>src/</code>.</li>
       <li>Estilos migrados para SASS (sintaxe indented) em <code>src/styles/</code>.</li>
       <li>Imagens agora são importadas como módulos para otimização pelo Vite.</li>
-      <li>Testes E2E configurados com Playwright em <code>e2e/</code>.</li>
+      <li>Testes E2E foram removidos do projeto (Playwright desinstalado).</li>
       <li>Comentários explicativos em português foram adicionados a vários arquivos fonte (revise antes do commit final).</li>
     </ul>
 
     <h2>Executando localmente</h2>
     <pre><code>powershell
-npm install
-# se for executar os testes E2E:
-npx playwright install
-npm run dev
-
-# Em outro terminal, rode os testes E2E:
-npm run test:e2e
+  npm install
+  npm run dev
     </code></pre>
 
     <h2>Build de produção</h2>
@@ -50,7 +45,7 @@ npm run build:legacy
       <li><code>src/</code> — código React, entrada em <code>src/main.jsx</code> e <code>src/App.jsx</code>.</li>
       <li><code>src/components/</code> — Header, Carousel, Products, ProductCard, Cart, CheckoutForm, Footer, ScrollButton, icons.</li>
       <li><code>src/styles/</code> — partials SASS e entry <code>style.sass</code>.</li>
-      <li><code>e2e/</code> — testes Playwright.</li>
+      <li><code>e2e/</code> — pasta de testes removida (arquivos substituídos por placeholders).</li>
       <li><code>legacy/</code> — arquivos estáticos originais (referência).</li>
     </ul>
 

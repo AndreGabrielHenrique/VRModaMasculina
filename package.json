@@ -6,17 +6,13 @@
     "dev": "vite --port 5173",
     "build": "vite build",
     "build:legacy": "cross-env VITE_HIDE_CART=true vite build",
-    "preview": "vite preview",
-    "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui",
-    "test:e2e:debug": "playwright test --debug"
+    "preview": "vite preview"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@playwright/test": "^1.48.0",
     "@vitejs/plugin-react": "^4.0.0",
     "cross-env": "^7.0.3",
     "sass": "^1.96.0",

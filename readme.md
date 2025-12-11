@@ -112,17 +112,15 @@ Principais pontos:
 
 - Código React organizado em `src/`.
 - Estilos em SASS (sintaxe indented) dentro de `src/styles/`.
-- Testes E2E com Playwright em `e2e/`.
+- Testes E2E foram removidos (Playwright desinstalado).
 - Versão legacy preservada em `legacy/` para referência.
 
-Consulte `documentation.html` para instruções detalhadas de execução, build e testes.
+Consulte `documentation.html` para instruções detalhadas de execução e build.
 
 ## Instalação
 
 ```powershell
 npm install
-# se for executar os testes E2E:
-npx playwright install
 ```
 
 ## Desenvolvimento
@@ -144,18 +142,11 @@ npm run build
 npm run build:legacy
 ```
 
-## Testes E2E (Playwright)
-
-```powershell
-npm run test:e2e
-```
-
 ## Procedimentos antes de commitar
 
 1. Verifique alterações locais: `git status` e `git diff`.
 2. Rode `npm install` e `npm run dev` para validar localmente.
-3. Opcionalmente execute `npm run test:e2e`.
-4. Faça o commit com mensagem clara (em inglês) quando estiver satisfeito.
+3. Faça o commit com mensagem clara (em inglês) quando estiver satisfeito.
 
 ---
 
