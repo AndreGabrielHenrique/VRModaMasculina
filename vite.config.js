@@ -1,8 +1,13 @@
+// Caminho: vite.config.js
+// Arquivo de configuração do Vite (ferramenta de build/desenvolvimento)
+
+// Importa a função defineConfig do Vite
 import { defineConfig } from 'vite'
+// Importa o plugin do React para Vite
 import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
+// Exporta a configuração padrão
 export default defineConfig({
-  plugins: [react()],
-  base: './'
+  plugins: [react()],  // Habilita o plugin do React
+  base: './'           // Caminho base para assets (relativo ao diretório atual)
 })

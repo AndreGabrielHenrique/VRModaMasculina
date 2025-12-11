@@ -1,14 +1,28 @@
+/* legacy\style.css */
+/* Arquivo de estilos CSS da aplicação VR Moda Masculina (versão legacy) */
+/* Define a aparência visual de todos os elementos da página */
+
+/* ================================================== */
+/* RESET E CONFIGURAÇÕES GLOBAIS */
+/* ================================================== */
+
+/* Seleciona todos os elementos e remove padding e margin padrão, define fonte e comportamento de scroll */
 *
 {
     padding: 0;
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; /* Rolagem suave para âncoras */
 }
 
+/* ================================================== */
+/* HEADER */
+/* ================================================== */
+
+/* Estilização do cabeçalho */
 header
 {
-    background-color: #202529;
+    background-color: #202529; /* Cor de fundo escura */
     color: white;
     padding: 20px;
     height: 100px;
@@ -19,12 +33,14 @@ header
     justify-content: space-between;
 }
 
+/* Logo e imagem de perfil */
 .logo, .perfil img
 {
     width: 100px;
     height: 100%;
 }
 
+/* Formulário dentro do header (barra de busca) */
 header form
 {
     display: flex;
@@ -32,9 +48,10 @@ header form
     align-items: center;
 }
 
+/* Input do formulário de busca */
 header form input
 {
-    outline: none;
+    outline: none; /* Remove contorno padrão */
     width: 180px;
     height: 24px;
     padding: 7px;
@@ -43,9 +60,10 @@ header form input
     font-size: medium;
 }
 
+/* Estilo para botões (busca, produto, scroll) */
 header form button, .produto button, .scrollpagina
 {
-    cursor: pointer;
+    cursor: pointer; /* Muda cursor para pointer */
     width: 40px;
     height: 40px;
     padding: 5px;
@@ -54,6 +72,7 @@ header form button, .produto button, .scrollpagina
     border-color: white;
 }
 
+/* Efeito ativo para botões */
 header form button:active, .produto button:active, .produto button a:active, .cadastro button:active, .verperfilcompleto:active, .scrollpagina:hover
 {
     background-color: white;
@@ -62,6 +81,7 @@ header form button:active, .produto button:active, .produto button a:active, .ca
     text-decoration: none;
 }
 
+/* Ícone SVG dentro do botão de busca */
 header form button svg
 {
     color: white;
@@ -69,11 +89,13 @@ header form button svg
     height: 20px;
 }
   
+/* Efeito ativo no ícone do botão de busca */
 header form button:active svg
 {
     color: #202529;
 }
 
+/* Lista de ícones no header (entregas, favoritos, carrinho, perfil) */
 header ul
 {
     display: flex;
@@ -81,17 +103,20 @@ header ul
     list-style-type: none;
 }
 
+/* Itens da lista do header */
 header ul li
 {
     margin-right: 18px;
     cursor: pointer;
 }
 
+/* Remove margem do último item */
 header ul li:last-child
 {
     margin-right: 0px;
 }
 
+/* Ícones SVG dentro dos itens da lista */
 header ul li svg
 {
     width: 40px;
@@ -99,34 +124,42 @@ header ul li svg
     color: white;
 }
 
+/* Efeito hover nos ícones */
 header ul li svg:hover
 {
     color: #999;
 }
 
+/* Efeito ativo (clicado) nos ícones */
 header ul li svg:active
 {
     color: #5085ca;
 }
 
+/* ================================================== */
+/* MENU DROPDOWN DO PERFIL */
+/* ================================================== */
+
+/* Container do menu dropdown (relativo para posicionamento absoluto dos filhos) */
 .abrirmenu, .verperfil
 {
     position: relative;
     display: inline-block;
 }
   
+/* Estilo do menu dropdown e do submenu de perfil */
 .menu, .perfil
 {
-    visibility: hidden;
+    visibility: hidden; /* Inicialmente invisível */
     font-weight: 500;
     width: 110px;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo branco com transparência */
     color: #202529;
     text-align: center;
     border-radius: 6px;
     padding: 12px 0;
-    position: absolute;
-    z-index: 1;
+    position: absolute; /* Posicionamento absoluto em relação ao pai */
+    z-index: 1; /* Fica acima de outros elementos */
     top: 95%;
     right: 20%;
     font-size: 15px;
@@ -136,11 +169,13 @@ header ul li svg:active
     cursor: default;
 }
 
+/* Itens do menu são clicáveis */
 .menu p
 {
     cursor: pointer;
 }
 
+/* Estilo específico do submenu de perfil (maior) */
 .perfil
 {
     width: 225px;
@@ -149,24 +184,27 @@ header ul li svg:active
     top: -40%;
 }
 
+/* Imagem do perfil (redonda) */
 .perfil img
 {
     border-radius: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Ajusta a imagem para cobrir o espaço */
 }
   
+/* Triângulo (seta) que aponta para o botão do menu */
 .menu::after, .perfil::after
 {
     content: "";
     position: absolute;
-    bottom: 100%;
+    bottom: 100%; /* Posiciona acima do menu */
     right: 10%;
     margin-right: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent transparent white transparent;
+    border-color: transparent transparent white transparent; /* Triângulo apontando para baixo */
 }
 
+/* Ajuste da seta para o submenu de perfil (aponta para a esquerda) */
 .perfil::after
 {
     left: 100% !important;
@@ -174,6 +212,7 @@ header ul li svg:active
     border-color: transparent transparent transparent white !important;
 }
   
+/* Classes que tornam o menu visível (adicionadas via JavaScript) */
 .mostrarmenu, .mostrarperfil
 {
     visibility: visible;
@@ -182,6 +221,7 @@ header ul li svg:active
     animation: fadeIn 1s;
 }
  
+/* Animação de fade in para o menu */
 @-webkit-keyframes fadeIn
 {
     from {opacity: 0;}
@@ -194,34 +234,44 @@ header ul li svg:active
     to {opacity: 1;}
 }
 
+/* Efeito hover nos itens do menu */
 .verperfil:hover, .alterarsenha:hover, .logout:hover
 {
     background-color: #202529;
     color: white;
 }
 
+/* Botão "Ver perfil completo" dentro do submenu */
 .verperfilcompleto
 {
     font-size: 15px !important;
     margin-top: 10px;
 }
 
+/* ================================================== */
+/* CARROSSEL DE IMAGENS */
+/* ================================================== */
+
+/* Container do carrossel */
 .carousel
 {
     position: relative;
     margin: auto;
 }
 
+/* Imagens do carrossel (inicialmente escondidas) */
 .imagem
 {
     display: none;
 }
 
+/* Imagens ocupam 100% da largura */
 .imagem img
 {
     width: 100%;
 }
 
+/* Botões anterior e próximo do carrossel */
 .anterior, .proximo
 {
     cursor: pointer;
@@ -235,20 +285,23 @@ header ul li svg:active
     font-size: 48px;
     transition: 0.6s ease;
     border-radius: 3px 0 0 3px;
-    user-select: none;
+    user-select: none; /* Impede seleção de texto */
 }
 
+/* Efeito hover nos botões */
 .anterior:hover, .proximo:hover, .botaopreto:hover, .botaobranco:hover
 {
     color: #999;
 }
 
+/* Posicionamento do botão próximo à direita */
 .proximo
 {
     right: 0;
     border-radius: 3px 0 0 3px;
 }
 
+/* Classes para cores dos botões (para contraste com a imagem) */
 .botaopreto
 {
     color: #202529;
@@ -259,6 +312,7 @@ header ul li svg:active
     color: white;
 }
 
+/* Container dos indicadores (bolinhas) do carrossel */
 .indicadores
 {
     position: relative;
@@ -266,6 +320,7 @@ header ul li svg:active
     text-align: center;
 }
 
+/* Cada indicador (bolinha) */
 .indicador
 {
     cursor: pointer;
@@ -277,29 +332,38 @@ header ul li svg:active
     transition: background-color 0.6s ease;
 }
 
+/* Efeito hover e estado ativo do indicador */
 .indicador:hover, .ativo
 {
     background-color: #202529;
 }
 
+/* Classe para animação de fade entre imagens */
 .fade
 {
     animation-name: fade;
     animation-duration: 1.0s;
 }
 
+/* Definição da animação de fade */
 @keyframes fade
 {
     from {opacity: .4}
     to {opacity: 1}
 }
 
+/* ================================================== */
+/* SEÇÃO DE PRODUTOS */
+/* ================================================== */
+
+/* Seção de produtos */
 .produtos
 {
     bottom: 30px;
     position: relative;
 }
 
+/* Títulos das seções produtos e carrinho, mensagem de envio e carrinho vazio */
 .produtos h2, .carrinho h2, #enviado, .carrinhovazio
 {
     margin: 10px 0 10px 0;
@@ -307,11 +371,13 @@ header ul li svg:active
     font-size: 50px;
 }
 
+/* Padding lateral para títulos e lista de produtos */
 .produtos h2, .carrinho h2, .produtos ul, .carrinhovazio
 {
     padding-inline: 150px;
 }
 
+/* Container dos produtos (grid flexível) */
 .produtos nav
 {
     display: flex;
@@ -320,35 +386,41 @@ header ul li svg:active
     gap: 60px;
 }
 
+/* Card de cada produto */
 .produto
 {
     background-color: #eeeeee;
     padding: 20px;
 }
 
+/* Imagem do produto */
 .produto img
 {
-    object-fit: cover;
+    object-fit: cover; /* Ajusta a imagem para cobrir o espaço */
     width: 300px;
     height: 500px;
     margin-bottom: 10px;
 }
 
+/* Parágrafos dentro do produto */
 .produto p
 {
     line-height: 25px;
 }
 
+/* Descrição e preço em negrito */
 .descricao, .preco
 {
     font-weight: bold;
 }
 
+/* Tamanho do produto (inicialmente escondido, usado no carrinho) */
 .descricaotamanho
 {
     display: none;
 }
 
+/* Botão "Adicionar ao Carrinho" */
 .produto button
 {
     width: 300px;
@@ -358,12 +430,14 @@ header ul li svg:active
     margin-top: 10px;
 }
 
+/* Link dentro do botão (não utilizado, mas estilizado) */
 .produto button a
 {
     color: white;
     text-decoration: none;
 }
 
+/* Lista de paginação */
 .produtos ul
 {
     display: flex;
@@ -372,6 +446,7 @@ header ul li svg:active
     margin-top: 30px;
 }
 
+/* Itens da paginação */
 .produtos ul li
 {
     padding: 8px;
@@ -380,6 +455,7 @@ header ul li svg:active
     border-color: #eeeeee;
 }
 
+/* Efeito ativo nos itens de paginação */
 .produtos ul li:active, .produtos ul li:first-child:active
 {
     color: #202529;
@@ -387,6 +463,7 @@ header ul li svg:active
     border-color: #202529;
 }
 
+/* Estilo do primeiro item (página atual) */
 .produtos ul li:first-child
 {
     border-radius: 5px 0 0 5px;
@@ -395,11 +472,13 @@ header ul li svg:active
     border-color: #5085ca;
 }
 
+/* Último item com bordas arredondadas à direita */
 .produtos ul li:last-child
 {
     border-radius: 0 5px 5px 0;
 }
 
+/* Ícone de favorito (coração) */
 .favorito
 {
     width: 40px;
@@ -410,17 +489,24 @@ header ul li svg:active
     cursor: pointer;    
 }
 
+/* ================================================== */
+/* CARRINHO DE COMPRAS */
+/* ================================================== */
+
+/* Seção do carrinho (inicialmente escondida) */
 .carrinho
 {
     display: none;
 }
 
+/* Mensagem de carrinho vazio */
 .carrinhovazio
 {
     font-size: 30px !important;
     margin-top: 30px !important;
 }
 
+/* Cada produto no carrinho */
 .produtocarrinho
 {
     display: flex;
@@ -432,27 +518,31 @@ header ul li svg:active
     align-items: center;
 }
 
+/* Remove borda inferior do último produto */
 .produtocarrinho:last-child
 {
     border-bottom: none;
     padding-bottom: 0;
 }
 
+/* Imagem do produto no carrinho (pequena) */
 .produtocarrinho img
 {
     width: 55px;
     height: 90px;
 }
 
+/* Títulos dentro do produto no carrinho (ex: "Quantidade") */
 .produtocarrinho h3
 {
     font-size: 25px;
 }
 
+/* Ícone de remover produto (lixeira) */
 .remover
 {
     width: 25px;
-    fill: #aa1e1e;
+    fill: #aa1e1e; /* Cor do ícone */
     cursor: pointer;
 }
 
@@ -461,26 +551,30 @@ header ul li svg:active
     fill: #999;
 }
 
+/* Nome, preço unitário e preço total em negrito */
 .nomecarrinho, .precounidade, .produtoprecototal
 {
     font-weight: bold;
 }
 
+/* Alinhamento central para as colunas do carrinho */
 .produtoquantidade, .tamanhoproduto, .precounidadecarrinho, .precototalcarrinho
 {
     text-align: center;
     line-height: 55px;
 }
 
+/* Tamanho da fonte dos valores */
 .quantidade, .tamanho, .precounidade, .produtoprecototal
 {
     font-size: 20px;
 }
 
+/* Input de quantidade no carrinho */
 .produtoquantidade input
 {
     border: none;
-    box-shadow: 0 0 0 0.05rem #eeeeee;
+    box-shadow: 0 0 0 0.05rem #eeeeee; /* Sombra sutil */
     border-radius: 10px;
     text-align: center;
     width: 38px;
@@ -489,6 +583,7 @@ header ul li svg:active
     outline: none;
 }
 
+/* Mensagem de erro para quantidade */
 .erroquantidade
 {
     color: #aa1e1e;
@@ -496,6 +591,11 @@ header ul li svg:active
     line-height: 0;
 }
 
+/* ================================================== */
+/* FORMULÁRIO DE CADASTRO */
+/* ================================================== */
+
+/* Formulário de cadastro (inicialmente escondido) */
 .cadastro
 {
     display: none;
@@ -506,11 +606,13 @@ header ul li svg:active
     margin: 40px 0 40px 0;
 }
 
+/* Labels do formulário */
 .cadastro label
 {
     display: block;
 }
 
+/* Inputs do formulário */
 .cadastro input
 {
     padding: 9px;
@@ -520,6 +622,7 @@ header ul li svg:active
     font-size: 20px;
 }
 
+/* Container dos campos do cliente */
 .camposcliente
 {
     display: flex;
@@ -528,6 +631,7 @@ header ul li svg:active
     row-gap: 15px;
 }
 
+/* Labels dos campos */
 .camposcliente label
 {
     bottom: 5px;
@@ -535,6 +639,7 @@ header ul li svg:active
     font-size: 17px;
 }
 
+/* Larguras específicas para cada campo */
 #primeironome, #segundonome, #email
 {
     width: 480px;
@@ -550,17 +655,20 @@ header ul li svg:active
     width: 420px;
 }
 
+/* Container especial para o campo de email (com ícone @) */
 .campoemail
 {
-    display: table;
+    display: table; /* Layout de tabela para alinhar ícone e input */
 }
 
+/* Email com borda esquerda removida (para unir com ícone) */
 #email
 {
     border-left: 0;
     border-radius: 0 7px 7px 0;
 }
 
+/* Ícone @ dentro do campo de email */
 .at
 {
     background: #fcf9f9;
@@ -576,51 +684,56 @@ header ul li svg:active
     float: left;
 }
 
+/* Container do campo estado (para posicionar a seta e a lista) */
 #campoestado
 {
     position: relative;
     width: 420px;
 }
 
+/* Input de estado */
 #estado
 {
     display: block;
-    padding: 9px 30px 9px 9px;
+    padding: 9px 30px 9px 9px; /* Padding à direita para a seta */
     border: 1px solid #dcdedd;
     outline: none;
     border-radius: 7px;
     font-size: 20px;
     width: 100%;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Inclui padding na largura */
 }
 
+/* Seta decorativa no campo estado */
 .seta
 {
     position: absolute;
     top: 69%;
     right: 5px;
-    transform: translateY(-50%) rotate(90deg);
-    pointer-events: none;
+    transform: translateY(-50%) rotate(90deg); /* Rotaciona para virar para a direita */
+    pointer-events: none; /* Não interfere com clicks no input */
     font-size: 28px;
     font-weight: bolder;
     color: #999;
 }
 
+/* Lista de estados para autocomplete */
 #listaestados
 {
     position: absolute;
-    top: 100%;
+    top: 100%; /* Abaixo do input */
     left: 0;
     width: 100%;
     background-color: white;
     border: 1px solid #dcdedd;
     border-radius: 7px;
     max-height: 150px;
-    overflow-y: auto;
-    display: none;
-    z-index: 1000;
+    overflow-y: auto; /* Scroll se houver muitos estados */
+    display: none; /* Inicialmente escondida */
+    z-index: 1000; /* Fica acima de outros elementos */
 }
 
+/* Cada opção de estado na lista */
 #listaestados div
 {
     padding: 9px;
@@ -633,12 +746,14 @@ header ul li svg:active
     background-color: white;
 }
 
+/* Estado selecionado com setas do teclado */
 #listaestados div.selecionado
 {
     background-color: #202529;
     color: white;
 }
 
+/* Container do checkbox de termos */
 #checkboxtermos
 {
     display: flex;
@@ -646,14 +761,16 @@ header ul li svg:active
     align-items: center;
 }
 
+/* Texto dos termos */
 .termos p
 {
     font-size: 18px;
 }
 
+/* Estilização customizada do checkbox */
 .cadastro input[type="checkbox"]
 {
-    appearance: none;
+    appearance: none; /* Remove estilo padrão */
     border-radius: 0.25rem;
     border: 1px solid #dcdedd;
     outline: none;
@@ -662,6 +779,7 @@ header ul li svg:active
     position: relative;
 }
 
+/* Checkmark personalizado (aparece quando checked) */
 .cadastro input[type="checkbox"]::before
 {
     content: "";
@@ -670,23 +788,26 @@ header ul li svg:active
     left: 50%;
     width: 0.75rem;
     height: 0.75rem;
-    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%); /* Forma de checkmark */
     transform: translate(-50%, -50%) scale(0);
     transform-origin: center;
     transition: 0.125s transform ease-in-out;
-    box-shadow: inset 2rem 2rem white;
+    box-shadow: inset 2rem 2rem white; /* Cor do checkmark */
 }
 
+/* Quando o checkbox está marcado */
 .cadastro input[type="checkbox"]:checked
 {
     background-color: #202529;
 }
 
+/* Mostra o checkmark quando marcado */
 .cadastro input[type="checkbox"]:checked::before
 {
     transform: translate(-50%, -50%) scale(1);
 }
 
+/* Botão de enviar do formulário e botão "Ver perfil completo" */
 .cadastro button, .verperfilcompleto
 {
     font-size: 20px;
@@ -698,6 +819,7 @@ header ul li svg:active
     cursor: pointer;
 }
 
+/* Mensagem de sucesso após envio */
 #enviado
 {
     text-align: center;
@@ -705,6 +827,11 @@ header ul li svg:active
     margin-bottom: 35px;
 }
 
+/* ================================================== */
+/* MENSAGENS DE ERRO DO FORMULÁRIO */
+/* ================================================== */
+
+/* Estilo base das mensagens de erro */
 .errocadastro
 {
     visibility: hidden;
@@ -719,9 +846,10 @@ header ul li svg:active
     z-index: 1;
     font-size: 15px;
     animation: fadeIn 0.5s;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.32);
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.32); /* Sombra */
 }
 
+/* Triângulo (seta) acima da mensagem de erro */
 .errocadastro::after
 {
     content: "";
@@ -733,19 +861,21 @@ header ul li svg:active
     border-width: 5px;
     border-style: solid;
     border-color: transparent transparent #dcdedd transparent;
-    filter: drop-shadow(2px 0 rgba(0, 0, 0, 0.32));
+    filter: drop-shadow(2px 0 rgba(0, 0, 0, 0.32)); /* Sombra na seta */
     border-radius: 3px;
 }
 
+/* Classe que torna a mensagem de erro visível */
 .mostrarerrocadastro
 {
     visibility: visible;
     opacity: 0.9;
     animation: fadeIn 0.5s;
     margin-top: 6px;
-    margin-left: 10%;
+    margin-left: 10%; /* Posicionamento específico */
 }
 
+/* Animação de fade in para mensagens de erro */
 @keyframes fadeIn
 {
     0% {
@@ -756,6 +886,7 @@ header ul li svg:active
     }
 }
 
+/* Ajustes de posicionamento para mensagens de erro específicas */
 #erroestado
 {
     margin-left: 6% !important;
@@ -772,6 +903,10 @@ header ul li svg:active
     margin-left: 10px !important;
 }
 
+/* ================================================== */
+/* FOOTER (RODAPÉ) */
+/* ================================================== */
+
 footer
 {
     background-color: #202529;
@@ -779,6 +914,7 @@ footer
     flex-direction: column;
 }
 
+/* Listas de links e contatos no footer */
 .links, .contatos
 {
     display: flex;
@@ -788,16 +924,19 @@ footer
     padding: 20px;
 }
 
+/* Itens das listas */
 .links li, .contatos li
 {
     list-style-type: none;
 }
 
+/* Links clicáveis no footer */
 .link
 {
     cursor: pointer;
 }
 
+/* Efeito hover nos links */
 .links li:hover
 {
     text-decoration: underline;
@@ -808,15 +947,21 @@ footer
     text-decoration: none;
 }
 
+/* Linha separadora entre as seções do footer */
 .separador
 {
-    border: 1px solid #99999962;
+    border: 1px solid #99999962; /* Cor com transparência */
 }
 
+/* Itens que servem como separadores (contêm <hr>) */
 .espacador
 {
     background-color: white;
 }
+
+/* ================================================== */
+/* BOTÃO DE SCROLL (VOLTAR AO TOPO/IR PARA BAIIXO) */
+/* ================================================== */
 
 .scrollpagina
 {
@@ -828,6 +973,7 @@ footer
     right: 14px;
 }
 
+/* Seta para baixo (quando no topo da página) */
 .scrollpagina.inferior::after
 {
     content: "↓";
@@ -841,6 +987,7 @@ footer
     transition: margin-top 350ms;
 }
 
+/* Efeito hover na seta para baixo */
 .scrollpagina.inferior:hover::after
 {
     margin-top: 6px;
@@ -849,6 +996,7 @@ footer
     color: #202529;
 }
 
+/* Seta para cima (quando scrollado para baixo) */
 .scrollpagina.topo::after
 {
     content: "↑";
@@ -858,6 +1006,7 @@ footer
     transition: margin-top 350ms;
 }
 
+/* Efeito hover na seta para cima */
 .scrollpagina.topo:hover::after
 {
     margin-top: -12px;
@@ -866,11 +1015,16 @@ footer
     color: #202529;
 }
 
+/* ================================================== */
+/* MODAL "EM CONSTRUÇÃO" */
+/* ================================================== */
+
+/* Fundo escuro semi-transparente do modal */
 .fundoconstrucao
 {
     display: none;
     position: fixed;
-    z-index: 9999;
+    z-index: 9999; /* Acima de tudo */
     left: 0;
     top: 0;
     width: 100%;
@@ -881,6 +1035,7 @@ footer
     justify-content: center;
 }
 
+/* Container da imagem "em construção" */
 .construcao
 {
     padding: 20px;
@@ -888,12 +1043,18 @@ footer
     border-radius: 8px;
 }
 
+/* Imagem "em construção" */
 #construcao
 {
     width: 100%;
     max-width: 700px;
 }
 
+/* ================================================== */
+/* MEDIA QUERIES PARA RESPONSIVIDADE */
+/* ================================================== */
+
+/* Tablets e telas médias (entre 614px e 833px) */
 @media (min-width: 614px) and (max-width: 833px)
 {
     header
@@ -1020,6 +1181,7 @@ footer
     }
 }
 
+/* Telas pequenas (até 613px) */
 @media (max-width: 613px)
 {
     header

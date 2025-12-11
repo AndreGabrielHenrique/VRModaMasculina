@@ -1,175 +1,227 @@
+// Caminho: src/styles/_media-queries.sass
+// Media queries para responsividade (tablets e dispositivos móveis)
+
+// TABLETS: Largura entre 614px e 833px
 @media (min-width: 614px) and (max-width: 833px)
-  header
-    height: 100%
-    margin: 0
+    // Ajustes no cabeçalho
+    header
+        height: 100%   // Altura automática (conteúdo define)
+        margin: 0      // Remove margens
 
-  .logo
-    bottom: 20px
+    // Ajuste fino no logo
+    .logo
+        bottom: 20px   // Move 20px para cima
 
-  .anterior, .proximo
-    padding-inline: 7px
-    font-size: 42px
-    top: 60%
+    // Botões do carrossel (menores)
+    .anterior, .proximo
+        padding-inline: 7px   // Menos espaçamento horizontal
+        font-size: 42px       // Fonte um pouco menor
+        top: 60%              // Posicionamento vertical ajustado
 
-  .indicadores
-    bottom: 30px
+    // Indicadores do carrossel (menores)
+    .indicadores
+        bottom: 30px          // Mais próximo da parte inferior
 
-  .indicador
-    height: 4px
-    width: 35px
-    margin: 0 4px
+    .indicador
+        height: 4px           // Altura mantida
+        width: 35px           // Largura um pouco menor
+        margin: 0 4px         // Margem mantida
 
-  .produtos h2, .carrinho h2, .carrinhovazio
-    text-align: center
-    padding-inline: 0
+    // Títulos centralizados
+    .produtos h2, .carrinho h2, .carrinhovazio
+        text-align: center    // Centraliza texto
+        padding-inline: 0     // Remove espaçamento horizontal
 
-  .produtos ul
-    justify-content: center
+    // Lista de produtos centralizada
+    .produtos ul
+        justify-content: center  // Centraliza os itens
 
-  .produtos ul li
-    font-size: 23px
-    padding: 15px
+    // Itens da lista de produtos (categorias)
+    .produtos ul li
+        font-size: 23px   // Fonte um pouco menor
+        padding: 15px     // Mais espaçamento interno
 
-  .listacarrinho, .cadastro
-    padding-inline: 100px
+    // Ajustes no carrinho e formulário
+    .listacarrinho, .cadastro
+        padding-inline: 100px  // Menos espaçamento lateral
 
-  .produtocarrinho
-    display: flex
-    margin: 0
-    row-gap: 0
+    // Itens do carrinho
+    .produtocarrinho
+        display: flex
+        margin: 0          // Remove margens laterais
+        row-gap: 0         // Remove espaço entre linhas
 
-  .produtocarrinho img
-    width: 52px
-    height: 77px
+    // Imagem do produto no carrinho (menor)
+    .produtocarrinho img
+        width: 52px   // Largura um pouco menor
+        height: 77px  // Altura um pouco menor
 
-  .produtocarrinho h3
-    font-size: 33px
+    // Nome do produto no carrinho (maior)
+    .produtocarrinho h3
+        font-size: 33px  // Fonte maior
 
-  .remover
-    width: 27px
+    // Ícone de remover (um pouco maior)
+    .remover
+        width: 27px  // Largura um pouco maior
 
-  .nomecarrinho
-    font-size: 20px
+    // Nome no carrinho (menor)
+    .nomecarrinho
+        font-size: 20px  // Fonte menor
 
-  .produtoquantidade, .tamanhoproduto, .precounidadecarrinho, .precototalcarrinho
-    font-size: 35px
+    // Containers de quantidade, tamanho, preço (fontes maiores)
+    .produtoquantidade, .tamanhoproduto, .precounidadecarrinho, .precototalcarrinho
+        font-size: 35px  // Fontes bem maiores
 
-  .quantidade, .tamanho, .precounidade, .produtoprecototal
-    font-size: 25px
+    // Textos de quantidade, tamanho, preço (fontes maiores)
+    .quantidade, .tamanho, .precounidade, .produtoprecototal
+        font-size: 25px  // Fonte maior
 
-  .produtoquantidade input
-    width: 42px
+    // Input de quantidade (um pouco maior)
+    .produtoquantidade input
+        width: 42px  // Largura um pouco maior
 
-  .erroquantidade
-    font-size: 15px
-    margin-top: 10px
+    // Mensagem de erro de quantidade (um pouco maior)
+    .produtoquantidade
+      .erroquantidade
+        font-size: 14px   // Fonte um pouco maior
+        bottom: -29px   // ajuste fino — não usa margin-top
 
-  .cadastro input, #cidade, #primeironome, #segundonome
-    width: 400px
+    // Campos do formulário (larguras ajustadas)
+    .cadastro input, #cidade, #primeironome, #segundonome
+        width: 400px  // Largura menor
 
-  #email
-    width: 387px
+    // Campo de email (largura ajustada)
+    #email
+        width: 387px  // Largura específica
 
-  .links, .contatos
-    flex-direction: column
-    text-align: center
-    gap: 10px
+    // Rodapé em coluna (empilhado)
+    .links, .contatos
+        flex-direction: column  // Empilha os itens
+        text-align: center      // Centraliza texto
+        gap: 10px               // Menor espaço entre itens
 
-  .espacador
-    display: none
+    // Remove espaçador (não necessário em mobile)
+    .espacador
+        display: none  // Esconde
 
+// DISPOSITIVOS MÓVEIS: Largura máxima de 613px
 @media (max-width: 613px)
-  header
-    height: 100%
+    // Cabeçalho com altura automática
+    header
+        height: 100%  // Altura conforme conteúdo
 
-  .logo
-    top: 25px
-    position: relative
+    // Ajuste de posição do logo
+    .logo
+        top: 25px        // 25px do topo
+        position: relative  // Para o posicionamento funcionar
 
-  .perfil
-    left: 147%
-    top: -40%
+    // Menu do perfil (ajustes de posição)
+    .perfil
+        left: 147%   // Posicionamento à esquerda
+        top: -40%    // Posicionamento acima
 
-  .perfil::after
-    width: 0 !important
-    border-color: transparent white transparent transparent !important
-    left: -2% !important
-    margin-left: -5px !important
+    // Ajuste do triângulo do menu do perfil
+    .perfil::after
+        width: 0 !important  // Remove largura
+        border-color: transparent white transparent transparent !important  // Seta para a direita
+        left: -2% !important           // Posicionamento à esquerda
+        margin-left: -5px !important   // Ajuste fino
 
-  .anterior, .proximo
-    padding-inline: 10px
-    font-size: 32px
-    top: 64%
+    // Botões do carrossel (ainda menores)
+    .anterior, .proximo
+        padding-inline: 10px  // Mais espaçamento
+        font-size: 32px       // Fonte menor
+        top: 64%              // Posicionamento vertical ajustado
 
-  .indicadores
-    bottom: 33px
+    // Indicadores do carrossel (ainda menores)
+    .indicadores
+        bottom: 33px  // Mais próximo do fundo
 
-  .indicador
-    height: 4px
-    width: 30px
-    margin: 0 4px
+    .indicador
+        height: 4px   // Altura mantida
+        width: 30px   // Largura menor
+        margin: 0 4px // Margem mantida
 
-  .produtos h2, .carrinho h2, .carrinhovazio
-    text-align: center
-    padding-inline: 0
+    // Títulos centralizados
+    .produtos h2, .carrinho h2, .carrinhovazio
+        text-align: center    // Centraliza
+        padding-inline: 0     // Remove espaçamento lateral
 
-  .produtos ul
-    justify-content: center
+    // Lista de produtos centralizada
+    .produtos ul
+        justify-content: center  // Centraliza
 
-  .produtos ul li
-    font-size: 30px
-    padding: 20px
+    // Itens da lista de produtos (categorias - fonte maior)
+    .produtos ul li
+        font-size: 30px   // Fonte maior
+        padding: 20px     // Mais espaçamento
 
-  .listacarrinho, .cadastro
-    padding-inline: 50px
+    // Carrinho e formulário com menos espaçamento
+    .listacarrinho, .cadastro
+        padding-inline: 50px  // Apenas 50px nas laterais
 
-  .produtocarrinho
-    display: flex
-    margin: 0
-    align-items: center
-    justify-content: space-between
-    gap: 40px
-    row-gap: 0
+    // Itens do carrinho (layout ajustado)
+    .produtocarrinho
+        display: flex
+        margin: 0                 // Remove margens
+        align-items: center       // Centraliza verticalmente
+        justify-content: space-between  // Espaço entre elementos
+        gap: 40px                 // Espaço entre colunas
+        row-gap: 0                // Sem espaço entre linhas
 
-  .produtocarrinho img
-    width: 45px
-    height: 70px
+    // Imagem do produto no carrinho (menor)
+    .produtocarrinho img
+        width: 45px   // Largura menor
+        height: 70px  // Altura menor
 
-  .produtocarrinho h3
-    font-size: 37px
+    // Nome do produto no carrinho (maior)
+    .produtocarrinho h3
+        font-size: 37px  // Fonte maior
 
-  .remover
-    width: 35px
+    // Ícone de remover (maior)
+    .remover
+        width: 35px  // Largura maior
 
-  .nomecarrinho
-    font-size: 30px
+    // Nome no carrinho (maior)
+    .nomecarrinho
+        font-size: 30px  // Fonte maior
 
-  .produtoquantidade, .tamanhoproduto, .precounidadecarrinho, .precototalcarrinho
-    font-size: 44px
+    // Containers de quantidade, tamanho, preço (fontes ainda maiores)
+    .produtoquantidade, .tamanhoproduto, .precounidadecarrinho, .precototalcarrinho
+        font-size: 44px  // Fontes muito grandes
 
-  .quantidade, .tamanho, .precounidade, .produtoprecototal
-    font-size: 28px
+    // Textos de quantidade, tamanho, preço (fontes maiores)
+    .quantidade, .tamanho, .precounidade, .produtoprecototal
+        font-size: 28px  // Fonte maior
 
-  .produtoquantidade input
-    width: 50px
+    // Input de quantidade (maior)
+    .produtoquantidade input
+        width: 50px  // Largura maior
 
-  .erroquantidade
-    font-size: 22px
-    margin-top: 10px
+    // Mensagem de erro de quantidade
+    .produtoquantidade
+      .erroquantidade
+        font-size: 12px   // Fonte menor
+        bottom: -33px   // ajusta o espaço para caber a mensagem
 
-  .cadastro input, #cidade, #primeironome, #segundonome
-    width: 55vh
+    // Campos do formulário (larguras em viewport height)
+    .cadastro input, #cidade, #primeironome, #segundonome
+        width: 55vh  // 55% da altura da viewport
 
-  #email
-    width: 327px
+    // Campo de email (largura específica)
+    #email
+        width: 327px  // Largura fixa
 
-  #cep
-    width: 358px
+    // Campo CEP (largura específica)
+    #cep
+        width: 358px  // Largura fixa
 
-  .links, .contatos
-    flex-direction: column
-    text-align: center
-    gap: 10px
+    // Rodapé em coluna (empilhado)
+    .links, .contatos
+        flex-direction: column  // Empilha
+        text-align: center      // Centraliza
+        gap: 10px               // Espaço entre itens
 
-  .espacador
-    display: none
+    // Remove espaçador
+    .espacador
+        display: none  // Esconde

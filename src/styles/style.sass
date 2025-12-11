@@ -1,30 +1,41 @@
-// SASS entry file — Sass 3.0 ready with @use
-@use 'variables' as *
-@use 'header'
-@use 'carousel'
-@use 'products'
-@use 'cart'
-@use 'forms'
-@use 'footer'
-@use 'scroll-button'
-@use 'modal'
-@use 'media-queries'
+// Caminho: src/styles/style.sass
+// Arquivo principal que importa todos os módulos SASS e define estilos globais
 
-// Global reset and base styles
+// Importação de todos os módulos SASS usando a nova sintaxe @use (Sass 3.0)
+@use 'variables' as *          // Importa variáveis globais (cores, espaçamentos, etc.)
+@use 'header'                  // Estilos do cabeçalho
+@use 'carousel'               // Estilos do carrossel de imagens
+@use 'products'               // Estilos da seção de produtos
+@use 'cart'                   // Estilos do carrinho de compras
+@use 'forms'                  // Estilos dos formulários
+@use 'footer'                 // Estilos do rodapé
+@use 'scroll-button'          // Estilos do botão de rolagem
+@use 'modal'                  // Estilos dos modais/pop-ups
+@use 'media-queries'          // Media queries para responsividade
+
+// Reset global e estilos base para todos os elementos
 *
-	padding: 0
-	margin: 0
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
-	scroll-behavior: smooth
+    padding: 0                 // Remove padding padrão
+    margin: 0                  // Remove margem padrão
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif  // Define fonte padrão
+    scroll-behavior: smooth    // Suaviza a rolagem ao clicar em links âncora
 
+// Classe utilitária para esconder elementos visualmente (acessibilidade)
 .sr-only
-	position: absolute
-	width: 1px
-	height: 1px
-	padding: 0
-	margin: -1px
-	overflow: hidden
-	clip: rect(0 0 0 0)
-	white-space: nowrap
-	border: 0
+    position: absolute         // Remove do fluxo normal
+    width: 1px                // Tamanho mínimo
+    height: 1px               // Tamanho mínimo
+    padding: 0                // Sem padding
+    margin: -1px              // Margem negativa para garantir que não ocupe espaço
+    overflow: hidden          // Esconde conteúdo que ultrapassar
+    clip: rect(0 0 0 0)       // Técnica de clipping para esconder
+    white-space: nowrap       // Impede quebra de linha
+    border: 0                 // Sem borda
 
+// Estilo para mensagem de confirmação de envio
+.mensagem-enviado
+    text-align: center        // Centraliza o texto
+    font-size: 35px           // Tamanho grande da fonte
+    font-weight: 600          // Peso semi-negrito
+    margin-bottom: 35px       // Espaço abaixo
+    margin-top: 10px          // Espaço acima

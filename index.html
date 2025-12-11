@@ -2,12 +2,36 @@
 <html lang="pt-br">
   <head>
     <meta charset="utf-8" />
+    <!-- 
+      VIEWPORT: 
+      - width=device-width: largura da viewport = largura do dispositivo
+      - initial-scale=1.0: zoom inicial = 100%
+      - Essencial para responsividade mobile
+    -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 
+      FAVICON: 
+      - Ícone que aparece na aba do navegador
+      - Localizado em pasta "Icones" na raiz do projeto
+    -->
     <link rel="shortcut icon" href="Icones/favicon.ico" type="image/x-icon">
+    <!-- Título da página (aparece na aba do navegador) -->
     <title>VR Moda Masculina</title>
   </head>
   <body>
+    <!-- 
+      DIV ROOT: 
+      - Container onde a aplicação React será renderizada
+      - O main.jsx usa document.getElementById('root') para encontrar este elemento
+    -->
     <div id="root"></div>
+    
+    <!-- 
+      SCRIPT PRINCIPAL: 
+      - type="module": carrega como módulo ES6
+      - src="/src/main.jsx": ponto de entrada da aplicação
+      - Vite processa este arquivo e injeta o bundle
+    -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

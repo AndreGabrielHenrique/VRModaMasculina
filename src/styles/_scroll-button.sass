@@ -1,33 +1,64 @@
+// Caminho: src/styles/_scroll-button.sass
+// Estilos do botão que rola a página para cima/para baixo
+
+// Botão principal
 .scrollpagina
-  display: flex
-  justify-content: center
-  align-items: center
-  position: fixed
-  bottom: 14px
-  right: 14px
+    display: flex
+    justify-content: center    // Centraliza horizontalmente
+    align-items: center        // Centraliza verticalmente
+    position: fixed           // Fixo na tela (não rola com a página)
+    bottom: 14px              // 14px da parte inferior
+    right: 14px               // 14px da direita
+    cursor: pointer           // Cursor de mão
+    width: 40px               // Largura fixa
+    height: 40px              // Altura fixa
+    padding: 5px              // Espaçamento interno
+    border-radius: 10px       // Bordas arredondadas
+    background-color: #202529  // Fundo escuro
+    border: 1px solid white   // Borda branca
+    z-index: 1000             // Sobre outros elementos
 
-  &.inferior::after
-    content: "↓"
-    font-size: 42px
-    font-weight: bold
-    color: white
-    position: absolute
-    top: -15px
-    left: 50%
-    transform: translateX(-50%)
-    transition: margin-top 350ms
+    // Remove estilos padrão do botão (navegadores diferentes)
+    appearance: none
+    -webkit-appearance: none
 
-  &.inferior:hover::after
-    margin-top: 6px
-    color: #202529
+    // Efeito hover (muda cores)
+    &:hover
+        background-color: white   // Fundo branco
+        border-color: #202529    // Borda escura
 
-  &.topo::after
-    content: "↑"
-    font-size: 42px
-    font-weight: bold
-    color: white
-    transition: margin-top 350ms
+    // Botão com seta para baixo (rolar para baixo)
+    &.inferior::after
+        content: "↓"             // Seta para baixo
+        font-size: 42px          // Tamanho grande
+        font-weight: bold        // Negrito
+        color: white            // Cor branca
+        position: absolute       // Posicionamento absoluto
+        top: -15px              // Acima do botão
+        left: 50%               // Centralizado horizontalmente
+        transform: translateX(-50%)  // Ajuste de centralização
+        transition: margin-top 350ms  // Transição suave para animação
 
-  &.topo:hover::after
-    margin-top: -12px
-    color: #202529
+    // Efeito hover na seta para baixo
+    &.inferior:hover::after
+        margin-top: 6px          // Move a seta 6px para baixo
+        font-size: 42px          // Mantém tamanho
+        font-weight: bold        // Mantém negrito
+        color: #202529          // Cor escura (combina com fundo branco no hover)
+
+    // Botão com seta para cima (rolar para o topo)
+    &.topo::after
+        content: "↑"             // Seta para cima
+        font-size: 42px          // Tamanho grande
+        font-weight: bold        // Negrito
+        color: white            // Cor branca
+        transition: margin-top 350ms  // Transição para animação
+        // OBSERVAÇÃO: NÃO tem position: absolute
+        // É centralizado pelo flex do container pai
+
+    // Efeito hover na seta para cima
+    &.topo:hover::after
+        margin-top: -12px        // Move a seta 12px para cima
+        font-size: 42px          // Mantém tamanho
+        font-weight: bold        // Mantém negrito
+        color: #202529          // Cor escura (combina com fundo branco no hover)

@@ -1,39 +1,41 @@
+// Caminho: src/styles/_modal.sass
+// Estilos para modais/pop-ups (como a imagem "em construção")
+
+/* FUNDO ESCURO + ANIMAÇÃO - Overlay que cobre a tela inteira */
 .fundoconstrucao
-  display: none
-  position: fixed
-  z-index: 9999
-  left: 0
-  top: 0
-  width: 100%
-  height: 100%
-  background-color: rgba(0, 0, 0, 0.7)
-  overflow: auto
-  align-items: center
-  justify-content: center
+    position: fixed        // Fixo na tela (não rola)
+    inset: 0               // Preenche toda a tela (top:0, right:0, bottom:0, left:0)
+    display: flex
+    align-items: center    // Centraliza verticalmente
+    justify-content: center // Centraliza horizontalmente
+    background-color: rgba(0,0,0,0)   // Começa totalmente transparente
+    opacity: 0             // Inicialmente invisível
+    transform: scale(0.98) // Levemente reduzido (efeito de zoom)
+    transition: background-color 300ms ease, opacity 300ms ease, transform 300ms ease  // Transições suaves
+    z-index: 9999          // Máxima prioridade (sobre tudo)
+    pointer-events: none   // Não intercepta cliques quando invisível
 
-.construcao
-  padding: 20px
-  text-align: center
-  border-radius: 8px
-  background-color: white
-  color: #202529
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3)
-  max-width: 700px
-  margin: 16px
+/* CLASSE PARA QUANDO O MODAL ESTÁ ABRINDO */
+.fundoconstrucaoabrindo
+    background-color: rgba(0,0,0,0.7)  // Fundo preto semi-transparente (70% opacidade)
+    opacity: 1                         // Totalmente visível
+    transform: scale(1)                // Tamanho normal (sem redução)
+    pointer-events: auto               // Habilita interação (cliques fecham o modal)
 
-#construcao
-  width: 100%
-  max-width: 700px
+/* CLASSE PARA QUANDO O MODAL ESTÁ FECHANDO */
+.fundoconstrucaofechando
+    background-color: rgba(0,0,0,0)   // Volta a ser transparente
+    opacity: 0                         // Invisível
+    transform: scale(0.98)             // Levemente reduzido novamente
+    pointer-events: none               // Desabilita interação
 
-.construcao button
-  margin-top: 20px
-  padding: 10px 15px
-  border-radius: 10px
-  color: white
-  background-color: #202529
-  border: none
-  cursor: pointer
-
-#construcao
-  width: 100%
-  max-width: 700px
+/* IMAGEM DENTRO DO MODAL - Sem container branco, apenas a imagem */
+.fundoconstrucao img
+    display: block           // Remove espaço abaixo da imagem
+    max-width: 90%          // No máximo 90% da largura da tela
+    max-height: 90vh        // No máximo 90% da altura da viewport
+    width: auto             // Largura automática (mantém proporção)
+    height: auto            // Altura automática (mantém proporção)
+    border-radius: 4px      // Bordas ligeiramente arredondadas
+    user-select: none       // Impede seleção da imagem
+    -webkit-user-drag: none // Impede arrastar a imagem (WebKit)

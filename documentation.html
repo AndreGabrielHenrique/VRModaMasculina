@@ -27,11 +27,68 @@ npm run preview
 # E2E tests:
 npx playwright install
 npm run test:e2e
-    </code></pre>
-    <h2>Notes</h2>
-    <ul>
-      <li>The <code>legacy/</code> folder contains the original static HTML/CSS/JS preserved for reference.</li>
-      <li>The visual layout should now be driven by React components and Sass partials; if you still see legacy markup, ensure the root <code>index.html</code> contains only the React mountpoint.</li>
-    </ul>
-  </body>
-</html>
+    <!doctype html>
+    <html lang="pt-br">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>VR Moda Masculina — Documentação</title>
+        <style>body{font-family:Arial,Helvetica,sans-serif;padding:20px;line-height:1.6}h1{margin-top:0}code{background:#f4f4f4;padding:2px 6px;border-radius:4px}</style>
+      </head>
+      <body>
+        <h1>VR Moda Masculina — Notas de Migração e Uso</h1>
+        <p>Resumo do estado atual do repositório, instruções de desenvolvimento, build e execução dos testes.</p>
+
+        <h2>Resumo</h2>
+        <ul>
+          <li>Aplicação portada para <strong>React + Vite</strong>, com código organizado em componentes dentro de <code>src/</code>.</li>
+          <li>Estilos migrados para <strong>SASS (sintaxe indented)</strong> e divididos em partials em <code>src/styles/</code>.</li>
+          <li>Testes E2E com <strong>Playwright</strong> em <code>e2e/</code> — instale navegadores com <code>npx playwright install</code>.</li>
+          <li>Versão estática original preservada em <code>legacy/</code> para referência.</li>
+        </ul>
+
+        <h2>Como executar localmente</h2>
+        <pre><code>powershell
+    npm install
+    npx playwright install   # apenas se for rodar os testes E2E
+    npm run dev
+
+    # Em outra janela, para testes E2E:
+    npm run test:e2e
+      </code></pre>
+
+        <h2>Build de produção</h2>
+        <pre><code>powershell
+    npm run build
+
+    # Build que reproduz comportamento 'legacy' (carrinho oculto por padrão):
+    npm run build:legacy
+      </code></pre>
+
+        <h2>Notas importantes</h2>
+        <ul>
+          <li>Se ocorrerem erros no dev server (esbuild), execute `npm install` e verifique a versão do Node. Mensagens de erro no terminal costumam indicar dependências faltantes.</li>
+          <li>Algumas alterações de código e estilo foram feitas e posteriormente editadas; revise as diferenças locais com <code>git status</code> e <code>git diff</code> antes de commitar.</li>
+          <li>Comentários explicativos em português foram adicionados a vários arquivos fonte — valide o conteúdo e remova/edite conforme sua preferência antes do commit final.</li>
+        </ul>
+
+        <h2>Arquivos e pastas de interesse</h2>
+        <ul>
+          <li><code>src/</code> — código React, entry em <code>src/main.jsx</code> e <code>src/App.jsx</code>.</li>
+          <li><code>src/components/</code> — Header, Carousel, Products, ProductCard, Cart, CheckoutForm, Footer, ScrollButton, icons.</li>
+          <li><code>src/styles/</code> — partials SASS e entry <code>style.sass</code>.</li>
+          <li><code>e2e/</code> — testes Playwright (homepage, cart interactions, visual snapshots).</li>
+          <li><code>legacy/</code> — versão estática original (HTML/CSS/JS) preservada.</li>
+        </ul>
+
+        <h2>Próximos passos recomendados</h2>
+        <ol>
+          <li>Revisar localmente com <code>git status</code> e <code>git diff</code>.</li>
+          <li>Rodar <code>npm run dev</code> e, se for o caso, <code>npm run test:e2e</code>.</li>
+          <li>Corrigir qualquer divergência visual/funcional e só então commitar em um único commit, se essa for a sua política.</li>
+        </ol>
+
+        <hr />
+        <p>Se quiser que eu reverta/recupere arquivos específicos para o estado do último commit ou que eu gere um diff detalhado dos arquivos modificados, diga quais arquivos prefere restaurar e eu executo.</p>
+      </body>
+    </html>

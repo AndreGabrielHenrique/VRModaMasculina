@@ -1,161 +1,176 @@
+// Caminho: src/styles/_header.sass
+// Estilos do cabeçalho (logo, busca, menu de navegação, perfil do usuário)
+
+// Animação de fade-in (aparecimento gradual)
 @keyframes fadeIn
-  from
-    opacity: 0
-  to
-    opacity: 1
+    from
+        opacity: 0          // Começa invisível
+    to
+        opacity: 1          // Termina totalmente visível
 
+// Estilos principais do cabeçalho
 header
-  background-color: #202529
-  color: white
-  padding: 20px
-  height: 100px
-  display: flex
-  flex-direction: row
-  flex-wrap: wrap
-  align-items: center
-  justify-content: space-between
+    background-color: #202529   // Fundo escuro
+    color: white               // Texto branco
+    padding: 20px              // Espaçamento interno
+    height: 100px              // Altura fixa
+    display: flex              // Layout flexbox
+    flex-direction: row        // Direção horizontal
+    flex-wrap: wrap            // Permite quebra de linha
+    align-items: center        // Alinha verticalmente ao centro
+    justify-content: space-between  // Espaço entre os elementos
 
-  .logo, .perfil img
-    width: 100px
-    height: 100%
+    // Logo e imagem do perfil
+    .logo, .perfil img
+        width: 100px          // Largura fixa
+        height: 100%          // Altura total do cabeçalho
 
-  form
-    display: flex
-    flex-direction: row
-    align-items: center
+    // Formulário de busca
+    form
+        display: flex
+        flex-direction: row
+        align-items: center
 
-    input
-      outline: none
-      width: 180px
-      height: 24px
-      padding: 7px
-      border-radius: 5px
-      margin-right: 5px
-      font-size: medium
+        input
+            outline: none          // Remove contorno padrão
+            width: 180px           // Largura do campo
+            height: 24px           // Altura do campo
+            padding: 7px           // Espaçamento interno
+            border-radius: 5px     // Bordas arredondadas
+            margin-right: 5px      // Espaço à direita
+            font-size: medium      // Tamanho médio da fonte
 
-    button
-      cursor: pointer
-      width: 40px
-      height: 40px
-      padding: 5px
-      border-radius: 10px
-      background-color: #202529
-      border-color: white
-      color: white
-      border: 1px solid white
+        button
+            cursor: pointer        // Cursor de mão
+            width: 40px            // Largura fixa
+            height: 40px           // Altura fixa
+            padding: 5px           // Espaçamento interno
+            border-radius: 10px    // Bordas arredondadas
+            background-color: #202529  // Fundo escuro
+            border: 1px solid white    // Borda branca
 
-  ul
-    display: flex
-    flex-direction: row
-    list-style-type: none
-    position: relative
+            svg
+                color: white      // Ícone branco
+                width: 20px       // Largura do ícone
+                height: 20px      // Altura do ícone
 
-    li
-      margin-right: 18px
-      cursor: pointer
-      position: relative
+        // Estilos para botão ativo (clicado)
+        button:active
+            background-color: white   // Fundo branco
+            color: #202529           // Texto escuro
+            border-color: #202529    // Borda escura
 
-      button
-        background: none
-        border: none
-        font-size: 24px
-        cursor: pointer
+            svg
+                color: #202529       // Ícone escuro
 
-      .perfil
-        position: absolute
-        top: 100%
-        right: 0
-        background-color: white
-        border: 1px solid #ddd
-        border-radius: 5px
-        min-width: 150px
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
-        z-index: 1000
+    // Lista de ícones do menu
+    ul
+        display: flex
+        flex-direction: row
+        list-style-type: none   // Remove marcadores da lista
 
-        .menu
-          display: flex
-          flex-direction: column
-          padding: 0
-
-          .menu-item
-            display: block
-            width: 100%
-            text-align: left
-            padding: 12px 16px
-            background: none
-            border: none
-            color: #202529
-            cursor: pointer
-            font-size: 14px
-            transition: background-color 0.2s
-
-            &:hover
-              background-color: #f0f0f0
-
-            &:first-child
-              border-radius: 5px 5px 0 0
+        li
+            margin-right: 18px   // Espaço entre os itens
+            cursor: pointer      // Cursor de mão
 
             &:last-child
-              border-radius: 0 0 5px 5px
+                margin-right: 0px  // Remove margem do último item
 
-  ul li svg
-    width: 40px
-    height: 40px
-    color: white
+            a
+                display: inline-block  // Permite dimensionamento
 
-  ul li svg:hover
-    color: #999
+            svg
+                width: 40px      // Tamanho dos ícones
+                height: 40px
+                color: white     // Cor branca
 
-  ul li svg:active
-    color: #5085ca
+                &:hover
+                    color: #999  // Cinza claro no hover
 
-  .menu, .perfil
-    visibility: hidden
-    font-weight: 500
-    width: 110px
-    background-color: rgba(255, 255, 255, 0.9)
-    color: #202529
-    text-align: center
-    border-radius: 6px
-    padding: 12px 0
-    position: absolute
-    z-index: 1
-    top: 95%
-    right: 20%
-    font-size: 15px
-    line-height: 30px
-    cursor: default
+                &:active
+                    color: #5085ca  // Azul no clique
 
-  .perfil
-    width: 225px
-    line-height: 20px
-    right: 147%
-    top: -40%
+    // Contêineres para menus suspensos
+    .abrirmenu, .verperfil
+        position: relative      // Para posicionamento absoluto dos filhos
+        display: inline-block
 
-  .menu::after, .perfil::after
-    content: ""
-    position: absolute
-    bottom: 100%
-    right: 10%
-    margin-right: -5px
-    border-width: 5px
-    border-style: solid
-    border-color: transparent transparent white transparent
+    // Estilos dos menus suspensos
+    .menu, .perfil
+        visibility: hidden      // Inicialmente escondido
+        font-weight: 500        // Peso da fonte
+        width: 110px            // Largura do menu
+        background-color: rgba(255, 255, 255, 0.9)  // Fundo branco semi-transparente
+        color: #202529          // Texto escuro
+        text-align: center      // Texto centralizado
+        border-radius: 6px      // Bordas arredondadas
+        padding: 12px 0         // Espaçamento interno
+        position: absolute      // Posicionamento absoluto
+        z-index: 1              // Sobre outros elementos
+        top: 95%                // Abaixo do elemento pai
+        right: 20%              // Alinhado à direita
+        font-size: 15px         // Tamanho da fonte
+        line-height: 30px       // Altura da linha
+        animation: fadeIn 1s    // Animação de aparecimento
+        cursor: default         // Cursor padrão (não clicável)
 
-  .perfil::after
-    left: 100% !important
-    top: 21px !important
-    border-color: transparent transparent transparent white !important
+    // Itens do menu são clicáveis
+    .menu p
+        cursor: pointer
 
-  .mostrarmenu, .mostrarperfil
-    visibility: visible
-    opacity: 0.9
-    animation: fadeIn 1s
+    // Menu do perfil (maior)
+    .perfil
+        width: 225px            // Largura maior
+        line-height: 20px       // Altura da linha menor
+        right: 147%             // Posicionamento à esquerda
+        top: -40%               // Posicionamento acima
 
-  form button:active, form button:hover
-    background-color: white
-    color: #202529
-    border-color: #202529
+        img
+            border-radius: 100%   // Imagem circular
+            object-fit: cover     // Cobre o espaço sem distorcer
 
-  form button:active svg, form button:hover svg
-    color: #202529
+    // Triângulos indicadores dos menus (setinhas)
+    .menu::after, .perfil::after
+        content: ""             // Conteúdo vazio
+        position: absolute      // Posicionamento absoluto
+        bottom: 100%            // Acima do menu
+        right: 10%              // Alinhado à direita
+        margin-right: -5px      // Ajuste fino
+        border-width: 5px       // Tamanho do triângulo
+        border-style: solid     // Estilo sólido
+        border-color: transparent transparent white transparent  // Triângulo branco apontando para baixo
+
+    // Ajuste específico para o triângulo do perfil
+    .perfil::after
+        left: 100% !important      // À direita do elemento
+        top: 21px !important       // Posicionamento vertical
+        border-color: transparent transparent transparent white !important  // Triângulo apontando para a esquerda
+
+    // Classes para mostrar os menus
+    .mostrarmenu, .mostrarperfil
+        visibility: visible     // Torna visível
+        opacity: 0.9            // Quase totalmente opaco
+        animation: fadeIn 1s    // Animação de aparecimento
+
+    // Efeitos hover nos itens do menu do perfil
+    .verperfil:hover, .alterarsenha:hover, .logout:hover
+        background-color: #202529  // Fundo escuro
+        color: white              // Texto branco
+
+    // Botão "Ver perfil completo"
+    .verperfilcompleto
+        font-size: 15px         // Tamanho da fonte
+        padding: 10px 15px      // Espaçamento interno
+        border-radius: 10px     // Bordas arredondadas
+        color: white           // Texto branco
+        background-color: #202529  // Fundo escuro
+        border: 1px solid white    // Borda branca
+        cursor: pointer         // Cursor de mão
+        margin-top: 10px        // Espaço acima
+
+        // Estado ativo (clicado)
+        &:active
+            background-color: white   // Fundo branco
+            color: #202529           // Texto escuro
+            border-color: #202529    // Borda escura
+            text-decoration: none    // Remove sublinhado

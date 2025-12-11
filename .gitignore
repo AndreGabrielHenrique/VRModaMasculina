@@ -1,15 +1,35 @@
-node_modules/
-dist/
-.env
-/.idea
-/.vscode
-*.log
-*.docx
-.DS_Store
-Thumbs.db
-test-results/
-playwright-report/
-.playwright/
-coverage/
-npm-debug.log*
-*.tmp
+# CAMINHO: .gitignore
+# Lista de arquivos/pastas que o Git deve ignorar (não versionar)
+
+# DEPENDÊNCIAS DO NODE
+node_modules/           # Pasta com todas as dependências npm
+
+# BUILD/PRODUÇÃO
+dist/                   # Pasta de build gerada pelo Vite
+
+# VARIÁVEIS DE AMBIENTE
+.env                    # Arquivo com variáveis sensíveis
+
+# CONFIGURAÇÕES DE IDEs
+/.idea                  # Configurações do JetBrains IDEA
+/.vscode                # Configurações do VS Code
+
+# ARQUIVOS DE LOG
+*.log                   # Qualquer arquivo .log
+npm-debug.log*          # Logs de debug do npm
+
+# ARQUIVOS DO OFFICE
+*.docx                  # Documentos do Word
+
+# ARQUIVOS DO SISTEMA OPERACIONAL
+.DS_Store               # Metadados do macOS
+Thumbs.db               # Miniaturas do Windows
+
+# TESTES E RELATÓRIOS
+test-results/           # Resultados de testes
+playwright-report/      # Relatórios do Playwright
+.playwright/            # Cache/configurações do Playwright
+coverage/               # Relatório de cobertura de código
+
+# ARQUIVOS TEMPORÁRIOS
+*.tmp                   # Arquivos temporários

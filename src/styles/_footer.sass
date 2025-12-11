@@ -1,29 +1,40 @@
+// Caminho: src/styles/_footer.sass
+// Estilos do rodapé (links, contatos, informações)
+
+// Elemento footer principal
 footer
-  background-color: #202529
-  color: white
-  flex-direction: column
+    background-color: #202529  // Fundo escuro
+    color: white              // Texto branco
+    flex-direction: column    // Organização vertical (se usado com flex)
 
-  .links, .contatos
-    display: flex
-    gap: 40px
-    font-size: 18px
-    justify-content: center
-    padding: 20px
+// Container de links (navegação)
+.links, .contatos
+    display: flex            // Layout flexbox
+    gap: 40px               // Espaço entre os itens
+    font-size: 18px         // Tamanho médio
+    justify-content: center // Centraliza horizontalmente
+    padding: 20px           // Espaçamento interno
 
-  .links li, .contatos li
-    list-style-type: none
+// Itens da lista (remover marcadores)
+.links li, .contatos li
+    list-style-type: none   // Remove os bullets/marcadores
 
-  .link
-    cursor: pointer
+// Links clicáveis
+.link
+    cursor: pointer  // Cursor de mão
 
-  .links li:hover
-    text-decoration: underline
+// Efeitos hover nos links
+.links li:hover
+    text-decoration: underline  // Sublinhado ao passar o mouse
 
-  .links li:active
-    text-decoration: none
+// Efeito active (clicado)
+.links li:active
+    text-decoration: none  // Remove sublinhado
 
-  .separador
-    border: 1px solid #99999962
+// Linha separadora
+.separador
+    border: 1px solid #99999962  // Borda semi-transparente
 
-  .espacador
-    background-color: white
+// Espaçador (provavelmente para criar espaço entre seções)
+.espacador
+    background-color: white  // Fundo branco

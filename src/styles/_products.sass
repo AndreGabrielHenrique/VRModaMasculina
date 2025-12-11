@@ -1,80 +1,124 @@
+// Caminho: src/styles/_products.sass
+// Estilos da seção de produtos (listagem, filtros, cards de produto)
+
+// Container principal dos produtos
 .produtos
-  bottom: 30px
-  position: relative
+    bottom: 30px           // Distância da parte inferior
+    position: relative     // Para posicionamento relativo de elementos internos
 
-  h2
-    margin: 10px 0 10px 0
-    font-weight: 600
-    font-size: 50px
-    padding-inline: 150px
+    // Estilos de títulos e elementos relacionados
+    h2, .carrinho h2, #enviado, .carrinhovazio
+        margin: 10px 0 10px 0   // Margem vertical
+        font-weight: 600        // Peso semi-negrito
+        font-size: 50px         // Tamanho grande
 
-  nav
-    display: flex
-    flex-wrap: wrap
-    justify-content: center
-    gap: 60px
+    // Alinhamento e espaçamento
+    h2, .carrinho h2, ul, .carrinhovazio
+        padding-inline: 150px   // Espaçamento horizontal interno
 
-  ul
-    padding-inline: 150px
+    // Navegação (filtros/categorias)
+    nav
+        display: flex
+        flex-wrap: wrap         // Permite quebra de linha
+        justify-content: center // Centraliza os itens
+        gap: 60px               // Espaço entre os itens
 
-.produto
-  background-color: #eeeeee
-  padding: 20px
+    // Card de produto individual
+    .produto
+        background-color: #eeeeee   // Fundo cinza claro
+        padding: 20px               // Espaçamento interno
+        width: 300px                // Largura fixa
 
-  img
-    object-fit: cover
-    width: 300px
-    height: 500px
-    margin-bottom: 10px
+        // Imagem do produto
+        img
+            object-fit: cover       // Cobre o espaço sem distorcer
+            width: 100%             // Largura total do card
+            height: 500px           // Altura fixa
+            margin-bottom: 10px     // Espaço abaixo da imagem
 
-  p
-    line-height: 25px
+        // Estilo base para parágrafos (apenas line-height)
+        p
+            line-height: 25px       // Altura da linha
 
-  .descricao, .preco
-    font-weight: bold
+        // Classes específicas para texto
+        .descricao, .preco
+            font-weight: bold       // Texto em negrito
 
-  button
-    width: 300px
-    height: 60px
-    font-size: x-large
-    color: white
-    margin-top: 10px
+        // Descrição do tamanho (inicialmente escondida)
+        .descricaotamanho
+            display: none
 
-.paginacao
-  list-style-type: none
-  display: flex
-  gap: 6px
-  position: absolute
-  bottom: -40px
-  left: 150px
+        // Botão/ícone de favoritar
+        .favoritar
+            float: right            // Flutua à direita
+            position: relative      // Para ajustes finos
+            bottom: 5px             // Move 5px para cima
+            cursor: pointer         // Cursor de mão
+            margin: 0               // Remove margens
+            padding: 0              // Remove padding
+            width: 40px             // Largura fixa
+            height: 40px            // Altura fixa
+            line-height: 0          // Remove herança de line-height (importante!)
 
-  li
-    padding: 8px
-    cursor: pointer
-    border: 1px solid
-    border-color: #eeeeee
+            // Ícone SVG dentro do botão
+            svg
+                width: 40px         // Tamanho do ícone
+                height: 40px
+                color: #cf3535      // Vermelho
 
-  li:active, li:first-child:active
-    color: white
-    background-color: #5085ca
-    border-color: #5085ca
+        // Botão "Adicionar ao Carrinho"
+        button
+            width: 100%             // Largura total do card
+            height: 60px            // Altura fixa
+            font-size: x-large      // Texto grande
+            color: white           // Texto branco
+            margin-top: 10px        // Espaço acima
+            cursor: pointer         // Cursor de mão
+            padding: 5px            // Espaçamento interno
+            border-radius: 10px     // Bordas arredondadas
+            background-color: #202529  // Fundo escuro
+            border: 1px solid white    // Borda branca
 
-  li:first-child
-    border-radius: 5px 0 0 5px
-    color: white
-    background-color: #202529
-    border-color: #5085ca
+            // Estados ativos (clicados)
+            &:active, a:active
+                background-color: white   // Fundo branco
+                color: #202529           // Texto escuro
+                border-color: #202529    // Borda escura
+                text-decoration: none    // Remove sublinhado
 
-  li:last-child
-    border-radius: 0 5px 5px 0
+    // Lista de categorias/filtros
+    ul
+        display: flex
+        flex-direction: row         // Linha horizontal
+        list-style-type: none       // Remove marcadores
+        margin-top: 30px            // Espaço acima
 
-.favorito
-  width: 40px
-  color: #cf3535
-  float: right
-  position: relative
-  bottom: 5px
-  cursor: pointer
+        // Itens da lista (categorias)
+        li
+            padding: 8px            // Espaçamento interno
+            cursor: pointer         // Cursor de mão
+            border: 1px solid       // Borda padrão
+            border-color: #eeeeee   // Cor da borda (cinza claro)
 
-.descricaotamanho
-  display: none
+            // Links dentro dos itens
+            a
+                color: inherit          // Herda a cor do pai
+                text-decoration: none   // Remove sublinhado
+                display: block          // Ocupa toda a área clicável
+
+        // Estados dos itens
+        li:active, li:first-child:active
+            color: #202529           // Texto escuro
+            background-color: #5085ca  // Fundo azul
+            border-color: #202529    // Borda escura
+
+        // Primeiro item (estilo diferente - ativo por padrão)
+        li:first-child
+            border-radius: 5px 0 0 5px  // Arredonda apenas o lado esquerdo
+            color: white               // Texto branco
+            background-color: #202529  // Fundo escuro
+            border-color: #5085ca      // Borda azul
+
+        // Último item
+        li:last-child
+            border-radius: 0 5px 5px 0  // Arredonda apenas o lado direito

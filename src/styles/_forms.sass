@@ -1,126 +1,333 @@
+// Caminho: src/styles/_forms.sass
+// Estilos dos formulários (cadastro, checkout, etc.)
+
+// Container principal do formulário de cadastro
 .cadastro
-  display: none
-  flex-wrap: wrap
-  flex-direction: column
-  row-gap: 15px
-  padding-inline: 153px
-  margin: 40px 0 40px 0
+    display: block           // Exibição em bloco
+    flex-wrap: wrap         // Permite quebra de linha (se usado com flex)
+    flex-direction: column  // Direção vertical (se usado com flex)
+    row-gap: 15px           // Espaço vertical entre linhas
+    padding-inline: 153px   // Espaçamento horizontal interno
+    margin: 40px 0          // Margem vertical
 
-  label
-    display: block
-    font-weight: 500
-    margin-bottom: 5px
+    // Labels dos campos
+    label
+        display: block      // Ocupa linha inteira
 
-  input[type="text"],
-  input[type="email"]
-    padding: 9px
-    border: 1px solid #dcdedd
-    outline: none
-    border-radius: 7px
-    font-size: 20px
-    width: 100%
-
-    &:focus
-      border-color: #202529
-      background-color: #f9f9f9
-
-  input[type="checkbox"]
-    margin-right: 10px
-    cursor: pointer
-
-  .input
-    position: relative
-    display: flex
-    flex-direction: column
-
-    &.erro
-      input
-        border-color: #d9534f
-        background-color: #fff5f5
-
-  .errocadastro
-    visibility: hidden
-    font-weight: 450
-    background-color: #dcdedd
-    color: #202529
-    text-align: center
-    max-width: fit-content
-    border-radius: 6px
-    padding: 8px 12px
-    position: absolute
-    z-index: 1000
-    font-size: 15px
-    animation: fadeIn 0.5s
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.32)
-    white-space: nowrap
-
-    &::after
-      content: ""
-      position: absolute
-      bottom: 100%
-      left: 50%
-      transform: translateX(-50%)
-      margin-left: -5px
-      border-width: 5px
-      border-style: solid
-      border-color: transparent transparent #dcdedd transparent
-      filter: drop-shadow(2px 0 rgba(0, 0, 0, 0.32))
-      border-radius: 3px
-
-    &.mostrarerrocadastro
-      visibility: visible
-      opacity: 1
-      animation: fadeIn 0.5s
-      margin-top: 8px
-      margin-left: 0
-
-      .errado
-        color: #202529
-        margin: 0
-        font-weight: 500
-
-  .correto
-    color: #5cb85c
-    margin: 0
-    font-weight: 500
-
-  .enviar
-    display: flex
-    justify-content: center
-    margin-top: 20px
-
+    // Botão do formulário
     button
-      padding: 12px 30px
-      background-color: #202529
-      color: white
-      border: none
-      border-radius: 5px
-      cursor: pointer
-      font-size: 16px
-      font-weight: 500
-      transition: background-color 0.3s
+        font-size: 20px        // Tamanho grande
+        padding: 10px 15px     // Espaçamento interno
+        border-radius: 10px    // Bordas arredondadas
+        color: white          // Texto branco
+        background-color: #202529  // Fundo escuro
+        border: 1px solid white    // Borda branca
+        cursor: pointer        // Cursor de mão
 
-      &:hover
-        background-color: #1a1d21
+        // Estado ativo (clicado)
+        &:active
+            background-color: white   // Fundo branco
+            color: #202529           // Texto escuro
+            border-color: #202529    // Borda escura
+            text-decoration: none    // Remove sublinhado
 
+// Container dos campos do cliente (agrupamento flex)
+.camposcliente
+    display: flex
+    flex-wrap: wrap     // Permite quebra de linha
+    gap: 15px           // Espaço entre os campos
+
+// Container individual de cada campo
+.input
+    position: relative      // Para posicionamento absoluto de elementos filhos
+    display: flex
+    flex-direction: column // Organização vertical
+
+    // Label do campo
+    label
+        font-size: 17px     // Tamanho médio
+        margin-bottom: 6px  // Espaço abaixo do label
+
+    // Input do campo
+    input
+        padding: 9px           // Espaçamento interno
+        height: 45px           // Altura fixa
+        border: 1px solid #dcdedd  // Borda cinza claro
+        outline: none          // Remove contorno ao focar
+        border-radius: 7px     // Bordas arredondadas
+        font-size: 20px        // Tamanho grande
+        box-sizing: border-box // Inclui padding e border na largura
+
+// Larguras específicas para alguns campos
+#primeironome, #segundonome, #email
+    width: 480px  // Largura fixa
+
+#cidade
+    width: 640px  // Largura maior
+
+#estado, #cep
+    width: 420px  // Largura fixa
+
+// Container especial para o campo de email (com @ fixo)
+.campoemail
+    display: flex
+    align-items: center    // Alinha verticalmente
+    height: 45px           // Altura fixa
+    border: 1px solid #dcdedd  // Borda
+    border-radius: 7px     // Bordas arredondadas
+    overflow: hidden       // Esconde transbordamento
+
+    // Elemento @ fixo (antes do input)
+    .at
+        display: flex
+        align-items: center
+        justify-content: center
+        width: 20px               // Largura original
+        height: 100%              // Altura total do container
+        background: #fcf9f9       // Fundo levemente cinza
+        border-right: 1px solid #dcdedd  // Linha divisória
+        padding-inline: 15px      // Espaçamento horizontal
+
+        // Ícone SVG do @
+        svg
+            width: 16px   // Tamanho original
+            height: 16px
+
+// Input de email (dentro do container especial)
+#email
+    border: none          // Remove borda (já tem no container)
+    outline: none         // Remove contorno
+    font-size: 20px       // Tamanho grande
+    padding: 0 9px        // Espaçamento horizontal
+    height: 45px          // Altura fixa
+    flex: 1               // Ocupa o espaço restante
+
+// Containers com posicionamento relativo (para dropdowns)
+#campocidade, #campoestado, #campocep
+    position: relative
+
+// Campo de estado (dropdown estilizado)
+#estado
+    display: block           // Exibição em bloco
+    padding: 9px 30px 9px 9px  // Espaçamento interno extra à direita (para seta)
+    border: 1px solid #dcdedd  // Borda
+    outline: none            // Remove contorno
+    border-radius: 7px       // Bordas arredondadas
+    font-size: 20px          // Tamanho grande
+    width: 100%              // Largura total
+    box-sizing: border-box   // Inclui padding na largura
+    background: white        // Fundo branco
+
+// Seta do dropdown (>) - girada 90 graus
+.seta
+    position: absolute       // Sobre o campo
+    top: 69%                // Posicionamento vertical
+    right: 5px              // Alinhado à direita
+    transform: translateY(-50%) rotate(90deg)  // Centraliza e gira
+    pointer-events: none    // Não interfere com cliques
+    font-size: 28px         // Tamanho grande
+    font-weight: bolder     // Negrito
+    color: #999             // Cinza
+    z-index: 6              // Sobre o campo
+
+// Lista de estados (dropdown)
 #listaestados
-  position: absolute
-  top: 100%
-  left: 0
-  width: 100%
-  background-color: white
-  border: 1px solid #dcdedd
-  border-radius: 7px
-  max-height: 150px
-  overflow-y: auto
-  display: none
-  z-index: 1000
-  margin-top: 5px
+    position: absolute      // Posicionamento absoluto
+    top: 100%              // Abaixo do campo
+    left: 0                // Alinhado à esquerda
+    width: 100%            // Mesma largura do campo
+    background-color: white  // Fundo branco
+    border: 1px solid #dcdedd  // Borda
+    border-radius: 7px     // Bordas arredondadas
+    max-height: 150px      // Altura máxima (com scroll)
+    overflow-y: auto       // Scroll vertical se necessário
+    display: none          // Inicialmente escondido
+    z-index: 1000          // Sobre outros elementos
 
-  div
-    padding: 8px 12px
-    cursor: pointer
-    transition: background-color 0.2s
+    // Itens da lista
+    .lista-estado-item
+        padding: 9px        // Espaçamento interno
+        cursor: pointer     // Cursor de mão
+        transition: background-color 0.2s  // Transição suave
 
-    &:hover
-      background-color: #f0f0f0
+        // Efeito hover
+        &:hover
+            background-color: #f0f0f0  // Cinza bem claro
+
+        // Item selecionado
+        &.selecionado
+            background-color: #202529  // Fundo escuro
+            color: white              // Texto branco
+
+// Container do checkbox de termos
+#checkboxtermos
+    display: flex
+    justify-content: flex-start  // Alinha à esquerda
+    position: relative
+    margin: 18px 0 20px 0       // Margem vertical
+
+    // Wrapper do checkbox (label + input)
+    .checkbox-wrapper
+        position: relative
+        display: inline-flex    // Layout em linha
+        align-items: center     // Alinha verticalmente
+        gap: 8px                // Espaço entre checkbox e texto
+
+        // Checkbox estilizado
+        input[type="checkbox"]
+            width: 18px          // Largura
+            height: 18px         // Altura
+            margin: 0            // Remove margem
+            position: relative   // Para posicionamento absoluto do ::before
+            appearance: none     // Remove estilo padrão do navegador
+            border-radius: 4px   // Bordas ligeiramente arredondadas
+            border: 1px solid #dcdedd  // Borda cinza claro
+
+            // Checkmark (✔) usando clip-path
+            &::before
+                content: ""      // Conteúdo vazio
+                position: absolute
+                top: 50%         // Centraliza verticalmente
+                left: 50%        // Centraliza horizontalmente
+                width: 12px      // Tamanho do check
+                height: 12px
+                clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%)  // Forma de checkmark
+                transform: translate(-50%, -50%) scale(0)  // Inicialmente invisível (escala 0)
+                transform-origin: center  // Transformação a partir do centro
+                transition: 0.125s transform ease-in-out  // Animação rápida
+                box-shadow: inset 2rem 2rem white  // Cor branca para o check
+
+            // Checkbox marcado
+            &:checked
+                background-color: #202529  // Fundo escuro
+                &::before
+                    transform: translate(-50%, -50%) scale(1)  // Mostra o check (escala 1)
+
+        // Texto do checkbox
+        p
+            margin: 0            // Remove margem
+            font-size: 16px      // Tamanho fixo
+            line-height: 1.2     // Altura da linha
+            text-align: left     // Alinhado à esquerda
+
+        // Mensagem de erro do checkbox
+        .errocadastro
+            visibility: visible  // Visível quando ativado
+            top: calc(100% + 6px)  // Abaixo do checkbox
+            left: 0              // Alinhado à esquerda
+            transform: none      // Sem transformação
+            white-space: nowrap  // Texto em uma linha
+            display: inline-block
+            padding: 6px         // Igual aos inputs
+            border-radius: 7px   // Igual aos inputs
+            text-align: left     // Alinhado à esquerda
+            max-width: fit-content  // Largura conforme o texto
+            font-size: 20px      // Igual aos inputs
+            z-index: 1001        // Sobre outros elementos
+            background-color: rgba(220,222,221,0.92)  // Fundo semi-transparente
+            color: #202529       // Texto escuro
+            box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.32)  // Sombra
+
+            // Triângulo/seta acima do balão
+            &::after
+                content: ""
+                position: absolute
+                bottom: 100%      // Acima do balão
+                left: 50%         // Centralizado horizontalmente
+                transform: translateX(-50%)  // Centraliza
+                border-width: 5px
+                border-style: solid
+                border-color: transparent transparent rgba(220,222,221,0.92) transparent  // Triângulo apontando para baixo
+                filter: drop-shadow(2px 0 rgba(0, 0, 0, 0.32))  // Sombra na seta
+
+            // Classe para mostrar o erro
+            &.mostrarerrocadastro
+                visibility: visible
+                opacity: 0.95
+
+// Estilo alternativo para checkboxes no formulário de cadastro
+.cadastro input[type="checkbox"]
+    appearance: none             // Remove estilo padrão
+    border-radius: 0.25rem      // Bordas arredondadas
+    border: 1px solid #dcdedd   // Borda cinza claro
+    outline: none               // Remove contorno
+    width: 1.15rem              // Largura
+    height: 1.15rem             // Altura
+    position: relative          // Para ::before
+
+    // Checkmark (✔)
+    &::before
+        content: ""
+        position: absolute
+        top: 50%
+        left: 50%
+        width: 0.75rem
+        height: 0.75rem
+        clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%)  // Forma de checkmark
+        transform: translate(-50%, -50%) scale(0)  // Inicialmente invisível
+        transform-origin: center
+        transition: 0.125s transform ease-in-out
+        box-shadow: inset 2rem 2rem white
+
+    // Checkbox marcado
+    &:checked
+        background-color: #202529  // Fundo escuro
+        &::before
+            transform: translate(-50%, -50%) scale(1)  // Mostra o check
+
+/* TOOLTIP - Estilos gerais para mensagens de erro */
+.errocadastro
+    visibility: hidden          // Inicialmente escondido
+    background-color: rgba(220,222,221,0.92)  // Fundo semi-transparente
+    color: #202529             // Texto escuro
+    text-align: center         // Texto centralizado
+    max-width: fit-content     // Largura conforme conteúdo
+    border-radius: 6px         // Bordas arredondadas
+    padding: 5px               // Espaçamento interno
+    position: absolute         // Sobre outros elementos
+    z-index: 1001              // Alta prioridade
+    font-size: 15px            // Tamanho pequeno
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.32)  // Sombra
+    top: calc(100% + 6px)      // Abaixo do elemento pai
+    left: 50%                  // Centralizado horizontalmente
+    transform: translateX(-50%)  // Ajuste de centralização
+    white-space: nowrap        // Texto em uma linha
+
+    // Triângulo/seta
+    &::after
+        content: ""
+        position: absolute
+        bottom: 100%           // Acima do balão
+        left: 50%              // Centralizado
+        transform: translateX(-50%)
+        border-width: 5px
+        border-style: solid
+        border-color: transparent transparent rgba(220,222,221,0.92) transparent  // Triângulo para baixo
+        filter: drop-shadow(2px 0 rgba(0, 0, 0, 0.32))  // Sombra na seta
+
+// Classe para mostrar o tooltip
+.mostrarerrocadastro
+    visibility: visible  // Torna visível
+    opacity: 0.95        // Quase totalmente opaco
+    animation: fadeIn 0.3s  // Animação de aparecimento
+
+// Ajuste específico para tooltip do checkbox de termos
+#checkboxtermos .errocadastro
+    max-width: 260px      // Largura máxima maior
+    white-space: normal   // Permite quebra de linha
+    text-align: center    // Texto centralizado
+
+// Animação de fade-in para os tooltips
+@keyframes fadeIn
+    0%
+        opacity: 0        // Começa invisível
+    100%
+        opacity: 1        // Termina visível
+
+/* FADE PARA OS BALÕES DE ERRO - Transição de opacidade */
+.errocadastro
+    opacity: 0                     // Inicialmente transparente
+    transition: opacity .3s ease   // Transição suave
+
+.mostrarerrocadastro
+    opacity: 1  // Totalmente visível

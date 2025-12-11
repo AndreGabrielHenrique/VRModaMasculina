@@ -1,25 +1,112 @@
+// Caminho: src/styles/_cart.sass
+// Estilos do carrinho de compras (itens, quantidades, totais)
+
+// Container principal do carrinho
 .carrinho
-  display: none
+    transition: opacity 300ms ease, transform 300ms ease  // Transições suaves
+    opacity: 0           // Inicialmente invisível (será mostrado com JS)
+    transform: translateY(-12px)  // Posicionado 12px acima (animação de entrada)
+    pointer-events: none // Desabilita interação quando escondido
 
+    // Estado "entrando" (quando o carrinho é aberto)
+    &.carrinhoentrando
+        opacity: 1                  // Totalmente visível
+        transform: translateY(0)    // Posição normal
+        pointer-events: auto        // Habilita interação
+
+    // Estado "saindo" (quando o carrinho está fechando)
+    &.carrinhosaindo
+        opacity: 0                  // Invisível
+        transform: translateY(-12px) // Sobe 12px
+        pointer-events: none        // Desabilita interação
+
+    // Título do carrinho
+    h2
+        margin: 10px 0 10px 0       // Margem vertical
+        font-weight: 600            // Peso semi-negrito
+        font-size: 50px             // Tamanho grande
+        padding-inline: 150px       // Espaçamento horizontal interno
+
+// Mensagem quando o carrinho está vazio
+.carrinhovazio
+    font-size: 30px                 // Tamanho médio-grande
+    margin-top: 30px                // Espaço acima
+    padding-inline: 150px           // Espaçamento horizontal
+    font-weight: 550                // Peso médio-negrito
+    margin-bottom: 35px             // Espaço abaixo
+    text-align: left                // Alinhado à esquerda
+
+// Item individual no carrinho
 .produtocarrinho
-  display: flex
-  justify-content: space-between
-  flex-wrap: wrap
-  border-bottom: 1px solid #999
-  padding: 15px 0 15px 0
-  margin: 0 148px 0px 148px
-  align-items: center
+    display: flex
+    justify-content: space-between  // Espaço entre os elementos
+    flex-wrap: wrap                 // Permite quebra de linha
+    border-bottom: 1px solid #999   // Linha separadora
+    padding: 15px 0 15px 0          // Espaçamento vertical interno
+    margin: 0 148px 0px 148px       // Margem horizontal
+    align-items: center             // Alinha verticalmente ao centro
 
-.produtocarrinho img
-  width: 55px
-  height: 90px
+    // Remove borda do último item
+    &:last-child
+        border-bottom: none    // Sem linha separadora
+        padding-bottom: 0      // Remove padding inferior
 
+    // Imagem do produto no carrinho
+    img
+        width: 55px     // Largura fixa
+        height: 90px    // Altura fixa
+
+    // Nome do produto
+    h3
+        font-size: 25px  // Tamanho médio
+
+// Ícone/botão "remover" do carrinho
 .remover
-  width: 25px
-  fill: #aa1e1e
+    width: 25px            // Largura fixa
+    fill: #aa1e1e          // Cor vermelha (preenchimento SVG)
+    cursor: pointer        // Cursor de mão
 
+    // Efeito hover
+    &:hover
+        fill: #999         // Cinza claro ao passar o mouse
+
+// Classes para texto em negrito
 .nomecarrinho, .precounidade, .produtoprecototal
-  font-weight: bold
+    font-weight: bold  // Texto em negrito
 
-.remover:hover
-  fill: #999
+// Classes com tamanho de fonte específico
+.quantidade, .tamanho, .precounidade, .produtoprecototal
+    font-size: 20px  // Tamanho médio
+
+// Campo de input para quantidade
+.produtoquantidade input
+    border: none                     // Remove borda padrão
+    box-shadow: 0 0 0 0.05rem #eeeeee  // Sombra sutil
+    border-radius: 10px              // Bordas arredondadas
+    text-align: center               // Texto centralizado
+    width: 38px                      // Largura fixa
+    padding: 1px                     // Espaçamento interno mínimo
+    background-color: #eeeeee        // Fundo cinza claro
+    outline: none                    // Remove contorno ao focar
+
+// Container da quantidade (com posicionamento relativo para mensagem de erro)
+.produtoquantidade
+    text-align: center    // Centraliza o conteúdo
+    line-height: 55px     // Altura da linha (para alinhamento vertical)
+    position: relative    // Para posicionamento absoluto do filho
+
+    // Mensagem de erro para quantidade inválida
+    .erroquantidade
+        position: absolute      // Posicionamento absoluto
+        bottom: -20px              // Abaixo do elemento pai
+        left: 50%                // Alinhado à esquerda
+        transform: translateX(-50%)      // Ajuste fino (sobe 30px)
+        font-size: 13px        // Tamanho pequeno
+        color: #aa1e1e         // Vermelho (para erro)
+        white-space: nowrap    // Não quebra linha
+        pointer-events: none   // Não interfere com cliques
+
+// Containers com alinhamento centralizado
+.tamanhoproduto, .precounidadecarrinho, .precototalcarrinho
+    text-align: center    // Texto centralizado
+    line-height: 55px     // Altura da linha (para alinhamento vertical)

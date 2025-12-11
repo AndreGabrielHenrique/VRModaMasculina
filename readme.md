@@ -1,196 +1,103 @@
 # VR Moda Masculina
+└── cart-interactions.spec.js
+"""
+# VR Moda Masculina
 
-E-commerce platform for men's fashion, built with React and Vite.
+Resumo do repositório e instruções rápidas (em português).
 
-## 🚀 Tecnologias
+Descrição
+---------
+Projeto de e‑commerce para "VR Moda Masculina" portado para React + Vite. O código fonte principal está em `src/` e a versão estática original está preservada em `legacy/`.
 
-- **Vite** v5.4 - Build tool and dev server
-- **React** 18 - UI framework
-- **Dart Sass** (indented syntax) - Styling
-- **Playwright** - E2E testing
-- **Node.js** - Runtime
+Estado atual
+------------
+- Código reorganizado em componentes React (`src/components/`).
+- Estilos convertidos para SASS (formato indented `.sass`) e divididos em partials em `src/styles/`.
+- Playwright configurado para testes E2E sob `e2e/`.
+- Foram adicionados comentários explicativos em arquivos fonte (em português) — reveja antes de commitar alterações finais.
 
-## 📁 Estrutura do Projeto
-
+Estrutura principal (resumo)
+---------------------------
 ```
 src/
-├── App.jsx                 # Main app component
-├── main.jsx               # Entry point
-├── components/            # React components
-│   ├── Header.jsx
-│   ├── Carousel.jsx
-│   ├── ProductCard.jsx
-│   ├── Products.jsx
-│   ├── Cart.jsx
-│   ├── CheckoutForm.jsx
-│   ├── ScrollButton.jsx
-│   ├── Footer.jsx
-│   └── icons/            # Icon components
-│       ├── IconHeart.jsx
-│       ├── IconCart.jsx
-│       ├── IconSearch.jsx
-│       ├── IconUser.jsx
-│       └── IconTrash.jsx
-└── styles/               # SASS modules
-    ├── style.sass       # Main entry point
-    ├── _variables.sass
-    ├── _header.sass
-    ├── _carousel.sass
-    ├── _products.sass
-    ├── _product-card.module.sass
-    ├── _cart.sass
-    ├── _forms.sass
-    ├── _footer.sass
-    ├── _scroll-button.sass
-    ├── _modal.sass
-    └── _media-queries.sass
+├─ main.jsx            # entrada da aplicação
+├─ App.jsx             # componente raiz
+├─ components/         # componentes React (Header, Carousel, Products, Cart, CheckoutForm, etc.)
+└─ styles/             # partials SASS e entry `style.sass`
 
-legacy/                  # Original static files
-├── index.original.html
-├── style.css
-└── script.js
-
-e2e/                    # Playwright E2E tests (80 tests, 100% passing)
-├── homepage.spec.js
-└── cart-interactions.spec.js
-
-Imagens/               # Product and carousel images
-Icones/                # Favicon and assets
+legacy/                # versão estática original (referência)
+e2e/                   # Playwright tests
+test-results/          # capturas visuais geradas pelos testes
 ```
 
-## 🛠️ Instalação
+Requisitos
+----------
+- Node.js (versão LTS recomendada)
+- npm
+- Recomenda-se instalar devtools do Playwright quando for rodar os testes: `npx playwright install`.
 
-```bash
+Instalação
+---------
+```powershell
 npm install
+npx playwright install # se for executar os testes E2E
 ```
 
-## ✨ Desenvolvimento
-
-```bash
+Desenvolvimento
+---------------
+```powershell
 npm run dev
+# abre dev server (por padrão: http://localhost:5173 ou 5174 conforme configuração no Playwright)
 ```
 
-Dev server starts on `http://localhost:5173`
-
-## 🔨 Build
-
-```bash
+Build de produção
+------------------
+```powershell
 npm run build
 ```
 
-Production build output in `dist/`
-
-### Legacy build (hide cart by default)
-
-To produce a production build that behaves like the original legacy site (the cart hidden by default), build with the `VITE_HIDE_CART=true` environment variable. A helper script is provided:
-
-```bash
+Build compatível com comportamento "legacy" (ocultar carrinho por padrão)
+------------------------------------------------------------------
+Existe um script auxiliar que define a variável `VITE_HIDE_CART=true` para reproduzir o comportamento do site legacy:
+```powershell
 npm run build:legacy
 ```
+Obs.: em alguns ambientes Windows o `cross-env` é usado no script. Caso falte, instale como dependência dev: `npm install --save-dev cross-env`.
 
-This script uses `cross-env` so it works on Windows, macOS and Linux. If you don't have `cross-env` installed locally, run:
-
-```bash
-npm install --save-dev cross-env
-```
-
-Or run the command directly in your CI/CD provider setting the environment variable `VITE_HIDE_CART=true` for the build step.
-
-## 🧪 Testes E2E
-
-```bash
+Testes E2E (Playwright)
+-----------------------
+Instale os navegadores com `npx playwright install` e rode:
+```powershell
 npm run test:e2e
 ```
-
-Run all Playwright tests (80 tests across chromium, firefox, webkit, Mobile Chrome)
-
-```bash
+Para abrir a interface interativa dos testes:
+```powershell
 npm run test:e2e:ui
 ```
 
-Open interactive test UI
+Dicas de verificação rápida
+--------------------------
+- Se `npm run dev` falhar com erros do esbuild, rode `npm install` e verifique versões do Node. Verifique mensagens no terminal (por exemplo dependências faltando).
+- Se os estilos parecerem incorretos, confirme que `src/styles/style.sass` está importado em `src/main.jsx`.
 
-## 📊 Recursos
+Sobre alterações recentes
+------------------------
+- Durante o trabalho de migração foram feitas mudanças em vários arquivos (componentes e SASS). Alguns desses arquivos foram posteriormente revertidos ou editados externamente; revise as diferenças locais antes de commitar.
+- Arquivos importantes para revisão: `src/components/*`, `src/styles/*`, `e2e/*`, `legacy/*`.
 
-- ✅ Responsive design (mobile-first)
-- ✅ Product carousel with auto-rotation
-- ✅ Product catalog with pagination
-- ✅ Shopping cart functionality
-- ✅ Checkout form with state autocomplete
-- ✅ Scroll-to-top button
-- ✅ Keyboard navigation
-- ✅ WCAG accessibility standards
-- ✅ CSS Modules for component scoping
-- ✅ Modern Sass with @use modules
-- ✅ 100% E2E test pass rate
+Como proceder agora (recomendado)
+--------------------------------
+1. Revise as mudanças locais com `git status` / `git diff`.
+2. Se quiser, rode `npm run dev` e `npm run test:e2e` para garantir que o app e os testes passam.
+3. Depois de revisar e aprovar, crie um commit único com uma mensagem clara (ex.: `docs: adicionar comentários em português em arquivos fonte`) e faça push.
 
-## 🎨 Estilo
+Contribuição e contato
+----------------------
+Se for necessário que eu (ou a ferramenta de automação) reverta alterações específicas, me diga quais arquivos quer restaurar e eu executo.
 
-- **Sass**: Modular SASS with indented syntax
-- **CSS Modules**: Used for component-scoped styles (e.g., `_product-card.module.sass`)
-- **Breakpoints**:
-  - Mobile: ≤613px
-  - Tablet: 614–833px
-  - Desktop: ≥834px
-
-## 🧩 Componentes
-
-### Header
-- Navigation bar with search, menu, and icons
-- User profile dropdown
-- Shopping cart link
-
-### Carousel
-- Auto-rotating product carousel
-- Navigation controls (prev/next)
-- Dot indicators
-
-### ProductCard
-- Product image, title, price
-- Installment info
-- Add-to-cart button
-- Favorite button (icon component)
-
-### Cart
-- List of cart items
-- Quantity adjusters
-- Item removal
-- Checkout form
-
-### CheckoutForm
-- Personal info fields (name, email)
-- Address input (city, state, CEP)
-- State autocomplete
-- Terms checkbox
-- Form validation
-
-## 🚢 Deploy
-
-```bash
-npm run build
-# Deploy dist/ folder to hosting
-```
-
-Fully compatible with static hosts (Netlify, Vercel, GitHub Pages).
-
-## 📝 Migração Vite + React
-
-This project was successfully migrated from vanilla HTML/CSS/JS to React + Vite:
-
-- ✅ Original files preserved in `legacy/` folder
-- ✅ All logic ported to React components
-- ✅ CSS converted to Sass with @use modules and CSS Modules
-- ✅ Playwright E2E tests (80 tests, 100% passing)
-- ✅ Build size optimized with Vite
-- ✅ Accessibility improvements (aria-labels, semantic HTML)
-- ✅ Production-ready build
-
-### Build Stats
-
-- CSS: 7.56 kB (gzipped)
-- JS: ~52 kB (gzipped)
-- Test suite: 80 tests, ~1.1 minute execution time
-
-## 📄 Licença
-
+Licença
+-------
 Projeto para fins educacionais.
+
+"""
+```
