@@ -1,82 +1,141 @@
-import React, { useState } from 'react'
+// src\components\Header.jsx
+// Cabeçalho do site: inclui busca, logo, ícones de usuário, favoritos e carrinho
+
+import React, { useState, useEffect, useRef } from 'react'
 import IconSearch from './icons/IconSearch'
 import IconCart from './icons/IconCart'
 import IconUser from './icons/IconUser'
+import IconTicket from './icons/IconTicket'
+import IconHeart from './icons/IconHeart'
 
-export default function Header({ cartCount, onConstruction, onToggleCart }) {
-  const [profileOpen, setProfileOpen] = useState(false)
+// Componente Header
+// Props:
+// - onToggleCart: função para alternar visibilidade do carrinho
+// - onConstruction: função para abrir modal "em construção"
+export default function Header({ onToggleCart, onConstruction }) {
+  // Estado para controlar abertura do menu dropdown
   const [menuOpen, setMenuOpen] = useState(false)
+  // Estado para controlar abertura do submenu de perfil
+  const [profileOpen, setProfileOpen] = useState(false)
+  // Referência para elemento do menu (detectar clique fora)
+  const menuRef = useRef(null)
+  // Referência para elemento do perfil (detectar clique fora)
+  const profileRef = useRef(null)
 
-  const handleClickOutside = (e) => {
-    if (profileOpen && !e.target.closest('.perfil') && !e.target.closest('.abrirmenu')) {
-      setProfileOpen(false)
+  // Efeito para fechar menus ao clicar fora deles
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      // Se clique NÃO foi dentro do menu, fecha menu
+      if (menuRef.current && !menuRef.current.contains(e.target)) setMenuOpen(false)
+      // Se clique NÃO foi dentro do perfil, fecha perfil
+      if (profileRef.current && !profileRef.current.contains(e.target)) setProfileOpen(false)
     }
-    if (menuOpen && !e.target.closest('.menu') && !e.target.closest('.abrirmenu-icon')) {
-      setMenuOpen(false)
-    }
+
+    // Adiciona listener com capture: true (executa antes de outros listeners)
+    document.addEventListener('click', handleClickOutside, true)
+
+    // Cleanup: remove listener quando componente desmonta
+    return () => document.removeEventListener('click', handleClickOutside, true)
+  }, [])
+
+  // Handler para clique no perfil
+  const handleProfileClick = (e) => {
+    e.stopPropagation() // Impede propagação para evitar fechar imediatamente
+    setProfileOpen(!profileOpen) // Alterna estado
   }
 
-  React.useEffect(() => {
-    document.addEventListener('click', handleClickOutside)
-    return () => document.removeEventListener('click', handleClickOutside)
-  }, [profileOpen, menuOpen])
+  // Função para abrir modal "em construção"
+  const triggerConstruction = (e) => {
+    // Evita comportamento padrão (navegação em links)
+    if (e && e.preventDefault) e.preventDefault()
+
+    // Fecha menus antes de abrir modal (evita estado inconsistente)
+    setProfileOpen(false)
+    setMenuOpen(false)
+
+    // Chama função do pai para abrir modal
+    if (onConstruction) onConstruction()
+  }
 
   return (
     <header>
-      <form className="busca" id="busca" onSubmit={e => e.preventDefault()}>
-        <input id="search" placeholder="O que você procura?" aria-label="Pesquisar" />
-        <button type="button" aria-label="Pesquisar" onClick={onConstruction}>
-          <IconSearch />
+      {/* Formulário de busca */}
+      <form
+        className="busca"
+        id="busca"
+        onSubmit={(e) => {
+          e.preventDefault()
+          onConstruction() // Ao submeter, abre modal "em construção"
+        }}
+      >
+        <input placeholder="O que você procura?" />
+        <button type="submit">
+          <IconSearch size={20} />
         </button>
       </form>
 
+      {/* Logo da empresa */}
       <img src="/Imagens/logo1.jpeg" className="logo" alt="VR Moda Masculina logo" />
-
+      
+      {/* Lista de ícones de navegação */}
       <ul>
+        {/* Ícone de ticket/suporte */}
         <li>
-          <button className="abrirmenu-icon" aria-label="Abrir menu" onClick={() => setMenuOpen(s => !s)}>
-            ☰
-          </button>
-          {menuOpen && (
-            <div className="menu" id="menu">
-              <p className="menu-item" onClick={onConstruction}>Home</p>
-              <p className="menu-item" onClick={onConstruction}>Novidades</p>
-              <p className="menu-item" onClick={onConstruction}>Contato</p>
-            </div>
-          )}
+          <a onClick={triggerConstruction}>
+            <IconTicket size={24} ariaLabel="Tickets" />
+          </a>
         </li>
+        {/* Ícone de favoritos */}
         <li>
-          <button aria-label="Configurações" onClick={onConstruction}>
-            ⚙️
-          </button>
+          <a onClick={triggerConstruction}>
+            <IconHeart size={24} ariaLabel="Favoritos" />
+          </a>
         </li>
+        {/* Ícone do carrinho */}
         <li>
-          <button aria-label="Localização" onClick={onConstruction}>
-            📍
-          </button>
+          <a href="#carrinho" className="carrinhodecompras" onClick={(e) => { 
+            e.preventDefault(); // Previne navegação por âncora
+            onToggleCart(); // Alterna visibilidade do carrinho
+          }}>
+            <IconCart size={24} ariaLabel="Carrinho de compras" />
+          </a>
         </li>
+        {/* Ícone do usuário com menu dropdown */}
         <li>
-          <button className="carrinhodecompras" aria-label="Abrir carrinho" onClick={() => { if (onToggleCart) onToggleCart() }}>
-            <IconCart /> {cartCount > 0 ? `(${cartCount})` : ''}
-          </button>
-        </li>
-        <li>
-          <button 
-            className="abrirmenu" 
-            aria-label="Abrir menu do usuário"
-            onClick={() => setProfileOpen(!profileOpen)}
+          <a
+            className="abrirmenu"
+            onClick={(e) => { 
+              e.stopPropagation(); // Impede propagação
+              setMenuOpen(!menuOpen) // Alterna menu
+            }}
           >
-            <IconUser />
-          </button>
-          {profileOpen && (
-            <div className="perfil" id="perfil">
-              <nav className="menu" id="menu">
-                <button onClick={onConstruction} className="menu-item">Ver perfil</button>
-                <button onClick={onConstruction} className="menu-item">Alterar senha</button>
-                <button onClick={onConstruction} className="menu-item">Logout</button>
-              </nav>
-            </div>
-          )}
+            <IconUser size={24} ariaLabel="Menu do usuário" />
+             {/* Menu dropdown */}
+             <nav
+                ref={menuRef} // Referência para detectar clique fora
+                className={`menu ${menuOpen ? 'mostrarmenu' : ''}`}
+                id="menu"
+              >
+              {/* Item "Ver perfil" com submenu */}
+              <div className="verperfil" onClick={handleProfileClick} ref={profileRef}>
+                <p id="verperfil">Ver perfil</p>
+                {/* Submenu de perfil */}
+                <span className={`perfil ${profileOpen ? 'mostrarperfil' : ''}`} id="perfil">
+                  <img src="/Imagens/perfil 1.jpg" alt="Perfil do usuário"/>
+                  <p>Usuário</p>
+                  <p>usuario@usuario.com</p>
+                  <p>
+                    <button className="verperfilcompleto" onClick={triggerConstruction}>
+                      Ver perfil completo
+                    </button>
+                  </p>
+                </span>
+              </div>
+              {/* Outras opções do menu */}
+              <p className="alterarsenha" onClick={triggerConstruction}>Alterar senha</p>
+              <p className="logout" onClick={triggerConstruction}>Logout</p>
+            </nav>
+          </a>
         </li>
       </ul>
     </header>
