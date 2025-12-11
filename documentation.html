@@ -44,11 +44,8 @@ npm run test:e2e
           <li>Aplicação portada para <strong>React + Vite</strong>, com código organizado em componentes dentro de <code>src/</code>.</li>
           <li>Estilos migrados para <strong>SASS (sintaxe indented)</strong> e divididos em partials em <code>src/styles/</code>.</li>
           <li>Testes E2E com <strong>Playwright</strong> em <code>e2e/</code> — instale navegadores com <code>npx playwright install</code>.</li>
-          <li>Versão estática original preservada em <code>legacy/</code> para referência.</li>
-        </ul>
-
-        <h2>Como executar localmente</h2>
-        <pre><code>powershell
+      <li>Todos os arquivos fonte (JSX e SASS) incluem <strong>comentários explicativos em português</strong> descrevendo funcionalidades, imports, estado e lógica.</li>
+      <li>Imagens agora importadas como módulos Vite (otimizadas), em vez de referências de caminho estático.</li>
     npm install
     npx playwright install   # apenas se for rodar os testes E2E
     npm run dev
@@ -68,11 +65,9 @@ npm run test:e2e
         <h2>Notas importantes</h2>
         <ul>
           <li>Se ocorrerem erros no dev server (esbuild), execute `npm install` e verifique a versão do Node. Mensagens de erro no terminal costumam indicar dependências faltantes.</li>
-          <li>Algumas alterações de código e estilo foram feitas e posteriormente editadas; revise as diferenças locais com <code>git status</code> e <code>git diff</code> antes de commitar.</li>
-          <li>Comentários explicativos em português foram adicionados a vários arquivos fonte — valide o conteúdo e remova/edite conforme sua preferência antes do commit final.</li>
-        </ul>
-
-        <h2>Arquivos e pastas de interesse</h2>
+      <li>Imagens (em <code>src/components/Imagens/</code> e <code>Imagens/</code>) agora são importadas como módulos nos componentes — isso garante otimização pelo Vite e suporte a tree-shaking.</li>
+      <li>Comentários explicativos em português foram adicionados a todos os arquivos fonte — descrevem imports, estado, hooks, funções e lógica principal. Revise e edite conforme sua preferência antes do commit final.</li>
+      <li>Arquivo <code>documentation.html</code> e <code>readme.md</code> foram atualizados com status atual. Verifique antes de commitar.</li>
         <ul>
           <li><code>src/</code> — código React, entry em <code>src/main.jsx</code> e <code>src/App.jsx</code>.</li>
           <li><code>src/components/</code> — Header, Carousel, Products, ProductCard, Cart, CheckoutForm, Footer, ScrollButton, icons.</li>

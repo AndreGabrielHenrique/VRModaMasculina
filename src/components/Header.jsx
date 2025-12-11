@@ -1,4 +1,4 @@
-// src\components\Header.jsx
+// Caminho: src/components/Header.jsx
 // Cabeçalho do site: inclui busca, logo, ícones de usuário, favoritos e carrinho
 
 import React, { useState, useEffect, useRef } from 'react'
@@ -7,6 +7,10 @@ import IconCart from './icons/IconCart'
 import IconUser from './icons/IconUser'
 import IconTicket from './icons/IconTicket'
 import IconHeart from './icons/IconHeart'
+
+// Importa as imagens da nova localização
+import logo from './Imagens/logo1.jpeg'
+import perfil from './Imagens/perfil 1.jpg'
 
 // Componente Header
 // Props:
@@ -74,8 +78,12 @@ export default function Header({ onToggleCart, onConstruction }) {
         </button>
       </form>
 
-      {/* Logo da empresa */}
-      <img src="/Imagens/logo1.jpeg" className="logo" alt="VR Moda Masculina logo" />
+      {/* 
+        Logo da empresa 
+        Agora usa a variável 'logo' que contém a importação da imagem
+        Isso permite otimização pelo Vite e inclusão no bundle final
+      */}
+      <img src={logo} className="logo" alt="VR Moda Masculina logo" />
       
       {/* Lista de ícones de navegação */}
       <ul>
@@ -121,7 +129,11 @@ export default function Header({ onToggleCart, onConstruction }) {
                 <p id="verperfil">Ver perfil</p>
                 {/* Submenu de perfil */}
                 <span className={`perfil ${profileOpen ? 'mostrarperfil' : ''}`} id="perfil">
-                  <img src="/Imagens/perfil 1.jpg" alt="Perfil do usuário"/>
+                  {/* 
+                    Imagem de perfil importada como módulo
+                    Vai ser otimizada e incluída no bundle pelo Vite
+                  */}
+                  <img src={perfil} alt="Perfil do usuário"/>
                   <p>Usuário</p>
                   <p>usuario@usuario.com</p>
                   <p>

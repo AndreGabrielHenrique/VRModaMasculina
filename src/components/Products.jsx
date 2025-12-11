@@ -1,14 +1,20 @@
-// src\components\Products.jsx
+// Caminho: src/components/Products.jsx
 // Seção de listagem de produtos com paginação
 
 import React from 'react'
 import ProductCard from './ProductCard'
 
-// Dados estáticos dos produtos (mesmo do original)
+// Importa as imagens dos produtos da nova localização
+import calca from './Imagens/calca 1.jpg'
+import terno from './Imagens/terno 1.jpg'
+import sapato from './Imagens/sapato 1.jpg'
+import relogio from './Imagens/relogio 1.jpg'
+
+// Dados estáticos dos produtos com as imagens importadas
 const productsData = [
   {
     id: 1,
-    image: '/Imagens/calca 1.jpg',
+    image: calca, // Usa a variável importada (caminho otimizado pelo Vite)
     description: 'Calça Social Clássica',
     price: 'R$ 297',
     installment: 99,
@@ -16,7 +22,7 @@ const productsData = [
   },
   {
     id: 2,
-    image: '/Imagens/terno 1.jpg',
+    image: terno, // Usa a variável importada (caminho otimizado pelo Vite)
     description: 'Terno Linho Fino',
     price: 'R$ 888',
     installment: 296,
@@ -24,7 +30,7 @@ const productsData = [
   },
   {
     id: 3,
-    image: '/Imagens/sapato 1.jpg',
+    image: sapato, // Usa a variável importada (caminho otimizado pelo Vite)
     description: 'Sapato de Couro',
     price: 'R$ 399',
     installment: 133,
@@ -32,7 +38,7 @@ const productsData = [
   },
   {
     id: 4,
-    image: '/Imagens/relogio 1.jpg',
+    image: relogio, // Usa a variável importada (caminho otimizado pelo Vite)
     description: 'Relógio San Diego',
     price: 'R$ 279',
     installment: 93,

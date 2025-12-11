@@ -1,4 +1,4 @@
-// src\components\Carousel.jsx
+// Caminho: src/components/Carousel.jsx
 // Componente de carrossel de imagens automático com controles e indicadores.
 
 // Importa hooks do React: 
@@ -7,12 +7,17 @@
 // - useRef: para manter referência ao intervalo do carrossel
 import React, { useState, useEffect, useRef } from 'react'
 
-// Array com os caminhos das imagens do carrossel
-// Cada string representa uma imagem na pasta pública /Imagens
+// Importa as imagens do carrossel da nova localização
+import carrocel1 from './Imagens/carrocel-1 1.png'
+import carrocel2 from './Imagens/carrocel-2 1.png'
+import carrocel3 from './Imagens/carrocel-3 1.png'
+
+// Array com as imagens importadas do carrossel
+// Cada variável agora referencia a imagem importada como módulo
 const images = [
-  '/Imagens/carrocel-1 1.png',
-  '/Imagens/carrocel-2 1.png',
-  '/Imagens/carrocel-3 1.png'
+  carrocel1,  // Imagem 1: importada da pasta src/components/Imagens/
+  carrocel2,  // Imagem 2: importada da pasta src/components/Imagens/
+  carrocel3   // Imagem 3: importada da pasta src/components/Imagens/
 ]
 
 // Componente: Carousel — slideshow de imagens com autoplay e navegação manual
@@ -114,6 +119,10 @@ export default function Carousel() {
             // display: 'block' para visível, 'none' para oculto
             style={{ display: index === currentIndex ? 'block' : 'none' }}
           >
+            {/* 
+              A imagem agora usa a variável src que contém a importação da imagem
+              Isso permite que o Vite (build tool) otimize e inclua a imagem no bundle
+            */}
             <img src={src} alt={`Carrossel ${index + 1}`} />
           </div>
         ))}

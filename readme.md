@@ -11,10 +11,11 @@ Projeto de e‑commerce para "VR Moda Masculina" portado para React + Vite. O c�
 
 Estado atual
 ------------
-- Código reorganizado em componentes React (`src/components/`).
-- Estilos convertidos para SASS (formato indented `.sass`) e divididos em partials em `src/styles/`.
+- Código reorganizado em componentes React (`src/components/`) com **comentários explicativos em português**.
+- Estilos convertidos para SASS (formato indented `.sass`) e divididos em partials em `src/styles/` (também com comentários).
+- Imagens otimizadas: importadas como módulos (via `import img from './Imagens/...'`) para máxima compatibilidade com Vite.
 - Playwright configurado para testes E2E sob `e2e/`.
-- Foram adicionados comentários explicativos em arquivos fonte (em português) — reveja antes de commitar alterações finais.
+- Validação: revise os comentários e a estrutura de imports antes de commitar.
 
 Estrutura principal (resumo)
 ---------------------------
@@ -82,14 +83,21 @@ Dicas de verificação rápida
 
 Sobre alterações recentes
 ------------------------
-- Durante o trabalho de migração foram feitas mudanças em vários arquivos (componentes e SASS). Alguns desses arquivos foram posteriormente revertidos ou editados externamente; revise as diferenças locais antes de commitar.
-- Arquivos importantes para revisão: `src/components/*`, `src/styles/*`, `e2e/*`, `legacy/*`.
+- Todos os componentes e partials SASS agora incluem comentários explicativos em português descrevendo funcionalidades, hooks, estado e lógica.
+- As imagens foram movidas para imports modulares (Vite) para melhor otimização.
+- Alguns arquivos foram editados múltiplas vezes durante a migração; revise `git diff` para ver as mudanças exatas.
+- Arquivos principais com alterações: `src/components/*` (Carousel, Header, Products, UnderConstructionModal), `src/styles/*`, `e2e/*`.
 
 Como proceder agora (recomendado)
 --------------------------------
-1. Revise as mudanças locais com `git status` / `git diff`.
-2. Se quiser, rode `npm run dev` e `npm run test:e2e` para garantir que o app e os testes passam.
-3. Depois de revisar e aprovar, crie um commit único com uma mensagem clara (ex.: `docs: adicionar comentários em português em arquivos fonte`) e faça push.
+1. Revise as mudanças locais com `git status` / `git diff` — todo arquivo JSX/SASS agora tem comentários em português.
+2. Rode `npm install` para garantir dependências (especialmente se não rodou recentemente).
+3. Rode `npm run dev` para verificar que a aplicação inicia sem erros (dev server em `http://localhost:5173`).
+4. Opcionalmente, rode `npm run test:e2e` para validar os testes E2E.
+5. Depois de revisar e aprovar, crie um commit único com uma mensagem descritiva como:
+   - `docs: adicionar comentários em português em componentes e SASS`
+   - ou `refactor: otimizar imports de imagens e adicionar documentação`
+6. Faça push quando estiver satisfeito com o estado.
 
 Contribuição e contato
 ----------------------

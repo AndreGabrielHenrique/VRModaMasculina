@@ -1,35 +1,42 @@
-# CAMINHO: .gitignore
-# Lista de arquivos/pastas que o Git deve ignorar (não versionar)
+# Dependências
+node_modules/
 
-# DEPENDÊNCIAS DO NODE
-node_modules/           # Pasta com todas as dependências npm
+# Build
+dist/
 
-# BUILD/PRODUÇÃO
-dist/                   # Pasta de build gerada pelo Vite
+# Testes
+e2e/
+playwright.config.js
+playwright-report/
+test-results/
+.playwright/
 
-# VARIÁVEIS DE AMBIENTE
-.env                    # Arquivo com variáveis sensíveis
+# Ambiente
+.env
+.env.local
 
-# CONFIGURAÇÕES DE IDEs
-/.idea                  # Configurações do JetBrains IDEA
-/.vscode                # Configurações do VS Code
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 
-# ARQUIVOS DE LOG
-*.log                   # Qualquer arquivo .log
-npm-debug.log*          # Logs de debug do npm
+# Sistema
+.DS_Store
+Thumbs.db
+Desktop.ini
 
-# ARQUIVOS DO OFFICE
-*.docx                  # Documentos do Word
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# ARQUIVOS DO SISTEMA OPERACIONAL
-.DS_Store               # Metadados do macOS
-Thumbs.db               # Miniaturas do Windows
+# Documentos temporários
+*.docx
+F001-Tela home VRmodas (1).docx
 
-# TESTES E RELATÓRIOS
-test-results/           # Resultados de testes
-playwright-report/      # Relatórios do Playwright
-.playwright/            # Cache/configurações do Playwright
-coverage/               # Relatório de cobertura de código
-
-# ARQUIVOS TEMPORÁRIOS
-*.tmp                   # Arquivos temporários
+# Cobertura de testes
+coverage/
+.nyc_output

@@ -1,9 +1,12 @@
-// src\components\UnderConstructionModal.jsx
+// Caminho: src/components/UnderConstructionModal.jsx
 // Modal que aparece quando funcionalidade está em construção
 // Bloqueia interação com conteúdo de fundo e fecha automaticamente
 
 import React, { useEffect, useState, useRef } from 'react'
 import '../styles/_modal.sass' // Estilos específicos do modal
+
+// Importa a imagem de construção da nova localização
+import emConstrucao from './Imagens/em_construao.png'
 
 // Componente UnderConstructionModal
 // Props:
@@ -90,9 +93,12 @@ export default function UnderConstructionModal({ visible, onClose }) {
       onClick={() => onClose && onClose()} // Fecha ao clicar no overlay
       aria-hidden={!visible} // Esconde de leitores de tela quando não visível
     >
-      {/* Imagem "em construção" */}
+      {/* 
+        Imagem "em construção" importada como módulo
+        Vai ser otimizada e incluída no bundle pelo Vite
+      */}
       <img
-        src="/Imagens/em_construao.png"
+        src={emConstrucao}
         alt="Em Construção"
         onClick={(e) => e.stopPropagation()} // Clicar na imagem não fecha modal
       />
