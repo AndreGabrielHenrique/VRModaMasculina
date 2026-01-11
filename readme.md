@@ -1,7 +1,4 @@
 # VR Moda Masculina
-└── cart-interactions.spec.js
-"""
-# VR Moda Masculina
 
 Resumo do repositório e instruções rápidas (em português).
 
