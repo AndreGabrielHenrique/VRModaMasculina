@@ -443,17 +443,19 @@ export default function CheckoutForm({ onCheckoutComplete }) {
           {/* Campo: Estado com autocomplete */}
           <span id="campoestado" className={`input ${errors.estado ? 'error' : ''}`} >
             <label htmlFor="estado">Estado</label>
-            <input
-              id="estado"
-              ref={estadoInputRef}
-              value={form.estado}
-              onChange={e => handleChange('estado', e.target.value)}
-              onFocus={handleFocusEstado}
-              onBlur={() => handleBlur('estado')}
-              onKeyDown={handleKeyDownEstado}
-              placeholder="Selecione o estado"
-              autoComplete="off"
-            />
+              <input
+                id="estado"
+                ref={estadoInputRef}
+                value={form.estado}
+                onChange={e => handleChange('estado', e.target.value)}
+                onFocus={handleFocusEstado}
+                onBlur={() => handleBlur('estado')}
+                onKeyDown={handleKeyDownEstado}
+                placeholder="Selecione o estado"
+                autoComplete="new-password"
+                name="uf"
+                data-lpignore="true"
+              />
             {/* Seta decorativa */}
             <span className="seta" aria-hidden>&gt;</span>
 
